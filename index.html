@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marie Altmann – Senior SAP Consultant | Berechtigungsmanagement · IDM · IAG · Security</title>
+  <meta name="description" content="Marie Altmann – 26 Jahre IT-Erfahrung. Senior SAP Consultant für Berechtigungsmanagement, IDM, IAM, GRC und S/4HANA Security. Freelance, Remote & vor Ort. Kurzfristig verfügbar." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Marie Altmann" />
+  <meta property="og:title" content="Marie Altmann – Senior SAP Consultant" />
+  <meta property="og:description" content="26 Jahre IT-Erfahrung. Präzise Konzepte. Verlässliche Umsetzung. SAP Berechtigungsmanagement, IDM, GRC, S/4HANA Security." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  
+  
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0C1929;
+      --navy-mid:    #162340;
+      --navy-light:  #1E3A5F;
+      --blue:        #2563EB;
+      --blue-dark:   #1D4ED8;
+      --blue-light:  #DBEAFE;
+      --white:       #FFFFFF;
+      --bg:          #F8FAFC;
+      --bg-alt:      #F1F5F9;
+      --text:        #0F172A;
+      --text-sec:    #475569;
+      --text-muted:  #94A3B8;
+      --border:      #E2E8F0;
+      --shadow-sm:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+      --shadow-md:   0 4px 16px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.05);
+      --shadow-lg:   0 10px 40px rgba(0,0,0,.10), 0 2px 8px rgba(0,0,0,.05);
+      --radius:      12px;
+      --radius-sm:   8px;
+      --nav-h:       72px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
+    h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
+    h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+    h3 { font-size: 1.2rem; }
+    p  { color: var(--text-sec); }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--blue);
+      margin-bottom: 1rem;
+    }
+    .section-label::before {
+      content: ''; display: block; width: 24px; height: 2px; background: var(--blue);
+    }
+
+    .section-heading { margin-bottom: .75rem; }
+    .section-sub { color: var(--text-sec); font-size: 1.05rem; max-width: 600px; margin-bottom: 3rem; }
+
+    /* ─── LAYOUT ─── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 100px 0; }
+    .bg-alt { background: var(--white); }
+    .bg-dark { background: var(--navy); }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      background: transparent;
+      transition: background .3s, box-shadow .3s;
+    }
+    nav.scrolled {
+      background: var(--white);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-inner {
+      width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: .75rem;
+      text-decoration: none; color: var(--white);
+    }
+    .nav-logo-mark {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .9rem; color: var(--white);
+      flex-shrink: 0;
+    }
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name { font-weight: 700; font-size: .95rem; line-height: 1.1; color: var(--white); }
+    .nav-logo-sub  { font-size: .7rem; color: var(--blue); letter-spacing: .04em; }
+
+    .nav-links {
+      display: flex; align-items: center; gap: .25rem;
+      list-style: none;
+      position: absolute; left: 50%; transform: translateX(-50%);
+    }
+    .nav-links a {
+      display: block; padding: .5rem .85rem;
+      color: var(--text); text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem; font-weight: 400;
+      border-radius: 6px;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-cta {
+      display: inline-flex; align-items: center;
+      padding: .5rem 1rem;
+      background: var(--blue); color: var(--white);
+      border-radius: var(--radius-sm);
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-weight: 500; font-size: .8rem;
+      text-decoration: none; transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: .5rem; border: none; background: transparent;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+      background: var(--navy); padding: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      flex-direction: column; gap: .25rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      display: block; padding: .85rem 1rem;
+      color: rgba(255,255,255,.8); text-decoration: none; font-weight: 500;
+      border-radius: var(--radius-sm);
+      transition: background .2s, color .2s;
+    }
+    .mobile-menu a:hover { background: rgba(255,255,255,.07); color: var(--white); }
+    .mobile-menu .nav-cta { margin-top: .5rem; text-align: center; justify-content: center; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh; padding-top: var(--nav-h);
+      display: flex; align-items: center;
+      background: var(--white);
+      position: relative; overflow: hidden;
+    }
+    .hero-orb {
+      position: absolute; bottom: -40%; left: 50%; transform: translateX(-50%);
+      width: 1400px; height: 1400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,.18) 0%, rgba(37,99,235,.06) 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; overflow: hidden;
+      mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, white 0%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, white 0%, transparent 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1100px; text-align: center;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(37,99,235,.12); border: 1px solid rgba(37,99,235,.3);
+      color: var(--blue); padding: .45rem 1rem;
+      border-radius: 100px; font-size: .8rem; font-weight: 600;
+      margin-bottom: 2rem;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37,99,235,.3);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(37,99,235,.3); }
+      50%       { box-shadow: 0 0 0 6px rgba(37,99,235,.1); }
+    }
+    .hero-name {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-family: 'Work Sans', system-ui, sans-serif; font-weight: 500;
+      color: var(--navy); letter-spacing: -.02em; margin-bottom: 1rem;
+    }
+    .hero-highlight {
+      color: var(--blue);
+      background: var(--blue-light);
+      padding: .05em .25em;
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-weight: 600;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 1.75vw, 1.25rem);
+      font-family: 'JetBrains Mono', monospace; font-weight: 400;
+      color: var(--text); margin-bottom: 2.5rem;
+      letter-spacing: -.01em; max-width: 800px; margin-left: auto; margin-right: auto;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: center; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .7rem 1.25rem; background: var(--blue);
+      color: var(--white); border-radius: var(--radius-sm);
+      font-weight: 500; font-size: .95rem; text-decoration: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .875rem .5rem;
+      border: none; background: none; color: var(--blue);
+      font-weight: 600; font-size: .95rem;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .btn-outline svg { transition: transform .2s ease; color: var(--blue); }
+    .btn-outline:hover svg { transform: translateX(5px); }
+
+    .hero-stats {
+      display: flex; justify-content: center; gap: 0;
+      margin-top: 3.5rem; padding-top: 2.5rem;
+      max-width: 900px; margin-left: auto; margin-right: auto;
+    }
+    .hero-stat {
+      flex: 1; max-width: 200px;
+      display: flex; flex-direction: column; align-items: center; gap: .35rem;
+      padding: 0 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-value {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-size: 2.75rem; font-weight: 600; color: var(--navy); line-height: 1;
+    }
+    .hero-stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; color: var(--text-sec); text-align: center; line-height: 1.4;
+    }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      color: var(--text-muted); font-size: .75rem;
+      animation: bounce 2.5s infinite;
+    }
+    .hero-scroll svg { opacity: .4; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── ÜBER MICH ─── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .stat-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 1.25rem 1.5rem;
+    }
+    .stat-value { font-size: 2rem; font-weight: 800; color: var(--navy); line-height: 1; }
+    .stat-label { font-size: .8rem; color: var(--text-sec); margin-top: .25rem; }
+
+    .about-sdg-wrap {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .about-sdg-wrap .sdg-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+    .about-sdg-wrap .sdg-card .sdg-bg {
+      mask-image: radial-gradient(ellipse 70% 60% at 78% 25%, white 0%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 78% 25%, white 0%, transparent 100%);
+      transform: translateX(40px);
+    }
+    .about-sdg-wrap .sdg-card h4 {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: .4rem;
+      position: relative; z-index: 1; transition: color .2s;
+    }
+    .about-sdg-wrap .sdg-card:hover h4 { color: var(--blue); }
+    .about-sdg-wrap .sdg-card p { font-size: .875rem; line-height: 1.7; }
+
+    /* ─── LEISTUNGEN (dark grid cards) ─── */
+    #leistungen { background: var(--white); }
+    #leistungen .leistungen-header { text-align: center; }
+    #leistungen .leistungen-header .section-label { justify-content: center; }
+    #leistungen .leistungen-header .section-sub { margin-left: auto; margin-right: auto; }
+
+    .sdg-wrap {
+      box-shadow: inset 0 0 0 1px var(--border);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .sdg { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .sdg-card {
+      position: relative; padding: 2.75rem; overflow: hidden;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background .35s;
+      display: flex; flex-direction: column;
+    }
+    .sdg-card:hover { background: rgba(37,99,235,.03); }
+    .sdg-bg {
+      pointer-events: none; position: absolute;
+      inset: 0;
+      mask-image: radial-gradient(ellipse 65% 60% at 80% 25%, white 0%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 65% 60% at 80% 25%, white 0%, transparent 100%);
+    }
+    .sdg-bg-inner {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(37,99,235,.04), transparent);
+      mask-image: radial-gradient(farthest-side at top, white, transparent);
+      -webkit-mask-image: radial-gradient(farthest-side at top, white, transparent);
+    }
+    .sdg-icon {
+      position: relative; z-index: 1;
+      display: block; width: 22px; height: 22px;
+      color: var(--blue); margin-bottom: 2.5rem;
+      flex-shrink: 0;
+    }
+    .sdg-card h3 {
+      position: relative; z-index: 1;
+      font-size: 1.15rem; font-family: 'Work Sans', system-ui, sans-serif; font-weight: 600;
+      color: var(--text); margin-bottom: .5rem;
+      transition: color .2s;
+    }
+    .sdg-card p {
+      position: relative; z-index: 1;
+      font-size: .825rem; color: var(--text-sec); line-height: 1.65;
+      transition: color .2s;
+    }
+    .sdg-body { position: relative; z-index: 1; }
+    .sdg-card:hover h3 { color: var(--blue); }
+    .sdg-card:hover p  { color: var(--blue-dark); }
+    .sdg-more {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .95rem; font-weight: 600; color: var(--blue);
+      margin-top: auto; padding-top: 1.25rem; position: relative; z-index: 1; flex-shrink: 0; font-family: 'Work Sans', system-ui, sans-serif;
+    }
+    .sdg-arrow { display: inline-block; transition: transform .2s ease; }
+    .sdg-card:hover .sdg-arrow,
+    .sdg-more:hover .sdg-arrow { transform: translateX(5px); }
+
+    /* ─── EINSATZBEREICHE ─── */
+    .tags-container { position: relative; }
+    .tags-row { overflow: hidden; position: relative; margin-bottom: .6rem; }
+    .tags-row:last-child { margin-bottom: 0; }
+    .tags-row::before,
+    .tags-row::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
+    }
+    .tags-row::before { left: 0; background: linear-gradient(90deg, var(--white), transparent); }
+    .tags-row::after  { right: 0; background: linear-gradient(-90deg, var(--white), transparent); }
+    .tags-track {
+      display: flex; gap: .75rem; width: max-content;
+      animation: scroll-tags 30s linear infinite;
+    }
+    .tags-track-reverse { animation-direction: reverse; }
+    .tags-container:hover .tags-track { animation-play-state: paused; }
+    @keyframes scroll-tags {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .tag-pill {
+      display: inline-flex; align-items: center;
+      padding: .55rem 1.1rem;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); font-size: .85rem; font-weight: 500;
+      color: var(--text); white-space: nowrap;
+      transition: border-color .2s, color .2s;
+    }
+    .tag-pill:hover { border-color: var(--blue); color: var(--blue-dark); background: rgba(37,99,235,.03); }
+
+    /* ─── VORGEHENSWEISE ─── */
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    }
+    .step-card {
+      position: relative; padding: 2rem;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .step-card:hover { box-shadow: var(--shadow-md); border-color: rgba(37,99,235,.3); }
+    .step-num {
+      font-size: 3.5rem; font-weight: 800;
+      color: var(--blue-light); line-height: 1;
+      margin-bottom: 1rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .step-card h3 { font-size: 1.05rem; margin-bottom: .6rem; color: var(--text); }
+    .step-card p  { font-size: .875rem; line-height: 1.7; color: var(--text-sec); }
+
+    /* ─── BRANCHENERFAHRUNG ─── */
+    .industries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .industry-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 1.5rem 1.25rem;
+      text-align: center;
+      transition: box-shadow .2s, border-color .2s, transform .2s;
+    }
+    .industry-card:hover { box-shadow: var(--shadow-md); border-color: var(--blue); transform: translateY(-3px); }
+    .industry-emoji { font-size: 2rem; margin-bottom: .75rem; }
+    .industry-card h4 { font-size: .875rem; font-weight: 700; color: var(--text); margin-bottom: .4rem; }
+    .industry-clients { font-size: .75rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ─── PROJEKTREFERENZEN ─── */
+    .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .project-card {
+      display: grid; grid-template-columns: 200px 1fr;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: box-shadow .25s, border-color .25s;
+    }
+    .project-card:hover { box-shadow: var(--shadow-lg); border-color: rgba(37,99,235,.3); }
+    .project-sidebar {
+      background: var(--navy); padding: 2rem 1.5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .project-client { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: .35rem; }
+    .project-year   { font-size: .8rem; color: var(--blue); font-weight: 600; }
+    .project-badge  {
+      display: inline-block; margin-top: .75rem;
+      padding: .25rem .75rem; border-radius: 100px;
+      background: rgba(37,99,235,.15); color: var(--blue);
+      font-size: .7rem; font-weight: 600;
+    }
+    .project-body { padding: 2rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+    .project-tag {
+      padding: .25rem .65rem; border-radius: 100px;
+      background: var(--bg-alt); color: var(--text-sec);
+      font-size: .72rem; font-weight: 600;
+    }
+    .project-body h3 { font-size: 1.05rem; color: var(--text); margin-bottom: .75rem; }
+    .project-body p  { font-size: .9rem; line-height: 1.7; color: var(--text-sec); }
+
+    /* ─── TECHNOLOGIE ─── */
+    .tech-grid { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .tech-pill {
+      padding: .5rem 1.1rem; border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: var(--white); color: var(--text);
+      font-size: .85rem; font-weight: 500;
+      transition: border-color .2s, color .2s, background .2s, transform .15s;
+    }
+    .tech-pill:hover {
+      border-color: var(--blue); color: var(--blue-dark);
+      background: var(--blue-light); transform: translateY(-2px);
+    }
+    .tech-pill.highlight {
+      border-color: var(--blue); color: var(--blue-dark);
+      background: var(--blue-light); font-weight: 600;
+    }
+
+    /* ─── KONTAKT ─── */
+    #kontakt { background: var(--navy); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+    .contact-info h2 { color: var(--white); }
+    .contact-info .section-sub { color: rgba(255,255,255,.6); max-width: none; margin-bottom: 2.5rem; }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .contact-detail-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(37,99,235,.12); color: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1.1rem;
+    }
+    .contact-detail-text { display: flex; flex-direction: column; gap: .1rem; }
+    .contact-detail-label { font-size: .75rem; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .06em; }
+    .contact-detail-value { color: var(--white); font-weight: 500; text-decoration: none; }
+    .contact-detail-value:hover { color: var(--blue); }
+    .contact-note {
+      margin-top: 2rem; padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(37,99,235,.2); border-radius: var(--radius-sm);
+      background: rgba(37,99,235,.06);
+    }
+    .contact-note p { font-size: .875rem; color: rgba(255,255,255,.6); }
+    .contact-note strong { color: var(--blue); }
+
+    .contact-form {
+      background: var(--white); border-radius: var(--radius);
+      padding: 2.5rem; box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block; font-size: .8rem; font-weight: 600;
+      color: var(--text); margin-bottom: .45rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: .8rem 1rem;
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      font-family: inherit; font-size: .9rem; color: var(--text);
+      background: var(--bg); transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-checkbox {
+      display: flex; align-items: flex-start; gap: .75rem;
+      margin-bottom: 1.5rem;
+    }
+    .form-checkbox input[type="checkbox"] {
+      width: 18px; height: 18px; flex-shrink: 0; margin-top: .15rem;
+      accent-color: var(--blue); cursor: pointer;
+    }
+    .form-checkbox label {
+      font-size: .8rem; color: var(--text-sec); line-height: 1.5; cursor: pointer;
+    }
+    .form-checkbox a { color: var(--blue-dark); }
+    .btn-submit {
+      width: 100%; padding: 1rem;
+      background: var(--blue); color: var(--white);
+      border: none; border-radius: var(--radius-sm);
+      font-family: inherit; font-size: .95rem; font-weight: 500;
+      cursor: pointer; transition: background .2s, transform .15s;
+    }
+    .btn-submit:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .form-success {
+      display: none; text-align: center; padding: 2rem 1rem;
+    }
+    .form-success svg { color: var(--blue); margin-bottom: 1rem; }
+    .form-success h3 { color: var(--text); margin-bottom: .5rem; }
+    .form-success p  { color: var(--text-sec); font-size: .9rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #070F1A; padding: 3rem 0 2rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-brand { display: flex; align-items: center; gap: .75rem; }
+    .footer-brand-mark {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .85rem; color: var(--white);
+    }
+    .footer-brand-name { font-size: .9rem; font-weight: 700; color: rgba(255,255,255,.7); }
+    .footer-copy { font-size: .8rem; color: rgba(255,255,255,.3); margin-top: .2rem; }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+    .footer-links a {
+      font-size: .85rem; color: rgba(255,255,255,.45); text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--blue); }
+
+    /* ─── FADE-IN ANIMATIONS ─── */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: .1s; }
+    .fade-in-delay-2 { transition-delay: .2s; }
+    .fade-in-delay-3 { transition-delay: .3s; }
+    .fade-in-delay-4 { transition-delay: .4s; }
+    .fade-in-delay-5 { transition-delay: .5s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .sdg { grid-template-columns: repeat(2, 1fr); }
+      .industries-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 70px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .sdg { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-sidebar { padding: 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .steps-grid { grid-template-columns: 1fr; }
+      .industries-grid { grid-template-columns: 1fr 1fr; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-outline { justify-content: center; text-align: center; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+      h1,h2,h3,h4 { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 600; }
+    button,.btn-primary,.btn-outline,.nav-cta,.btn-submit,.section-label,
+    .nav-logo-name,.stat-value,.step-num,.sdg-more,.footer-links a
+    { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <div class="nav-logo-mark">MA</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Marie Altmann</span>
+        <span class="nav-logo-sub">SAP Consultant</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="ueber-mich.html">Über mich</a></li>
+      <li><a href="leistungen.html">Leistungen</a></li>
+      <li><a href="einsatzbereiche.html">Einsatzbereiche</a></li>
+    </ul>
+    <a href="#kontakt" class="nav-cta">
+      Jetzt kontaktieren&nbsp;
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="ueber-mich.html"      onclick="closeMobileMenu()">Über mich</a>
+  <a href="leistungen.html"      onclick="closeMobileMenu()">Leistungen</a>
+  <a href="einsatzbereiche.html" onclick="closeMobileMenu()">Einsatzbereiche</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <h1 class="hero-name">Ordnung in komplexen<br><span class="hero-highlight">SAP-Landschaften</span> schaffen.</h1>
+      <p class="hero-sub">Freiberufliche Senior-Beraterin für SAP Berechtigungsmanagement, GRC, IDM/IAM und S/4HANA – 26 Jahre Projekterfahrung.</p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn-primary">
+          Kontakt aufnehmen
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </a>
+        <a href="#leistungen" class="btn-outline">
+          Leistungen ansehen
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value" data-target="26" data-suffix="+" data-from="0">0+</span>
+          <span class="hero-stat-label">Jahre IT-Erfahrung</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value" data-target="1999" data-suffix="" data-from="1990">1990</span>
+          <span class="hero-stat-label">✓ SAP-Beraterin</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value" data-target="30" data-suffix="+" data-from="0">0+</span>
+          <span class="hero-stat-label">Kundenprojekte</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value" data-target="8" data-suffix="+" data-from="0">0+</span>
+          <span class="hero-stat-label">Branchen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<!-- ─── ÜBER MICH ─── -->
+<section id="ueber-mich">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <span class="section-label fade-in">Über mich</span>
+        <h2 class="section-heading fade-in">Erfahrung, die zählt –<br />Expertise, die wirkt.</h2>
+        <p class="fade-in" style="font-size:1rem; line-height:1.8; margin-bottom:1.5rem;">
+          Seit 1999 begleite ich Unternehmen bei komplexen SAP-Projekten. Als Freelancerin arbeite ich präzise, transparent und mit einem klaren Ziel: Lösungen, die im Betrieb tragen und bei Audits standhalten.
+        </p>
+        <a href="ueber-mich.html" class="sdg-more fade-in" style="text-decoration:none;">
+          Mehr erfahren <span class="sdg-arrow">›</span>
+        </a>
+      </div>
+      <div>
+        <div class="about-sdg-wrap">
+          <div class="sdg-card fade-in fade-in-delay-1">
+            <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+            <div class="sdg-body">
+              <h4>Spezialisierung</h4>
+              <p>SAP Berechtigungsmanagement (alle Module), IDM/IAM, GRC, S/4HANA, SAP Security, SoD-Analyse, Audit &amp; Compliance</p>
+            </div>
+          </div>
+          <div class="sdg-card fade-in fade-in-delay-2">
+            <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+            <div class="sdg-body">
+              <h4>Compliance-Expertise</h4>
+              <p>SOX, IKS, KRITIS – Vorbereitung und Begleitung von Audits durch EY, KPMG, PwC und interne Revisionen</p>
+            </div>
+          </div>
+          <div class="sdg-card fade-in fade-in-delay-3">
+            <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+            <div class="sdg-body">
+              <h4>Projektleitung</h4>
+              <p>Leitung komplexer SAP-Rollout-Projekte, Offshore-Team-Führung, Stakeholder-Management und KeyUser-Schulungen</p>
+            </div>
+          </div>
+          <div class="sdg-card fade-in fade-in-delay-4">
+            <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+            <div class="sdg-body">
+              <h4>Sprachen &amp; Ausbildung</h4>
+              <p>Deutsch (Muttersprache) · Englisch (sehr gut) · Kauffrau für Bürokommunikation · SAP-Zertifizierung Finanzen &amp; Controlling seit 1999</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LEISTUNGEN ─── -->
+<section id="leistungen">
+  <div class="container">
+    <div class="leistungen-header">
+      <span class="section-label fade-in">Leistungen</span>
+      <h2 class="section-heading fade-in">Was ich für Sie leiste</h2>
+      <p class="section-sub fade-in">Von der Konzeption bis zur Übergabe – präzise, verlässlich und praxiserprobt.</p>
+    </div>
+    <div class="sdg-wrap fade-in">
+      <div class="sdg">
+
+        <div class="sdg-card">
+          <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+          <div class="sdg-body">
+            <h3>SAP Berechtigungskonzepte</h3>
+            <p>Konzeption, Implementierung und Optimierung von Rollen- und Berechtigungsstrukturen für alle SAP-Module inkl. S/4HANA, Fiori, BW, SAC und HCM.</p>
+          </div>
+          <span class="sdg-more">Mehr erfahren <span class="sdg-arrow">›</span></span>
+        </div>
+
+        <div class="sdg-card">
+          <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+          <div class="sdg-body">
+            <h3>SoD-Analyse &amp; Compliance</h3>
+            <p>Identifikation und Bereinigung von SoD-Konflikten, Erstellung von Risikokatalogen, Audit-Vorbereitung nach SOX, IKS und KRITIS.</p>
+          </div>
+          <span class="sdg-more">Mehr erfahren <span class="sdg-arrow">›</span></span>
+        </div>
+
+        <div class="sdg-card">
+          <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+          <div class="sdg-body">
+            <h3>SAP IDM / IAM / GRC</h3>
+            <p>Einführung und Betrieb von Identity Management Systemen (SAP IDM, ONE Identity, SailPoint, OMADA) sowie GRC Access Control und Firefighter-Konzepte.</p>
+          </div>
+          <span class="sdg-more">Mehr erfahren <span class="sdg-arrow">›</span></span>
+        </div>
+
+        <div class="sdg-card">
+          <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+          <div class="sdg-body">
+            <h3>S/4HANA Transformationen</h3>
+            <p>Greenfield- und Rollout-Projekte: Aufbau neuer Berechtigungsstrukturen, Fiori-Integration, CutOver-Management und HyperCare Support.</p>
+          </div>
+          <span class="sdg-more">Mehr erfahren <span class="sdg-arrow">›</span></span>
+        </div>
+
+        <div class="sdg-card">
+          <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+          <div class="sdg-body">
+            <h3>Tool-Implementierungen</h3>
+            <p>Einführung und Konfiguration von XAMS (Xiting), SAST (Akquinet), SIAM (Sivis), Security Bridge, Valantic APM, Rev.Trac u.v.m.</p>
+          </div>
+          <span class="sdg-more">Mehr erfahren <span class="sdg-arrow">›</span></span>
+        </div>
+
+        <div class="sdg-card">
+          <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+          <div class="sdg-body">
+            <h3>Workshops &amp; Schulungen</h3>
+            <p>Workshops mit Fachbereichen und IT, KeyUser-Schulungen, Coaching interner Revisionsteams sowie vollständige Dokumentation und Übergabe.</p>
+          </div>
+          <span class="sdg-more">Mehr erfahren <span class="sdg-arrow">›</span></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EINSATZBEREICHE ─── -->
+<section id="einsatzbereiche">
+  <div class="container">
+    <span class="section-label fade-in">Einsatzbereiche</span>
+    <h2 class="section-heading fade-in">Wo ich eingesetzt werde</h2>
+    <p class="section-sub fade-in">Vielseitig einsetzbar – von der ersten Konzeptphase bis zum laufenden Betrieb.</p>
+  </div>
+  <div class="container">
+    <div class="tags-container">
+      <div class="tags-row">
+        <div class="tags-track">
+          <span class="tag-pill">S/4HANA Transformation</span>
+          <span class="tag-pill">GRC &amp; Compliance</span>
+          <span class="tag-pill">IDM/IAM-Einführung</span>
+          <span class="tag-pill">Fiori-Berechtigungen</span>
+          <span class="tag-pill">HCM &amp; SuccessFactors</span>
+          <span class="tag-pill">Firefighter Access Management</span>
+          <span class="tag-pill">Offshore-Team-Führung</span>
+          <!-- duplicate -->
+          <span class="tag-pill">S/4HANA Transformation</span>
+          <span class="tag-pill">GRC &amp; Compliance</span>
+          <span class="tag-pill">IDM/IAM-Einführung</span>
+          <span class="tag-pill">Fiori-Berechtigungen</span>
+          <span class="tag-pill">HCM &amp; SuccessFactors</span>
+          <span class="tag-pill">Firefighter Access Management</span>
+          <span class="tag-pill">Offshore-Team-Führung</span>
+        </div>
+      </div>
+      <div class="tags-row">
+        <div class="tags-track tags-track-reverse">
+          <span class="tag-pill">Rollenkonzept / Redesign</span>
+          <span class="tag-pill">SoD-Analyse</span>
+          <span class="tag-pill">Audit-Vorbereitung (SOX, KRITIS, IKS)</span>
+          <span class="tag-pill">SAC &amp; BTP Berechtigungen</span>
+          <span class="tag-pill">Lizenzvermessung</span>
+          <span class="tag-pill">Hypercare &amp; Stabilisierung</span>
+          <span class="tag-pill">Datenschutz &amp; ILM</span>
+          <!-- duplicate -->
+          <span class="tag-pill">Rollenkonzept / Redesign</span>
+          <span class="tag-pill">SoD-Analyse</span>
+          <span class="tag-pill">Audit-Vorbereitung (SOX, KRITIS, IKS)</span>
+          <span class="tag-pill">SAC &amp; BTP Berechtigungen</span>
+          <span class="tag-pill">Lizenzvermessung</span>
+          <span class="tag-pill">Hypercare &amp; Stabilisierung</span>
+          <span class="tag-pill">Datenschutz &amp; ILM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VORGEHENSWEISE ─── -->
+<section id="vorgehensweise" class="bg-alt">
+  <div class="container">
+    <span class="section-label fade-in">Vorgehensweise</span>
+    <h2 class="section-heading fade-in">Wie ich arbeite</h2>
+    <p class="section-sub fade-in">Strukturiert, transparent und auf Ihr Unternehmen zugeschnitten – in sechs klar definierten Phasen.</p>
+    <div class="steps-grid">
+
+      <div class="step-card fade-in fade-in-delay-1">
+        <div class="step-num">01</div>
+        <h3>Analyse</h3>
+        <p>IST-Aufnahme: Systemlandschaft, bestehende Rollen, Compliance-Anforderungen und Sicherheitslücken werden systematisch erfasst und bewertet.</p>
+      </div>
+
+      <div class="step-card fade-in fade-in-delay-2">
+        <div class="step-num">02</div>
+        <h3>Abstimmung</h3>
+        <p>Workshops mit Fachbereichen, IT und Stakeholdern zur gemeinsamen Zieldefinition – transparent, strukturiert und ergebnisorientiert.</p>
+      </div>
+
+      <div class="step-card fade-in fade-in-delay-3">
+        <div class="step-num">03</div>
+        <h3>Konzeption</h3>
+        <p>Erstellung des Berechtigungs- und Rollenkonzepts inkl. SoD-Regelwerk, Risikoklassifizierung und Genehmigungsstrukturen.</p>
+      </div>
+
+      <div class="step-card fade-in fade-in-delay-1">
+        <div class="step-num">04</div>
+        <h3>Implementierung</h3>
+        <p>Technische Umsetzung im SAP-System mit den geeigneten Tools – präzise, nachvollziehbar und dokumentiert.</p>
+      </div>
+
+      <div class="step-card fade-in fade-in-delay-2">
+        <div class="step-num">05</div>
+        <h3>Testing &amp; Audit</h3>
+        <p>Funktionale Tests, Validierung der Berechtigungsstrukturen, Audit-Vorbereitung und Review durch interne oder externe Revisoren.</p>
+      </div>
+
+      <div class="step-card fade-in fade-in-delay-3">
+        <div class="step-num">06</div>
+        <h3>Dokumentation &amp; Übergabe</h3>
+        <p>Rollensteckbriefe, Konzeptdokumente, Schulungsunterlagen – saubere und vollständige Übergabe ans interne Team.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── BRANCHENERFAHRUNG ─── -->
+<section id="branchen">
+  <div class="container">
+    <span class="section-label fade-in">Branchenerfahrung</span>
+    <h2 class="section-heading fade-in">Bewährt in acht Branchen</h2>
+    <p class="section-sub fade-in">Jahrelange Projekterfahrung bei namhaften nationalen und internationalen Unternehmen.</p>
+    <div class="industries-grid">
+
+      <div class="industry-card fade-in fade-in-delay-1">
+        <div class="industry-emoji">🧪</div>
+        <h4>Chemie &amp; Pharma</h4>
+        <div class="industry-clients">BASF · Roche · Clariant<br/>Fresenius · DuPont · Euroimmun</div>
+      </div>
+
+      <div class="industry-card fade-in fade-in-delay-2">
+        <div class="industry-emoji">🏦</div>
+        <h4>Banken &amp; Versicherungen</h4>
+        <div class="industry-clients">HSBC</div>
+      </div>
+
+      <div class="industry-card fade-in fade-in-delay-3">
+        <div class="industry-emoji">⚡</div>
+        <h4>Energie &amp; Versorgung</h4>
+        <div class="industry-clients">Sachsenenergie<br/>Energieversorger Gelsenkirchen</div>
+      </div>
+
+      <div class="industry-card fade-in fade-in-delay-4">
+        <div class="industry-emoji">🛢️</div>
+        <h4>Öl &amp; Gas</h4>
+        <div class="industry-clients">Wintershall DEA<br/>Harbour Energy</div>
+      </div>
+
+      <div class="industry-card fade-in fade-in-delay-1">
+        <div class="industry-emoji">🚗</div>
+        <h4>Automotive &amp; Maschinenbau</h4>
+        <div class="industry-clients">Webasto · Infineon · TCS/TATA<br/>ThyssenKrupp via Accenture</div>
+      </div>
+
+      <div class="industry-card fade-in fade-in-delay-2">
+        <div class="industry-emoji">🍞</div>
+        <h4>Lebensmittel &amp; Konsumgüter</h4>
+        <div class="industry-clients">Harry's · Radeberger Brauerei<br/>Döhler</div>
+      </div>
+
+      <div class="industry-card fade-in fade-in-delay-3">
+        <div class="industry-emoji">📡</div>
+        <h4>Telekommunikation</h4>
+        <div class="industry-clients">Telekom Systems</div>
+      </div>
+
+      <div class="industry-card fade-in fade-in-delay-4">
+        <div class="industry-emoji">⚙️</div>
+        <h4>Industrie &amp; Maschinenbau</h4>
+        <div class="industry-clients">HOMAG · Styrolution · K+S<br/>Knauf</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROJEKTREFERENZEN ─── -->
+<section id="referenzen" class="bg-alt">
+  <div class="container">
+    <span class="section-label fade-in">Projektreferenzen</span>
+    <h2 class="section-heading fade-in">Ausgewählte Projektbeispiele</h2>
+    <p class="section-sub fade-in">Komplexe Kundenprojekte – von Greenfield-Implementierungen bis zur laufenden Compliance-Begleitung.</p>
+    <div class="projects-list">
+
+      <div class="project-card fade-in">
+        <div class="project-sidebar">
+          <div class="project-client">Telekom Systems</div>
+          <div class="project-year">2025 – 2026</div>
+          <div class="project-badge">Senior Consultant</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">S/4HANA Greenfield</span>
+            <span class="project-tag">XAMS</span>
+            <span class="project-tag">SoD / KPMG</span>
+            <span class="project-tag">Fiori</span>
+            <span class="project-tag">BW · SAC · BTP</span>
+          </div>
+          <h3>S/4HANA Berechtigungskonzept (alle Module)</h3>
+          <p>Aufbau eines vollständigen Greenfield S/4HANA-Berechtigungskonzepts über alle Module inkl. BW, SAC und BTP. Implementierung von XAMS (Xiting). Entwicklung und Abstimmung des SoD-Konzepts mit KPMG sowie vollständige Konzeption der Fiori-Berechtigungsstrukturen.</p>
+        </div>
+      </div>
+
+      <div class="project-card fade-in fade-in-delay-1">
+        <div class="project-sidebar">
+          <div class="project-client">Harry's</div>
+          <div class="project-year">2025 – 2026</div>
+          <div class="project-badge">Lead Consultant</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">S/4HANA &amp; HCM</span>
+            <span class="project-tag">SOX</span>
+            <span class="project-tag">SAST</span>
+            <span class="project-tag">Firefighter</span>
+            <span class="project-tag">SuccessFactors</span>
+            <span class="project-tag">EY · KPMG</span>
+          </div>
+          <h3>S/4HANA &amp; HCM Berechtigungskonzept mit SOX-Compliance</h3>
+          <p>Aufbau eines umfassenden Berechtigungskonzepts für S/4HANA und HCM. Implementierung von SAST (Akquinet) und Einführung des Firefighter-Access-Managements. SuccessFactors-Customizing sowie erfolgreiche Begleitung von EY- und KPMG-Audits mit SOX-Compliance-Nachweis.</p>
+        </div>
+      </div>
+
+      <div class="project-card fade-in fade-in-delay-2">
+        <div class="project-sidebar">
+          <div class="project-client">Wintershall DEA</div>
+          <div class="project-year">2022 – 2025</div>
+          <div class="project-badge">Senior Lead</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">S/4HANA Rollout</span>
+            <span class="project-tag">58 Buchungskreise</span>
+            <span class="project-tag">ONE Identity IDM</span>
+            <span class="project-tag">PwC Audit</span>
+            <span class="project-tag">CutOver &amp; HyperCare</span>
+          </div>
+          <h3>S/4HANA International Rollout – 3 Wellen, 58 Buchungskreise</h3>
+          <p>Verantwortliche Projektleitung eines internationalen S/4HANA-Rollouts in drei Wellen über 58 Buchungskreise. PwC Audit Support, Einführung von ONE Identity IDM sowie vollständiges CutOver- und HyperCare-Management für einen reibungslosen Übergang in den Produktivbetrieb.</p>
+        </div>
+      </div>
+
+      <div class="project-card fade-in fade-in-delay-3">
+        <div class="project-sidebar">
+          <div class="project-client">Energieversorger</div>
+          <div class="project-year">2020 – 2024</div>
+          <div class="project-badge">Senior Consultant</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">S/4HANA Utilities Greenfield</span>
+            <span class="project-tag">6.300 Profile</span>
+            <span class="project-tag">GRC Upgrade</span>
+            <span class="project-tag">IDM</span>
+            <span class="project-tag">ILM</span>
+          </div>
+          <h3>S/4HANA Utilities Greenfield – Migration von 6.300 Profilen</h3>
+          <p>Vollständige Greenfield-Implementierung für einen regionalen Energieversorger. Überführung von 6.300 Profilen in ein neues Rollenkonzept, GRC-Upgrade, IDM-Einführung und Erstellung eines ILM-Berechtigungskonzepts unter KRITIS-Anforderungen.</p>
+        </div>
+      </div>
+
+      <div class="project-card fade-in fade-in-delay-4">
+        <div class="project-sidebar">
+          <div class="project-client">Roche Diagnostik</div>
+          <div class="project-year">2018 – 2019</div>
+          <div class="project-badge">Projektleitung</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Offshore-Führung</span>
+            <span class="project-tag">ICFR-Prüfung</span>
+            <span class="project-tag">GRC</span>
+            <span class="project-tag">ILM</span>
+            <span class="project-tag">DSGVO</span>
+            <span class="project-tag">BW/HANA Redesign</span>
+          </div>
+          <h3>Lead: Offshore-Team, ICFR-Prüfung, GRC &amp; BW/HANA Redesign</h3>
+          <p>Projektleitung mit Verantwortung für ein internationales Offshore-Team. Durchführung der ICFR-Prüfung, GRC- und ILM-Implementierung, DSGVO-konforme Berechtigungsstrukturen sowie vollständiges Redesign des BW/HANA-Berechtigungskonzepts.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── TECHNOLOGIE ─── -->
+<section id="technologie">
+  <div class="container">
+    <span class="section-label fade-in">Technologie-Kompetenz</span>
+    <h2 class="section-heading fade-in">Mein technologisches Spektrum</h2>
+    <p class="section-sub fade-in">Tiefe Kenntnisse in SAP-Plattformen, Security-Tools und Identity-Management-Systemen.</p>
+    <div class="tech-grid fade-in">
+      <span class="tech-pill highlight">S/4HANA</span>
+      <span class="tech-pill highlight">SAP ECC</span>
+      <span class="tech-pill highlight">SAP GRC</span>
+      <span class="tech-pill highlight">SAP IDM</span>
+      <span class="tech-pill">SAP Fiori</span>
+      <span class="tech-pill">SAP IAM / IAG</span>
+      <span class="tech-pill">SAP BW / BI</span>
+      <span class="tech-pill">SAP Analytics Cloud</span>
+      <span class="tech-pill">SAP BTP</span>
+      <span class="tech-pill">SAP HCM</span>
+      <span class="tech-pill">SuccessFactors</span>
+      <span class="tech-pill highlight">XAMS (Xiting)</span>
+      <span class="tech-pill highlight">SAST (Akquinet)</span>
+      <span class="tech-pill">SIAM (Sivis)</span>
+      <span class="tech-pill">Security Bridge</span>
+      <span class="tech-pill">Valantic APM</span>
+      <span class="tech-pill">Rev.Trac</span>
+      <span class="tech-pill">HONICO</span>
+      <span class="tech-pill highlight">SailPoint</span>
+      <span class="tech-pill highlight">ONE Identity</span>
+      <span class="tech-pill">OMADA</span>
+      <span class="tech-pill">Solution Manager</span>
+      <span class="tech-pill">Azure AD / LDAP</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KONTAKT ─── -->
+<section id="kontakt">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="section-label fade-in" style="color:var(--blue);">Kontakt</span>
+        <h2 class="section-heading fade-in" style="color:var(--white);">Lassen Sie uns sprechen.</h2>
+        <p class="section-sub fade-in">Beschreiben Sie Ihr Projekt – ich melde mich in der Regel innerhalb von 24 Stunden bei Ihnen.</p>
+
+        <div class="contact-detail fade-in fade-in-delay-1">
+          <div class="contact-detail-icon">✉️</div>
+          <div class="contact-detail-text">
+            <span class="contact-detail-label">E-Mail</span>
+            <a href="mailto:Me-One-Consulting@outlook.de" class="contact-detail-value">Me-One-Consulting@outlook.de</a>
+          </div>
+        </div>
+
+        <div class="contact-detail fade-in fade-in-delay-2">
+          <div class="contact-detail-icon">📞</div>
+          <div class="contact-detail-text">
+            <span class="contact-detail-label">Telefon</span>
+            <a href="tel:+4915170698902" class="contact-detail-value">+49 151 706 989 02</a>
+          </div>
+        </div>
+
+        <div class="contact-detail fade-in fade-in-delay-3">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <span class="contact-detail-label">Arbeitsweise</span>
+            <span class="contact-detail-value">Remote &amp; vor Ort · deutschlandweit</span>
+          </div>
+        </div>
+
+        <div class="contact-detail fade-in fade-in-delay-4">
+          <div class="contact-detail-icon">⏱️</div>
+          <div class="contact-detail-text">
+            <span class="contact-detail-label">Verfügbarkeit</span>
+            <span class="contact-detail-value">Kurzfristig nach Vereinbarung</span>
+          </div>
+        </div>
+
+        <div class="contact-note fade-in">
+          <p>💬 <strong>Antwortzeit:</strong> In der Regel innerhalb von 24 Stunden. Für dringende Anfragen gerne direkt per Telefon.</p>
+        </div>
+      </div>
+
+      <div class="fade-in fade-in-delay-1">
+        <div class="contact-form" id="contact-form-wrap">
+          <h3 style="font-size:1.15rem; margin-bottom:1.5rem; color:var(--text);">Anfrage senden</h3>
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" placeholder="Ihr vollständiger Name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">E-Mail *</label>
+                <input type="email" id="email" name="email" placeholder="ihre@email.de" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="betreff">Betreff</label>
+              <input type="text" id="betreff" name="betreff" placeholder="z.B. S/4HANA Berechtigungskonzept" />
+            </div>
+            <div class="form-group">
+              <label for="message">Nachricht *</label>
+              <textarea id="message" name="message" placeholder="Beschreiben Sie kurz Ihr Projekt, den Umfang und Ihren gewünschten Starttermin …" required></textarea>
+            </div>
+            <div class="form-checkbox">
+              <input type="checkbox" id="datenschutz" name="datenschutz" required />
+              <label for="datenschutz">
+                Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu. *
+              </label>
+            </div>
+            <button type="submit" class="btn-submit">Nachricht absenden →</button>
+          </form>
+          <div class="form-success" id="form-success">
+            <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <h3>Vielen Dank für Ihre Anfrage!</h3>
+            <p>Ich werde mich in der Regel innerhalb von 24 Stunden bei Ihnen melden.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-mark">MA</div>
+        <div>
+          <div class="footer-brand-name">Marie Altmann · Me-One-Consulting</div>
+          <div class="footer-copy">© 2026 Marie Altmann · Me-One-Consulting</div>
+        </div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="ueber-mich.html">Über mich</a></li>
+        <li><a href="leistungen.html">Leistungen</a></li>
+        <li><a href="einsatzbereiche.html">Einsatzbereiche</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Navigation scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // ── Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // ── Intersection Observer for fade-in animations
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // ── Contact form (demo – shows success state)
+  const form = document.getElementById('contact-form');
+  const successDiv = document.getElementById('form-success');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name    = form.name.value.trim();
+    const email   = form.email.value.trim();
+    const message = form.message.value.trim();
+    const privacy = form.datenschutz.checked;
+    if (!name || !email || !message || !privacy) {
+      alert('Bitte füllen Sie alle Pflichtfelder aus und stimmen Sie der Datenschutzerklärung zu.');
+      return;
+    }
+    // In production: send data via fetch / backend / form service
+    // Open mailto as fallback
+    const subject = encodeURIComponent(form.betreff.value || 'Anfrage über die Website');
+    const body    = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n\n${message}`);
+    window.location.href = `mailto:Me-One-Consulting@outlook.de?subject=${subject}&body=${body}`;
+    form.style.display = 'none';
+    successDiv.style.display = 'block';
+  });
+
+  // ── Count-up animation for hero stats
+  (function () {
+    var statEls = document.querySelectorAll('.hero-stat-value');
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var target = parseInt(el.dataset.target);
+        var from   = parseInt(el.dataset.from) || 0;
+        var suffix = el.dataset.suffix || '';
+        var duration = 1400;
+        var start = null;
+        function step(ts) {
+          if (!start) start = ts;
+          var progress = Math.min((ts - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(from + eased * (target - from)) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target + suffix;
+        }
+        requestAnimationFrame(step);
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    statEls.forEach(function (el) { observer.observe(el); });
+  })();
+
+  // ── Hero grid pattern with random highlighted squares
+  (function () {
+    var W = 56, H = 56, OX = 30, OY = -10;
+    var pid = 'hero-gp' + Math.random().toString(36).slice(2, 8);
+    var cols = 6, rows = 8;
+    var xStart = 4, xSpan = 40, yStart = 1, ySpan = 36;
+    var cw = xSpan / cols, rh = ySpan / rows;
+    var squares = [];
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        squares.push([
+          Math.floor(xStart + c * cw + Math.random() * cw),
+          Math.floor(yStart + r * rh + Math.random() * rh)
+        ]);
+      }
+    }
+    var rects = squares.map(function (s) {
+      return '<rect width="' + (W + 1) + '" height="' + (H + 1) + '" x="' + (s[0] * W) + '" y="' + (s[1] * H) + '" stroke-width="0"/>';
+    }).join('');
+    var svg = '<svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;mix-blend-mode:multiply;fill:rgba(37,99,235,.07);stroke:none">'
+      + '<defs><pattern id="' + pid + '" width="' + W + '" height="' + H + '" patternUnits="userSpaceOnUse" x="' + OX + '" y="' + OY + '">'
+      + '<path d="M.5 ' + H + 'V.5H' + W + '" fill="none" stroke="rgba(0,0,0,.05)" stroke-width="1"/>'
+      + '</pattern></defs>'
+      + '<rect width="100%" height="100%" fill="url(#' + pid + ')" stroke-width="0"/>'
+      + '<svg x="' + OX + '" y="' + OY + '" overflow="visible">' + rects + '</svg>'
+      + '</svg>';
+    document.querySelector('.hero-grid').insertAdjacentHTML('beforeend', svg);
+  })();
+
+  // ── Equal height for all service cards
+  (function () {
+    var aboutCards = document.querySelectorAll('.about-sdg-wrap .sdg-card');
+    var aboutMaxH = Math.max.apply(null, Array.from(aboutCards).map(function (c) { return c.offsetHeight; }));
+    aboutCards.forEach(function (c) { c.style.minHeight = aboutMaxH + 'px'; });
+
+    var cards = document.querySelectorAll('.sdg .sdg-card');
+    var maxH = Math.max.apply(null, Array.from(cards).map(function (c) { return c.offsetHeight; }));
+    cards.forEach(function (c) { c.style.minHeight = maxH + 'px'; });
+  })();
+
+  // ── Service card grid patterns
+  (function () {
+    const W = 32, H = 32;
+    const OX = 30, OY = -10;
+    document.querySelectorAll('.sdg-card').forEach(function (card) {
+      var pid = 'gp' + Math.random().toString(36).slice(2, 8);
+      var count = Math.floor(Math.random() * 4) + 6;
+      var squares = Array.from({ length: count }, function () {
+        return [Math.floor(Math.random() * 6) + 4, Math.floor(Math.random() * 5) + 1];
+      });
+      var rects = squares.map(function (s) {
+        return '<rect width="' + (W + 1) + '" height="' + (H + 1) + '" x="' + (s[0] * W) + '" y="' + (s[1] * H) + '" stroke-width="0"/>';
+      }).join('');
+      var svg = '<svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;mix-blend-mode:multiply;fill:rgba(37,99,235,.07);stroke:none">'
+        + '<defs><pattern id="' + pid + '" width="' + W + '" height="' + H + '" patternUnits="userSpaceOnUse" x="' + OX + '" y="' + OY + '">'
+        + '<path d="M.5 ' + H + 'V.5H' + W + '" fill="none" stroke="rgba(0,0,0,.06)" stroke-width="1"/>'
+        + '</pattern></defs>'
+        + '<rect width="100%" height="100%" fill="url(#' + pid + ')" stroke-width="0"/>'
+        + '<svg x="' + OX + '" y="' + OY + '" overflow="visible">' + rects + '</svg>'
+        + '</svg>';
+      var inner = card.querySelector('.sdg-bg-inner');
+      inner.insertAdjacentHTML('afterend', svg);
+    });
+  })();
+
+  // ── Active nav link on scroll (only for same-page anchor links)
+  const sections = document.querySelectorAll('section[id]');
+  const anchorLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const onScroll = () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    anchorLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--blue)' : '';
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+</body>
+</html>

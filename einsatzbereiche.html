@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Einsatzbereiche – Marie Altmann · Senior SAP Consultant</title>
+  <meta name="description" content="S/4HANA, GRC, IDM/IAM, SoD-Analyse, Fiori, HCM, Audit-Vorbereitung – alle Einsatzbereiche von Marie Altmann auf einen Blick." />
+  <meta name="robots" content="index, follow" />
+  
+  
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0C1929;
+      --navy-mid:   #162340;
+      --blue:       #2563EB;
+      --blue-dark:  #1D4ED8;
+      --blue-light: #DBEAFE;
+      --white:      #FFFFFF;
+      --bg:         #F8FAFC;
+      --text:       #0F172A;
+      --text-sec:   #475569;
+      --text-muted: #94A3B8;
+      --border:     #E2E8F0;
+      --shadow-sm:  0 1px 3px rgba(0,0,0,.08);
+      --shadow-md:  0 4px 16px rgba(0,0,0,.07);
+      --shadow-lg:  0 10px 40px rgba(0,0,0,.10);
+      --radius:     12px;
+      --radius-sm:  8px;
+      --nav-h:      72px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'JetBrains Mono', monospace; color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
+    h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); }
+    h3 { font-size: 1.1rem; }
+    p  { color: var(--text-sec); }
+
+    .section-label { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
+    .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--blue); }
+    .section-heading { margin-bottom: .75rem; }
+    .section-sub { color: var(--text-sec); font-size: 1.05rem; max-width: 640px; margin-bottom: 3rem; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 90px 0; background: var(--white); }
+    section.bg-tinted { background: var(--bg); }
+
+    /* ─── NAV ─── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); display: flex; align-items: center; background: rgba(12,25,41,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.06); transition: background .3s; }
+    nav.scrolled { background: rgba(12,25,41,.98); box-shadow: 0 2px 20px rgba(0,0,0,.3); }
+    .nav-inner { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .nav-logo-mark { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--blue), var(--blue-dark)); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .9rem; color: #fff; flex-shrink: 0; }
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name { font-weight: 700; font-size: .95rem; line-height: 1.1; color: #fff; }
+    .nav-logo-sub  { font-size: .7rem; color: var(--blue); letter-spacing: .04em; }
+    .nav-links { display: flex; align-items: center; gap: .25rem; list-style: none; }
+    .nav-links a { display: block; padding: .5rem .85rem; color: rgba(255,255,255,.75); text-decoration: none; font-size: .875rem; font-weight: 500; border-radius: 6px; transition: color .2s, background .2s; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.07); }
+    .nav-links a.active { color: var(--blue) !important; background: rgba(37,99,235,.12) !important; }
+    .nav-cta { display: inline-flex; align-items: center; padding: .55rem 1.2rem; background: var(--blue); color: #fff; border-radius: var(--radius-sm); font-weight: 500; font-size: .875rem; text-decoration: none; transition: background .2s, transform .15s; }
+    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .5rem; border: none; background: transparent; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: transform .3s, opacity .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99; background: var(--navy); padding: 1.5rem; border-top: 1px solid rgba(255,255,255,.08); flex-direction: column; gap: .25rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { display: block; padding: .85rem 1rem; color: rgba(255,255,255,.8); text-decoration: none; font-weight: 500; border-radius: var(--radius-sm); transition: background .2s, color .2s; }
+    .mobile-menu a:hover { background: rgba(255,255,255,.07); color: #fff; }
+    .mobile-menu .nav-cta { margin-top: .5rem; text-align: center; justify-content: center; }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero { padding-top: var(--nav-h); background: var(--navy); position: relative; overflow: hidden; }
+    .page-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(37,99,235,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.06) 1px, transparent 1px); background-size: 60px 60px; }
+    .page-hero-glow { position: absolute; top: -30%; right: -5%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(37,99,235,.1) 0%, transparent 65%); pointer-events: none; }
+    .page-hero-inner { position: relative; z-index: 1; padding: 4rem 0 4.5rem; }
+    .breadcrumb { display: flex; align-items: center; gap: .5rem; margin-bottom: 1.5rem; font-size: .8rem; }
+    .breadcrumb a { color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+    .breadcrumb a:hover { color: var(--blue); }
+    .breadcrumb span { color: rgba(255,255,255,.25); }
+    .breadcrumb-current { color: rgba(255,255,255,.7); font-weight: 500; }
+    .page-hero h1 { font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 800; color: #fff; letter-spacing: -.02em; margin-bottom: .75rem; }
+    .page-hero h1 em { font-style: normal; color: var(--blue); }
+    .page-hero p { font-size: 1.1rem; color: rgba(255,255,255,.65); max-width: 640px; }
+
+    /* ─── OVERVIEW PILLS ─── */
+    .overview-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
+    .overview-pill { padding: .45rem 1rem; border-radius: 100px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.75); font-size: .82rem; font-weight: 500; }
+
+    /* ─── CATEGORY SECTION ─── */
+    .category-block { margin-bottom: 4rem; }
+    .category-block:last-child { margin-bottom: 0; }
+    .category-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .category-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--blue-light); color: var(--blue-dark); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .category-title { font-size: 1.35rem; font-weight: 700; color: var(--text); }
+    .category-subtitle { font-size: .85rem; color: var(--text-sec); margin-top: .15rem; }
+
+    .eb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .eb-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.75rem; position: relative; overflow: hidden;
+      transition: box-shadow .25s, transform .2s, border-color .25s;
+    }
+    .eb-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--blue-dark)); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+    .eb-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(37,99,235,.3); }
+    .eb-card:hover::before { transform: scaleX(1); }
+    .eb-card-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .65rem; }
+    .eb-card-desc  { font-size: .875rem; line-height: 1.75; color: var(--text-sec); margin-bottom: 1rem; }
+    .eb-card-when  { font-size: .78rem; font-weight: 600; color: var(--blue-dark); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .4rem; }
+    .eb-card-when-text { font-size: .82rem; color: var(--text-muted); line-height: 1.6; }
+    .divider { width: 100%; height: 1px; background: var(--border); margin: 3.5rem 0; }
+
+    /* ─── BRANCHEN ─── */
+    .branchen-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .branche-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.5rem 1.25rem; text-align: center; transition: box-shadow .2s, border-color .2s, transform .2s; }
+    .branche-card:hover { box-shadow: var(--shadow-md); border-color: var(--blue); transform: translateY(-3px); }
+    .branche-emoji { font-size: 2rem; margin-bottom: .75rem; }
+    .branche-card h4 { font-size: .875rem; font-weight: 700; color: var(--text); margin-bottom: .4rem; }
+    .branche-clients { font-size: .75rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner { background: var(--navy); padding: 80px 0; }
+    .cta-inner { text-align: center; }
+    .cta-inner h2 { color: #fff; margin-bottom: 1rem; }
+    .cta-inner p  { color: rgba(255,255,255,.6); margin-bottom: 2.5rem; font-size: 1.05rem; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: .5rem; padding: .875rem 2rem; background: var(--blue); color: #fff; border-radius: var(--radius-sm); font-weight: 500; font-size: .95rem; text-decoration: none; transition: background .2s, transform .15s; box-shadow: 0 4px 20px rgba(37,99,235,.35); }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: .5rem; padding: .875rem 2rem; border: 1.5px solid rgba(255,255,255,.3); color: #fff; border-radius: var(--radius-sm); font-weight: 600; font-size: .95rem; text-decoration: none; transition: border-color .2s, background .2s; }
+    .btn-outline:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.06); }
+
+    /* ─── FOOTER ─── */
+    footer { background: #070F1A; padding: 3rem 0 2rem; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-brand { display: flex; align-items: center; gap: .75rem; }
+    .footer-brand-mark { width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg, var(--blue), var(--blue-dark)); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .85rem; color: #fff; }
+    .footer-brand-name { font-size: .9rem; font-weight: 700; color: rgba(255,255,255,.7); }
+    .footer-copy { font-size: .8rem; color: rgba(255,255,255,.3); margin-top: .2rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; list-style: none; }
+    .footer-links a { font-size: .85rem; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--blue); }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: .1s; }
+    .fade-in-delay-2 { transition-delay: .2s; }
+    .fade-in-delay-3 { transition-delay: .3s; }
+    .fade-in-delay-4 { transition-delay: .4s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .eb-grid { grid-template-columns: 1fr 1fr; }
+      .branchen-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 64px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .eb-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .branchen-grid { grid-template-columns: 1fr 1fr; }
+      .cta-actions { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-outline { justify-content: center; }
+    }
+      h1,h2,h3,h4 { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 600; }
+    button,.btn-primary,.btn-outline,.nav-cta,.btn-submit,.section-label,
+    .nav-links a,.nav-logo-name,.stat-value,.step-num,.sdg-more,.footer-links a
+    { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">MA</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Marie Altmann</span>
+        <span class="nav-logo-sub">SAP Consultant</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="ueber-mich.html">Über mich</a></li>
+      <li><a href="leistungen.html">Leistungen</a></li>
+      <li><a href="einsatzbereiche.html" class="active">Einsatzbereiche</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="ueber-mich.html" onclick="closeMobileMenu()">Über mich</a>
+  <a href="leistungen.html" onclick="closeMobileMenu()">Leistungen</a>
+  <a href="einsatzbereiche.html" onclick="closeMobileMenu()">Einsatzbereiche</a>
+</div>
+
+<!-- ─── PAGE HERO ─── -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-glow"></div>
+  <div class="container">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Start</a>
+        <span>›</span>
+        <span class="breadcrumb-current">Einsatzbereiche</span>
+      </nav>
+      <h1>Meine <em>Einsatzbereiche</em></h1>
+      <p>Von der S/4HANA-Transformation bis zur Audit-Vorbereitung – 14 Bereiche, in denen ich nachgewiesene Projekterfahrung mitbringe.</p>
+      <div class="overview-pills">
+        <span class="overview-pill">S/4HANA Transformation</span>
+        <span class="overview-pill">Rollenkonzept / Redesign</span>
+        <span class="overview-pill">GRC &amp; Compliance</span>
+        <span class="overview-pill">SoD-Analyse</span>
+        <span class="overview-pill">IDM/IAM-Einführung</span>
+        <span class="overview-pill">Audit-Vorbereitung</span>
+        <span class="overview-pill">Fiori-Berechtigungen</span>
+        <span class="overview-pill">SAC &amp; BTP</span>
+        <span class="overview-pill">HCM &amp; SuccessFactors</span>
+        <span class="overview-pill">Lizenzvermessung</span>
+        <span class="overview-pill">Firefighter Access</span>
+        <span class="overview-pill">Hypercare</span>
+        <span class="overview-pill">Offshore-Führung</span>
+        <span class="overview-pill">Datenschutz &amp; ILM</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── EINSATZBEREICHE ─── -->
+<section>
+  <div class="container">
+
+    <!-- Kategorie 1 -->
+    <div class="category-block fade-in">
+      <div class="category-header">
+        <div class="category-icon">⚡</div>
+        <div>
+          <div class="category-title">S/4HANA &amp; Cloud-Plattformen</div>
+          <div class="category-subtitle">Berechtigungsaufbau für moderne SAP-Landschaften – von der Transformation bis zur Cloud</div>
+        </div>
+      </div>
+      <div class="eb-grid">
+        <div class="eb-card fade-in fade-in-delay-1">
+          <div class="eb-card-title">S/4HANA Transformation</div>
+          <div class="eb-card-desc">Vollständiger Aufbau einer neuen Berechtigungsstruktur im Rahmen von Greenfield- oder Brownfield-Projekten. Ich begleite Sie von der Analyse der Anforderungen über das Rollendesign bis zum Go-Live – inkl. CutOver und HyperCare.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">Systemwechsel von ECC auf S/4HANA, Neueinführung, internationale Rollouts über mehrere Wellen und Buchungskreise</div>
+        </div>
+        <div class="eb-card fade-in fade-in-delay-2">
+          <div class="eb-card-title">Fiori-Berechtigungen</div>
+          <div class="eb-card-desc">Konzeption und Implementierung eines vollständigen Fiori-Launchpad-Berechtigungskonzepts. Kachel-Sichtbarkeit, OData-Services, Backend-Berechtigungen und Catalogues / Groups – sauber definiert und dokumentiert.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">S/4HANA-Projekte mit Fiori-Oberfläche, Einführung des Fiori Launchpads, Berechtigungsprobleme nach Go-Live</div>
+        </div>
+        <div class="eb-card fade-in fade-in-delay-3">
+          <div class="eb-card-title">SAC &amp; BTP Berechtigungen</div>
+          <div class="eb-card-desc">Berechtigungskonzepte für SAP Analytics Cloud (SAC) und die SAP Business Technology Platform (BTP) – Rollen, Teams, Stories und Datenzugriffssteuerung in der Cloud-Umgebung.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">Einführung SAC/BTP, Reporting-Rollout mit sensiblen Finanzdaten, Audit-Vorbereitung für Cloud-Komponenten</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Kategorie 2 -->
+    <div class="category-block fade-in">
+      <div class="category-header">
+        <div class="category-icon">🔑</div>
+        <div>
+          <div class="category-title">Identity &amp; Access Management</div>
+          <div class="category-subtitle">Strukturierte Kontrolle über Zugriffsrechte – von der Benutzeranlage bis zum Lebenszyklus</div>
+        </div>
+      </div>
+      <div class="eb-grid">
+        <div class="eb-card fade-in fade-in-delay-1">
+          <div class="eb-card-title">IDM / IAM-Einführung</div>
+          <div class="eb-card-desc">Einführung und Betrieb von Identity Management Systemen (SAP IDM, ONE Identity, SailPoint, OMADA). Prozessdesign, Workflow-Konfiguration, Provisioning-Anbindung und Übergabe an den internen Betrieb.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">Ersteinführung eines IDM-Systems, Ablösung manueller Benutzeranlage-Prozesse, Anforderungen durch Compliance oder Revision</div>
+        </div>
+        <div class="eb-card fade-in fade-in-delay-2">
+          <div class="eb-card-title">Rollenkonzept / Redesign</div>
+          <div class="eb-card-desc">Neuaufbau oder grundlegende Überarbeitung bestehender Rollenstrukturen. Bereinigung historisch gewachsener Berechtigungslandschaften, Konsolidierung von Profilen und Rollen, Einführung eines nachhaltigen Rollenmodells.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">Berechtigungslandschaft nach Jahren gewachsen und unkontrolliert, bevorstehender Audit, S/4HANA-Vorbereitung</div>
+        </div>
+        <div class="eb-card fade-in fade-in-delay-3">
+          <div class="eb-card-title">Firefighter Access Management</div>
+          <div class="eb-card-desc">Konzeption und Implementierung eines kontrollierten privilegierten Zugriffssystems (Firefighter). Festlegung von Firefighter-IDs, Genehmigungsprozessen, Logging und revisionssicherer Dokumentation aller Nutzungen.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">SOX-Anforderungen, GRC-Implementierung, Abschlussprüfungen, Notfallzugriff für Basis und SAP-Administratoren</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Kategorie 3 -->
+    <div class="category-block fade-in">
+      <div class="category-header">
+        <div class="category-icon">⚖️</div>
+        <div>
+          <div class="category-title">Compliance &amp; Audit</div>
+          <div class="category-subtitle">Prüfungssicher aufgestellt – für interne Revisionen und externe Wirtschaftsprüfer</div>
+        </div>
+      </div>
+      <div class="eb-grid">
+        <div class="eb-card fade-in fade-in-delay-1">
+          <div class="eb-card-title">GRC &amp; Compliance</div>
+          <div class="eb-card-desc">Implementierung und Betrieb von SAP GRC Access Control – Risk Management, Business Role Management, Emergency Access Management und Access Request Management. Aufbau eines unternehmensweiten GRC-Regelwerks.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">Erstimplementierung GRC, Upgrade auf neuere GRC-Version, Compliance-Anforderungen durch SOX oder IKS</div>
+        </div>
+        <div class="eb-card fade-in fade-in-delay-2">
+          <div class="eb-card-title">SoD-Analyse</div>
+          <div class="eb-card-desc">Vollständige Analyse von Segregation-of-Duties-Konflikten, Aufbau eines Risikokatalogs, Definition von Kompensationskontrollen und Bereinigung kritischer Konflikte. Priorisierung nach Risikostufe und Umsetzbarkeit.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">Vorbereitung auf Abschlussprüfung, kritische SoD-Befunde aus Audit, Neuaufbau nach S/4HANA-Migration</div>
+        </div>
+        <div class="eb-card fade-in fade-in-delay-3">
+          <div class="eb-card-title">Audit-Vorbereitung (SOX, KRITIS, IKS)</div>
+          <div class="eb-card-desc">Strukturierte Vorbereitung auf Jahresabschlussprüfungen und behördliche Prüfungen. Aufbau der erforderlichen Nachweise, Dokumentation, Kontrollen und Arbeitspapiere – erprobt in Zusammenarbeit mit EY, KPMG und PwC.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">Bevorstehende Jahresabschlussprüfung, Erstprüfung nach KRITIS-Einstufung, IKS-Aufbau oder -Erneuerung</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Kategorie 4 -->
+    <div class="category-block fade-in">
+      <div class="category-header">
+        <div class="category-icon">👥</div>
+        <div>
+          <div class="category-title">HR-Systeme &amp; Datenschutz</div>
+          <div class="category-subtitle">Sensible Personaldaten schützen – mit passgenauen Berechtigungsstrukturen für HCM und SuccessFactors</div>
+        </div>
+      </div>
+      <div class="eb-grid">
+        <div class="eb-card fade-in fade-in-delay-1">
+          <div class="eb-card-title">HCM &amp; SuccessFactors</div>
+          <div class="eb-card-desc">Berechtigungskonzepte für SAP HCM (PA, PY, PT, OM) und SuccessFactors. Besonderer Fokus auf das Strukturelle Berechtigungskonzept, Infotyp-Berechtigungen und datenschutzkonforme Zugriffsbeschränkung auf Personaldaten.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">HCM-Neueinführung, DSGVO-getriebene Überarbeitung, SuccessFactors-Integration, SOX-Anforderungen im HR-Bereich</div>
+        </div>
+        <div class="eb-card fade-in fade-in-delay-2">
+          <div class="eb-card-title">Datenschutz &amp; ILM</div>
+          <div class="eb-card-desc">Berechtigungskonzepte im Kontext der DSGVO und des SAP Information Lifecycle Management (ILM). Zugriffsbeschränkung auf personenbezogene Daten, Archivierungsberechtigungen und datenschutzkonforme Aufbewahrungskonzepte.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">DSGVO-Projektinitiativen, ILM-Einführung, Datenschutzaudit, Archivierungsprojekte mit Berechtigungsrelevanz</div>
+        </div>
+        <div class="eb-card fade-in fade-in-delay-3">
+          <div class="eb-card-title">Lizenzvermessung</div>
+          <div class="eb-card-desc">Analyse und Optimierung der SAP-Nutzerkategorisierung im Rahmen von Lizenzvermessungen. Identifikation von Einsparpotenzialen durch korrekte Nutzerzuordnung und Bereinigung nicht mehr benötigter Berechtigungen.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">Jährliche SAP-Lizenzvermessung, Kostendruck durch zu hohe Lizenzkosten, Vorbereitung auf SAP-Systemprüfung</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Kategorie 5 -->
+    <div class="category-block fade-in">
+      <div class="category-header">
+        <div class="category-icon">🚀</div>
+        <div>
+          <div class="category-title">Betrieb, Transition &amp; Führung</div>
+          <div class="category-subtitle">Stabilisierung, Wissenstransfer und Teamführung in kritischen Projektphasen</div>
+        </div>
+      </div>
+      <div class="eb-grid">
+        <div class="eb-card fade-in fade-in-delay-1">
+          <div class="eb-card-title">Hypercare &amp; Stabilisierung</div>
+          <div class="eb-card-desc">Begleitung der kritischen Phase nach dem Go-Live: schnelle Analyse und Behebung von Berechtigungsproblemen, Unterstützung der Anwender, Feinabstimmung der Rollenstruktur und Übergabe in den Regelbetrieb.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">Direkt nach Go-Live eines S/4HANA-Systems, nach größeren Releases, wenn das interne Team die Berechtigungsprobleme nicht alleine bewältigen kann</div>
+        </div>
+        <div class="eb-card fade-in fade-in-delay-2">
+          <div class="eb-card-title">Offshore-Team-Führung</div>
+          <div class="eb-card-desc">Fachliche und disziplinarische Führung internationaler Berechtigungsteams in Nearshore- und Offshore-Projekten. Qualitätssicherung, Koordination mit dem Onshore-Team, Review und Freigabe von Rollen und Konzepten.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">Große Rollout-Projekte mit verteilten Teams, Kostenoptimierung durch Offshore-Delivery, internationaler Rollout mit lokalen Berechtigungsteams</div>
+        </div>
+        <div class="eb-card fade-in fade-in-delay-3">
+          <div class="eb-card-title">Wissenstransfer &amp; Coaching</div>
+          <div class="eb-card-desc">Gezielter Aufbau interner Kompetenz für langfristige Unabhängigkeit vom externen Berater. Schulungen, Workshops, Dokumentation, Coaching des internen Berechtigungsteams und der Key User in den Fachbereichen.</div>
+          <div class="eb-card-when">Typischer Einsatz</div>
+          <div class="eb-card-when-text">Projektabschluss und Übergabe, Aufbau eines internen SAP-Security-Teams, Qualifizierung nach Systemeinführung</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── BRANCHEN ─── -->
+<section class="bg-tinted">
+  <div class="container">
+    <span class="section-label fade-in">Branchenerfahrung</span>
+    <h2 class="section-heading fade-in">Bewährt in acht Branchen</h2>
+    <p class="section-sub fade-in">Branchenspezifische Compliance-Anforderungen, regulatorische Besonderheiten und SAP-Systemlandschaften kenne ich aus der Praxis.</p>
+    <div class="branchen-grid">
+      <div class="branche-card fade-in fade-in-delay-1">
+        <div class="branche-emoji">🧪</div>
+        <h4>Chemie &amp; Pharma</h4>
+        <div class="branche-clients">BASF · Roche · Clariant<br/>Fresenius · DuPont · Euroimmun</div>
+      </div>
+      <div class="branche-card fade-in fade-in-delay-2">
+        <div class="branche-emoji">🏦</div>
+        <h4>Banken &amp; Versicherungen</h4>
+        <div class="branche-clients">HSBC</div>
+      </div>
+      <div class="branche-card fade-in fade-in-delay-3">
+        <div class="branche-emoji">⚡</div>
+        <h4>Energie &amp; Versorgung</h4>
+        <div class="branche-clients">Sachsenenergie<br/>Energieversorger Gelsenkirchen</div>
+      </div>
+      <div class="branche-card fade-in fade-in-delay-4">
+        <div class="branche-emoji">🛢️</div>
+        <h4>Öl &amp; Gas</h4>
+        <div class="branche-clients">Wintershall DEA<br/>Harbour Energy</div>
+      </div>
+      <div class="branche-card fade-in fade-in-delay-1">
+        <div class="branche-emoji">🚗</div>
+        <h4>Automotive &amp; Maschinenbau</h4>
+        <div class="branche-clients">Webasto · Infineon · TCS/TATA<br/>ThyssenKrupp via Accenture</div>
+      </div>
+      <div class="branche-card fade-in fade-in-delay-2">
+        <div class="branche-emoji">🍞</div>
+        <h4>Lebensmittel &amp; Konsumgüter</h4>
+        <div class="branche-clients">Harry's · Radeberger Brauerei<br/>Döhler</div>
+      </div>
+      <div class="branche-card fade-in fade-in-delay-3">
+        <div class="branche-emoji">📡</div>
+        <h4>Telekommunikation</h4>
+        <div class="branche-clients">Telekom Systems</div>
+      </div>
+      <div class="branche-card fade-in fade-in-delay-4">
+        <div class="branche-emoji">⚙️</div>
+        <h4>Industrie &amp; Maschinenbau</h4>
+        <div class="branche-clients">HOMAG · Styrolution · K+S<br/>Knauf</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<div class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="fade-in">Ihr Einsatzbereich ist dabei?</h2>
+      <p class="fade-in">Dann freue ich mich auf Ihre Anfrage. In der Regel antworte ich innerhalb von 24 Stunden.</p>
+      <div class="cta-actions fade-in">
+        <a href="index.html#kontakt" class="btn-primary">Kontakt aufnehmen</a>
+        <a href="leistungen.html" class="btn-outline">Alle Leistungen ansehen</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-mark">MA</div>
+        <div>
+          <div class="footer-brand-name">Marie Altmann · Me-One-Consulting</div>
+          <div class="footer-copy">© 2026 Marie Altmann · Me-One-Consulting</div>
+        </div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="ueber-mich.html">Über mich</a></li>
+        <li><a href="leistungen.html">Leistungen</a></li>
+        <li><a href="einsatzbereiche.html">Einsatzbereiche</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  function closeMobileMenu() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

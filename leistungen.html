@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leistungen – Marie Altmann · Senior SAP Consultant</title>
+  <meta name="description" content="SAP Berechtigungskonzepte, SoD-Analyse, IDM/IAM/GRC, S/4HANA Transformationen, Tool-Implementierungen, Workshops & Schulungen – Leistungsübersicht Marie Altmann." />
+  <meta name="robots" content="index, follow" />
+  
+  
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0C1929;
+      --navy-mid:   #162340;
+      --blue:       #2563EB;
+      --blue-dark:  #1D4ED8;
+      --blue-light: #DBEAFE;
+      --white:      #FFFFFF;
+      --bg:         #F8FAFC;
+      --text:       #0F172A;
+      --text-sec:   #475569;
+      --text-muted: #94A3B8;
+      --border:     #E2E8F0;
+      --shadow-sm:  0 1px 3px rgba(0,0,0,.08);
+      --shadow-md:  0 4px 16px rgba(0,0,0,.07);
+      --shadow-lg:  0 10px 40px rgba(0,0,0,.10);
+      --radius:     12px;
+      --radius-sm:  8px;
+      --nav-h:      72px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'JetBrains Mono', monospace; color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
+    h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); }
+    h3 { font-size: 1.1rem; }
+    p  { color: var(--text-sec); }
+
+    .section-label { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
+    .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--blue); }
+    .section-heading { margin-bottom: .75rem; }
+    .section-sub { color: var(--text-sec); font-size: 1.05rem; max-width: 640px; margin-bottom: 3rem; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 90px 0; background: var(--white); }
+    section.bg-tinted { background: var(--bg); }
+
+    /* ─── NAV ─── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); display: flex; align-items: center; background: rgba(12,25,41,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.06); transition: background .3s; }
+    nav.scrolled { background: rgba(12,25,41,.98); box-shadow: 0 2px 20px rgba(0,0,0,.3); }
+    .nav-inner { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .nav-logo-mark { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--blue), var(--blue-dark)); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .9rem; color: #fff; flex-shrink: 0; }
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name { font-weight: 700; font-size: .95rem; line-height: 1.1; color: #fff; }
+    .nav-logo-sub  { font-size: .7rem; color: var(--blue); letter-spacing: .04em; }
+    .nav-links { display: flex; align-items: center; gap: .25rem; list-style: none; }
+    .nav-links a { display: block; padding: .5rem .85rem; color: rgba(255,255,255,.75); text-decoration: none; font-size: .875rem; font-weight: 500; border-radius: 6px; transition: color .2s, background .2s; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.07); }
+    .nav-links a.active { color: var(--blue) !important; background: rgba(37,99,235,.12) !important; }
+    .nav-cta { display: inline-flex; align-items: center; padding: .55rem 1.2rem; background: var(--blue); color: #fff; border-radius: var(--radius-sm); font-weight: 500; font-size: .875rem; text-decoration: none; transition: background .2s, transform .15s; }
+    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .5rem; border: none; background: transparent; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: transform .3s, opacity .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99; background: var(--navy); padding: 1.5rem; border-top: 1px solid rgba(255,255,255,.08); flex-direction: column; gap: .25rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { display: block; padding: .85rem 1rem; color: rgba(255,255,255,.8); text-decoration: none; font-weight: 500; border-radius: var(--radius-sm); transition: background .2s, color .2s; }
+    .mobile-menu a:hover { background: rgba(255,255,255,.07); color: #fff; }
+    .mobile-menu .nav-cta { margin-top: .5rem; text-align: center; justify-content: center; }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero { padding-top: var(--nav-h); background: var(--navy); position: relative; overflow: hidden; }
+    .page-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(37,99,235,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.06) 1px, transparent 1px); background-size: 60px 60px; }
+    .page-hero-glow { position: absolute; top: -30%; right: -5%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(37,99,235,.1) 0%, transparent 65%); pointer-events: none; }
+    .page-hero-inner { position: relative; z-index: 1; padding: 4rem 0 4.5rem; }
+    .breadcrumb { display: flex; align-items: center; gap: .5rem; margin-bottom: 1.5rem; font-size: .8rem; }
+    .breadcrumb a { color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+    .breadcrumb a:hover { color: var(--blue); }
+    .breadcrumb span { color: rgba(255,255,255,.25); }
+    .breadcrumb-current { color: rgba(255,255,255,.7); font-weight: 500; }
+    .page-hero h1 { font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 800; color: #fff; letter-spacing: -.02em; margin-bottom: .75rem; }
+    .page-hero h1 em { font-style: normal; color: var(--blue); }
+    .page-hero p { font-size: 1.1rem; color: rgba(255,255,255,.65); max-width: 600px; }
+
+    /* ─── SERVICE CARDS ─── */
+    .services-list { display: flex; flex-direction: column; gap: 2.5rem; }
+    .service-block {
+      display: grid; grid-template-columns: 280px 1fr; gap: 0;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: box-shadow .25s, border-color .25s;
+    }
+    .service-block:hover { box-shadow: var(--shadow-lg); border-color: rgba(37,99,235,.25); }
+    .service-block-sidebar {
+      background: var(--bg); padding: 2.5rem 2rem;
+      display: flex; flex-direction: column; justify-content: flex-start;
+      border-right: 1px solid var(--border);
+    }
+    .service-num { font-size: .75rem; font-weight: 700; color: var(--blue); letter-spacing: .08em; margin-bottom: 1rem; }
+    .service-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--blue-light); color: var(--blue-dark); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.25rem; }
+    .service-block-sidebar h3 { font-size: 1.15rem; color: var(--text); margin-bottom: .75rem; }
+    .service-sidebar-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; padding-top: 1.25rem; }
+    .service-sidebar-tag { padding: .2rem .65rem; border-radius: 100px; background: var(--blue-light); color: var(--blue-dark); font-size: .7rem; font-weight: 600; }
+    .service-block-body { padding: 2.5rem; }
+    .service-block-body > p { font-size: .95rem; line-height: 1.8; margin-bottom: 1.5rem; }
+    .service-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .service-detail-group h4 { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin-bottom: .6rem; }
+    .service-detail-group ul { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+    .service-detail-group li { display: flex; align-items: flex-start; gap: .5rem; font-size: .85rem; color: var(--text-sec); }
+    .service-detail-group li::before { content: '→'; color: var(--blue); font-size: .72rem; margin-top: .2rem; flex-shrink: 0; }
+
+    /* ─── USP ─── */
+    .usp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .usp-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; transition: box-shadow .2s, transform .2s; }
+    .usp-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .usp-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .usp-card h3 { font-size: 1rem; color: var(--text); margin-bottom: .6rem; }
+    .usp-card p  { font-size: .875rem; line-height: 1.7; color: var(--text-sec); }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner { background: var(--navy); padding: 80px 0; }
+    .cta-inner { text-align: center; }
+    .cta-inner h2 { color: #fff; margin-bottom: 1rem; }
+    .cta-inner p  { color: rgba(255,255,255,.6); margin-bottom: 2.5rem; font-size: 1.05rem; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: .5rem; padding: .875rem 2rem; background: var(--blue); color: #fff; border-radius: var(--radius-sm); font-weight: 500; font-size: .95rem; text-decoration: none; transition: background .2s, transform .15s, box-shadow .2s; box-shadow: 0 4px 20px rgba(37,99,235,.35); }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: .5rem; padding: .875rem 2rem; border: 1.5px solid rgba(255,255,255,.3); color: #fff; border-radius: var(--radius-sm); font-weight: 600; font-size: .95rem; text-decoration: none; transition: border-color .2s, background .2s; }
+    .btn-outline:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.06); }
+
+    /* ─── FOOTER ─── */
+    footer { background: #070F1A; padding: 3rem 0 2rem; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-brand { display: flex; align-items: center; gap: .75rem; }
+    .footer-brand-mark { width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg, var(--blue), var(--blue-dark)); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .85rem; color: #fff; }
+    .footer-brand-name { font-size: .9rem; font-weight: 700; color: rgba(255,255,255,.7); }
+    .footer-copy { font-size: .8rem; color: rgba(255,255,255,.3); margin-top: .2rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1.25rem; list-style: none; }
+    .footer-links a { font-size: .85rem; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--blue); }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: .1s; }
+    .fade-in-delay-2 { transition-delay: .2s; }
+    .fade-in-delay-3 { transition-delay: .3s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .service-block { grid-template-columns: 1fr; }
+      .service-block-sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+      .usp-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 64px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .service-details { grid-template-columns: 1fr; }
+      .usp-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .cta-actions { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-outline { justify-content: center; }
+    }
+      h1,h2,h3,h4 { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 600; }
+    button,.btn-primary,.btn-outline,.nav-cta,.btn-submit,.section-label,
+    .nav-links a,.nav-logo-name,.stat-value,.step-num,.sdg-more,.footer-links a
+    { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">MA</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Marie Altmann</span>
+        <span class="nav-logo-sub">SAP Consultant</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="ueber-mich.html">Über mich</a></li>
+      <li><a href="leistungen.html" class="active">Leistungen</a></li>
+      <li><a href="einsatzbereiche.html">Einsatzbereiche</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="ueber-mich.html" onclick="closeMobileMenu()">Über mich</a>
+  <a href="leistungen.html" onclick="closeMobileMenu()">Leistungen</a>
+  <a href="einsatzbereiche.html" onclick="closeMobileMenu()">Einsatzbereiche</a>
+</div>
+
+<!-- ─── PAGE HERO ─── -->
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-glow"></div>
+  <div class="container">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Start</a>
+        <span>›</span>
+        <span class="breadcrumb-current">Leistungen</span>
+      </nav>
+      <h1>Meine <em>Leistungen</em></h1>
+      <p>Von der Konzeption bis zur Übergabe – präzise, verlässlich und nachhaltig wirksam.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SERVICES ─── -->
+<section>
+  <div class="container">
+    <span class="section-label fade-in">Leistungsübersicht</span>
+    <h2 class="section-heading fade-in">Was ich für Sie leiste</h2>
+    <p class="section-sub fade-in">Sechs Kernleistungen – klar definiert, praxiserprobt und auf Ihre spezifischen Anforderungen zugeschnitten.</p>
+
+    <div class="services-list">
+
+      <!-- 01 -->
+      <div class="service-block fade-in">
+        <div class="service-block-sidebar">
+          <div class="service-num">01</div>
+          <div class="service-icon">🔐</div>
+          <h3>SAP Berechtigungs­konzepte</h3>
+          <div class="service-sidebar-tags">
+            <span class="service-sidebar-tag">S/4HANA</span>
+            <span class="service-sidebar-tag">ECC</span>
+            <span class="service-sidebar-tag">Fiori</span>
+            <span class="service-sidebar-tag">BW</span>
+            <span class="service-sidebar-tag">SAC</span>
+            <span class="service-sidebar-tag">HCM</span>
+          </div>
+        </div>
+        <div class="service-block-body">
+          <p>Konzeption, Implementierung und Optimierung von Rollen- und Berechtigungsstrukturen für alle SAP-Module – von ECC über S/4HANA bis hin zu Fiori, BW, SAC, BTP und HCM. Aufgebaut nach dem Least-Privilege-Prinzip, ausgerichtet an Ihren Geschäftsprozessen und revisionssicher dokumentiert.</p>
+          <div class="service-details">
+            <div class="service-detail-group">
+              <h4>Leistungsumfang</h4>
+              <ul>
+                <li>IST-Analyse bestehender Rollen und Profile</li>
+                <li>Aufbau eines modulübergreifenden Rollenkonzepts</li>
+                <li>Technische Implementierung im SAP-System</li>
+                <li>Fiori-Launchpad-Konfiguration &amp; Berechtigungen</li>
+                <li>Migrationsunterstützung bei System-Upgrades</li>
+              </ul>
+            </div>
+            <div class="service-detail-group">
+              <h4>Typische Ergebnisse</h4>
+              <ul>
+                <li>Revisionssicheres Berechtigungskonzept-Dokument</li>
+                <li>Vollständige Rollensteckbriefe</li>
+                <li>SoD-freie Rollenstrukturen</li>
+                <li>Reduzierung von Berechtigungsüberständen</li>
+                <li>Dokumentation für Audits und interne Revision</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="service-block fade-in">
+        <div class="service-block-sidebar">
+          <div class="service-num">02</div>
+          <div class="service-icon">⚖️</div>
+          <h3>SoD-Analyse &amp; Compliance</h3>
+          <div class="service-sidebar-tags">
+            <span class="service-sidebar-tag">SOX</span>
+            <span class="service-sidebar-tag">IKS</span>
+            <span class="service-sidebar-tag">KRITIS</span>
+            <span class="service-sidebar-tag">EY</span>
+            <span class="service-sidebar-tag">KPMG</span>
+            <span class="service-sidebar-tag">PwC</span>
+          </div>
+        </div>
+        <div class="service-block-body">
+          <p>Systematische Identifikation und Bereinigung von Segregation-of-Duties-Konflikten in Ihrer SAP-Berechtigungslandschaft. Entwicklung unternehmensweiter Risikokataloge, Definition von Kompensationskontrollen und vollständige Vorbereitung auf externe Prüfungen durch EY, KPMG, PwC sowie interne Revisionsprüfungen.</p>
+          <div class="service-details">
+            <div class="service-detail-group">
+              <h4>Leistungsumfang</h4>
+              <ul>
+                <li>Vollständige SoD-Analyse bestehender Rollenvergaben</li>
+                <li>Aufbau und Pflege von Risikokatalogen</li>
+                <li>Definition und Dokumentation von Kompensationskontrollen</li>
+                <li>Bereinigung kritischer SoD-Konflikte</li>
+                <li>Audit-Vorbereitung und Begleitung vor Ort</li>
+              </ul>
+            </div>
+            <div class="service-detail-group">
+              <h4>Typische Ergebnisse</h4>
+              <ul>
+                <li>SoD-Risikokatalog und Maßnahmenplan</li>
+                <li>Compliance-Nachweise für SOX, IKS, KRITIS</li>
+                <li>Audit-bereite Dokumentation und Arbeitsnachweise</li>
+                <li>Nachhaltig konfliktfreie Rollenstruktur</li>
+                <li>Interne Kompetenzstärkung für zukünftige Prüfungen</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="service-block fade-in">
+        <div class="service-block-sidebar">
+          <div class="service-num">03</div>
+          <div class="service-icon">🔑</div>
+          <h3>SAP IDM / IAM / GRC</h3>
+          <div class="service-sidebar-tags">
+            <span class="service-sidebar-tag">SAP IDM</span>
+            <span class="service-sidebar-tag">ONE Identity</span>
+            <span class="service-sidebar-tag">SailPoint</span>
+            <span class="service-sidebar-tag">OMADA</span>
+            <span class="service-sidebar-tag">GRC AC</span>
+          </div>
+        </div>
+        <div class="service-block-body">
+          <p>Einführung, Betrieb und Optimierung von Identity Management Systemen sowie GRC Access Control. Erfahrung mit SAP IDM, ONE Identity, SailPoint und OMADA – von der Anforderungsaufnahme und Konzeption bis zum Go-Live und der Stabilisierung. Firefighter-Konzepte für den kontrollierten privilegierten Zugriff.</p>
+          <div class="service-details">
+            <div class="service-detail-group">
+              <h4>Leistungsumfang</h4>
+              <ul>
+                <li>Anforderungsanalyse und IDM-Konzeption</li>
+                <li>System-Implementierung und Workflow-Design</li>
+                <li>Rollenlebenszyklus und Provisioning-Konfiguration</li>
+                <li>Firefighter-Konzept und -Implementierung</li>
+                <li>GRC Access Control: ARM, BRM, EAM</li>
+              </ul>
+            </div>
+            <div class="service-detail-group">
+              <h4>Typische Ergebnisse</h4>
+              <ul>
+                <li>Vollständig implementiertes IDM-System</li>
+                <li>Automatisierter Benutzerlebenszyklus</li>
+                <li>Revisionssicheres Firefighter-Konzept</li>
+                <li>GRC-Regelwerk und Risk Management</li>
+                <li>Dokumentation für Betrieb und Wartung</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="service-block fade-in">
+        <div class="service-block-sidebar">
+          <div class="service-num">04</div>
+          <div class="service-icon">⚡</div>
+          <h3>S/4HANA Transformationen</h3>
+          <div class="service-sidebar-tags">
+            <span class="service-sidebar-tag">Greenfield</span>
+            <span class="service-sidebar-tag">Rollout</span>
+            <span class="service-sidebar-tag">CutOver</span>
+            <span class="service-sidebar-tag">HyperCare</span>
+            <span class="service-sidebar-tag">Fiori</span>
+          </div>
+        </div>
+        <div class="service-block-body">
+          <p>Berechtigungsmanagement für S/4HANA-Projekte in jeder Projektphase: Greenfield-Aufbau, Template-Rollouts über mehrere Wellen und Buchungskreise, Fiori-Integration, CutOver-Vorbereitung und HyperCare-Support nach Go-Live. Erfahrung in internationalen Projekten mit bis zu 58 Buchungskreisen.</p>
+          <div class="service-details">
+            <div class="service-detail-group">
+              <h4>Leistungsumfang</h4>
+              <ul>
+                <li>Berechtigungs-Blueprint und Rollendesign</li>
+                <li>Fiori-Launchpad und Tile-Berechtigungen</li>
+                <li>Wellen-übergreifendes Rollout-Management</li>
+                <li>CutOver-Planung und -Durchführung</li>
+                <li>HyperCare und Post-Go-Live-Stabilisierung</li>
+              </ul>
+            </div>
+            <div class="service-detail-group">
+              <h4>Typische Ergebnisse</h4>
+              <ul>
+                <li>Vollständiges S/4HANA-Berechtigungskonzept</li>
+                <li>Template-fähige, skalierbare Rollenstruktur</li>
+                <li>Störungsfreier Go-Live im Berechtigungsbereich</li>
+                <li>Stabiler Produktivbetrieb nach HyperCare</li>
+                <li>Übergabe an interne SAP-Basis und Betriebsteams</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="service-block fade-in">
+        <div class="service-block-sidebar">
+          <div class="service-num">05</div>
+          <div class="service-icon">🛠️</div>
+          <h3>Tool-Implementierungen</h3>
+          <div class="service-sidebar-tags">
+            <span class="service-sidebar-tag">XAMS</span>
+            <span class="service-sidebar-tag">SAST</span>
+            <span class="service-sidebar-tag">SIAM</span>
+            <span class="service-sidebar-tag">Security Bridge</span>
+            <span class="service-sidebar-tag">Rev.Trac</span>
+          </div>
+        </div>
+        <div class="service-block-body">
+          <p>Einführung und Konfiguration spezialisierter SAP-Sicherheitstools – von der Auswahl des geeigneten Werkzeugs über die technische Implementierung bis zum Betriebsübergang. Tiefe Kenntnisse in XAMS (Xiting), SAST (Akquinet), SIAM (Sivis), Security Bridge, Valantic APM, Rev.Trac, HONICO und weiteren Lösungen.</p>
+          <div class="service-details">
+            <div class="service-detail-group">
+              <h4>Leistungsumfang</h4>
+              <ul>
+                <li>Tool-Evaluation und Auswahlunterstützung</li>
+                <li>Technische Implementierung und Konfiguration</li>
+                <li>Datenimport und Stammdaten-Setup</li>
+                <li>Test, Validierung und Go-Live-Begleitung</li>
+                <li>Schulung der Administratoren und Anwender</li>
+              </ul>
+            </div>
+            <div class="service-detail-group">
+              <h4>Typische Ergebnisse</h4>
+              <ul>
+                <li>Betriebsfertiges SAP-Security-Tool</li>
+                <li>Konfigurationsdokumentation und Handbücher</li>
+                <li>Geschultes internes Betriebsteam</li>
+                <li>Integriertes SoD-Monitoring und Reporting</li>
+                <li>Anbindung an bestehende GRC-Prozesse</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="service-block fade-in">
+        <div class="service-block-sidebar">
+          <div class="service-num">06</div>
+          <div class="service-icon">📚</div>
+          <h3>Workshops &amp; Schulungen</h3>
+          <div class="service-sidebar-tags">
+            <span class="service-sidebar-tag">KeyUser</span>
+            <span class="service-sidebar-tag">Revision</span>
+            <span class="service-sidebar-tag">Management</span>
+            <span class="service-sidebar-tag">IT</span>
+          </div>
+        </div>
+        <div class="service-block-body">
+          <p>Zielgruppengerechte Wissensvermittlung auf allen Ebenen – von strategischen Management-Workshops über technische Vertiefungen für IT-Teams bis zu praxisnahen KeyUser-Schulungen. Coaching interner Revisionsteams sowie strukturierte Dokumentation für den langfristigen Wissenserhalt im Unternehmen.</p>
+          <div class="service-details">
+            <div class="service-detail-group">
+              <h4>Leistungsumfang</h4>
+              <ul>
+                <li>Workshops zur Anforderungserhebung und Zieldefinition</li>
+                <li>Schulungen für Berechtigungsadministratoren</li>
+                <li>KeyUser-Trainings für Fachbereiche</li>
+                <li>Coaching interner Revisions- und Auditteams</li>
+                <li>Erstellung von Schulungsunterlagen und Handbüchern</li>
+              </ul>
+            </div>
+            <div class="service-detail-group">
+              <h4>Typische Ergebnisse</h4>
+              <ul>
+                <li>Gestärktes internes SAP-Security-Know-how</li>
+                <li>Praxistaugliche Schulungsunterlagen</li>
+                <li>Kompetentes Team für den laufenden Betrieb</li>
+                <li>Revisions- und auditkompetente Fachabteilungen</li>
+                <li>Reduzierte externe Beraterabhängigkeit</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── USP ─── -->
+<section class="bg-tinted">
+  <div class="container">
+    <span class="section-label fade-in">Warum Marie Altmann</span>
+    <h2 class="section-heading fade-in">Ihr Mehrwert auf einen Blick</h2>
+    <p class="section-sub fade-in">Was meine Arbeit von der Masse unterscheidet – und warum meine Kunden immer wieder zurückkommen.</p>
+    <div class="usp-grid">
+      <div class="usp-card fade-in fade-in-delay-1">
+        <div class="usp-icon">🏆</div>
+        <h3>26 Jahre Erfahrung</h3>
+        <p>Seit 1999 zertifizierte SAP-Beraterin mit tiefer Expertise in allen Entwicklungsphasen der SAP-Berechtigungslandschaft – von R/3 bis S/4HANA.</p>
+      </div>
+      <div class="usp-card fade-in fade-in-delay-2">
+        <div class="usp-icon">🛡️</div>
+        <h3>Audit-sichere Qualität</h3>
+        <p>Alles, was ich erstelle, hält externen Prüfungen stand. Ich habe Audits durch EY, KPMG und PwC vorbereitet und begleitet – und kenne die Anforderungen in der Praxis.</p>
+      </div>
+      <div class="usp-card fade-in fade-in-delay-3">
+        <div class="usp-icon">🎯</div>
+        <h3>Tiefe Tool-Expertise</h3>
+        <p>Ich arbeite mit den führenden SAP-Security-Tools und kenne ihre Stärken und Schwächen aus zahlreichen Implementierungen – keine Lernkurve auf Ihre Kosten.</p>
+      </div>
+      <div class="usp-card fade-in fade-in-delay-1">
+        <div class="usp-icon">🤝</div>
+        <h3>Wissenstransfer inklusive</h3>
+        <p>Mein Ziel ist Ihre Unabhängigkeit nach dem Projekt. Ich baue interne Kompetenz auf, dokumentiere sauber und übergebe so, dass Ihr Team sicher weiterarbeiten kann.</p>
+      </div>
+      <div class="usp-card fade-in fade-in-delay-2">
+        <div class="usp-icon">⚡</div>
+        <h3>Kurzfristig verfügbar</h3>
+        <p>Als Freelancerin kann ich flexibel und schnell eingesetzt werden – remote oder vor Ort, projektweise oder für den laufenden Betrieb. Kein Vorlauf, keine lange Onboarding-Phase.</p>
+      </div>
+      <div class="usp-card fade-in fade-in-delay-3">
+        <div class="usp-icon">🌍</div>
+        <h3>Internationale Erfahrung</h3>
+        <p>Ich habe internationale Rollouts über mehrere Länder und Buchungskreise geleitet und kommuniziere sicher auf Deutsch und Englisch – mit IT, Fachbereichen und Management.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<div class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="fade-in">Ihr Projekt besprechen?</h2>
+      <p class="fade-in">Schildern Sie mir Ihre Ausgangssituation – ich melde mich in der Regel innerhalb von 24 Stunden.</p>
+      <div class="cta-actions fade-in">
+        <a href="index.html#kontakt" class="btn-primary">Kontakt aufnehmen</a>
+        <a href="einsatzbereiche.html" class="btn-outline">Einsatzbereiche ansehen</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-mark">MA</div>
+        <div>
+          <div class="footer-brand-name">Marie Altmann · Me-One-Consulting</div>
+          <div class="footer-copy">© 2026 Marie Altmann · Me-One-Consulting</div>
+        </div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="ueber-mich.html">Über mich</a></li>
+        <li><a href="leistungen.html">Leistungen</a></li>
+        <li><a href="einsatzbereiche.html">Einsatzbereiche</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  function closeMobileMenu() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
