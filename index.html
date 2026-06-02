@@ -394,25 +394,6 @@
     }
     .tag-pill:hover { border-color: var(--blue); color: var(--blue-dark); background: rgba(37,99,235,.03); }
 
-    /* ─── VORGEHENSWEISE ─── */
-    .steps-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
-    }
-    .step-card {
-      position: relative; padding: 2rem;
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition: box-shadow .2s, border-color .2s;
-    }
-    .step-card:hover { box-shadow: var(--shadow-md); border-color: rgba(37,99,235,.3); }
-    .step-num {
-      font-size: 3.5rem; font-weight: 800;
-      color: var(--blue-light); line-height: 1;
-      margin-bottom: 1rem;
-      font-variant-numeric: tabular-nums;
-    }
-    .step-card h3 { font-size: 1.05rem; margin-bottom: .6rem; color: var(--text); }
-    .step-card p  { font-size: .875rem; line-height: 1.7; color: var(--text-sec); }
 
     /* ─── BRANCHENERFAHRUNG ─── */
     .industries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
@@ -602,7 +583,7 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
       .sdg { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+
       .project-card { grid-template-columns: 1fr; }
       .project-sidebar { padding: 1.5rem; }
       .form-row { grid-template-columns: 1fr; }
@@ -611,7 +592,7 @@
       .about-stats { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 480px) {
-      .steps-grid { grid-template-columns: 1fr; }
+
       .industries-grid { grid-template-columns: 1fr 1fr; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .btn-primary, .btn-outline { justify-content: center; text-align: center; }
@@ -869,53 +850,6 @@
   </div>
 </section>
 
-<!-- ─── VORGEHENSWEISE ─── -->
-<section id="vorgehensweise" class="bg-alt">
-  <div class="container">
-    <span class="section-label fade-in">Vorgehensweise</span>
-    <h2 class="section-heading fade-in">Wie ich arbeite</h2>
-    <p class="section-sub fade-in">Strukturiert, transparent und auf Ihr Unternehmen zugeschnitten – in sechs klar definierten Phasen.</p>
-    <div class="steps-grid">
-
-      <div class="step-card fade-in fade-in-delay-1">
-        <div class="step-num">01</div>
-        <h3>Analyse</h3>
-        <p>IST-Aufnahme: Systemlandschaft, bestehende Rollen, Compliance-Anforderungen und Sicherheitslücken werden systematisch erfasst und bewertet.</p>
-      </div>
-
-      <div class="step-card fade-in fade-in-delay-2">
-        <div class="step-num">02</div>
-        <h3>Abstimmung</h3>
-        <p>Workshops mit Fachbereichen, IT und Stakeholdern zur gemeinsamen Zieldefinition – transparent, strukturiert und ergebnisorientiert.</p>
-      </div>
-
-      <div class="step-card fade-in fade-in-delay-3">
-        <div class="step-num">03</div>
-        <h3>Konzeption</h3>
-        <p>Erstellung des Berechtigungs- und Rollenkonzepts inkl. SoD-Regelwerk, Risikoklassifizierung und Genehmigungsstrukturen.</p>
-      </div>
-
-      <div class="step-card fade-in fade-in-delay-1">
-        <div class="step-num">04</div>
-        <h3>Implementierung</h3>
-        <p>Technische Umsetzung im SAP-System mit den geeigneten Tools – präzise, nachvollziehbar und dokumentiert.</p>
-      </div>
-
-      <div class="step-card fade-in fade-in-delay-2">
-        <div class="step-num">05</div>
-        <h3>Testing &amp; Audit</h3>
-        <p>Funktionale Tests, Validierung der Berechtigungsstrukturen, Audit-Vorbereitung und Review durch interne oder externe Revisoren.</p>
-      </div>
-
-      <div class="step-card fade-in fade-in-delay-3">
-        <div class="step-num">06</div>
-        <h3>Dokumentation &amp; Übergabe</h3>
-        <p>Rollensteckbriefe, Konzeptdokumente, Schulungsunterlagen – saubere und vollständige Übergabe ans interne Team.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <!-- ─── BRANCHENERFAHRUNG ─── -->
 <section id="branchen">
