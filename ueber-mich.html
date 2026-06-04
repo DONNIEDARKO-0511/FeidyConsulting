@@ -9,554 +9,305 @@
 
 
   <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="assets/css/shared.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy:       #0C1929;
-      --navy-mid:   #162340;
-      --navy-light: #1E3A5F;
-      --blue:       #2563EB;
-      --blue-dark:  #1D4ED8;
-      --blue-light: #DBEAFE;
-      --white:      #FFFFFF;
-      --bg:         #F8FAFC;
-      --bg-alt:     #F1F5F9;
-      --text:       #0F172A;
-      --text-sec:   #475569;
-      --text-muted: #94A3B8;
-      --border:     #E2E8F0;
-      --shadow-sm:  0 1px 3px rgba(0,0,0,.08);
-      --shadow-md:  0 4px 16px rgba(0,0,0,.07);
-      --shadow-lg:  0 10px 40px rgba(0,0,0,.10);
-      --radius:     12px;
-      --radius-sm:  8px;
-      --nav-h:      72px;
-    }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: 'JetBrains Mono', monospace; color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-
-    h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
-    h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); }
-    h3 { font-size: 1.1rem; }
-    p  { color: var(--text-sec); }
-
-    .section-label {
-      display: inline-flex; align-items: center; gap: .5rem;
-      font-size: .75rem; font-weight: 600; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--blue); margin-bottom: 1rem;
-    }
-    .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--blue); }
-    .section-heading { margin-bottom: .75rem; }
-    .section-sub { color: var(--text-sec); font-size: 1.05rem; max-width: 640px; margin-bottom: 3rem; }
-
-    .container { max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; }
-    section { padding: 90px 0; background: var(--white); }
-    section.bg-tinted { background: var(--bg); }
-
-    /* ─── NAVIGATION ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: var(--nav-h);
-      display: flex; align-items: center;
+    /* ─── NAVBAR: transparent über weißem Hero ─── */
+    nav#navbar {
       background: transparent;
-      transition: background .3s, box-shadow .3s;
+      border-color: transparent;
+      backdrop-filter: none;
     }
-    nav.scrolled {
+    nav#navbar .nav-links a { color: var(--text); }
+    nav#navbar .nav-links a:hover { color: var(--blue); }
+    nav#navbar.scrolled .nav-links a { color: var(--text); }
+    nav#navbar.scrolled .nav-logo-name { color: var(--text); }
+
+    /* ─── HERO (Index-Stil: weißer Hintergrund) ─── */
+    .page-hero--light {
       background: var(--white);
-      box-shadow: 0 1px 0 var(--border);
     }
-    .nav-inner {
-      width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 1.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      position: relative;
+    .page-hero--light .page-hero-inner {
+      padding: 5rem 0 5.5rem;
+      text-align: left;
     }
-    .nav-logo {
-      display: flex; align-items: center; gap: .75rem;
-      text-decoration: none; color: var(--white);
-    }
-    .nav-logo-mark {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: .9rem; color: var(--white);
-      flex-shrink: 0;
-    }
-    .nav-logo-text { display: flex; flex-direction: column; }
-    .nav-logo-name { font-weight: 700; font-size: .95rem; line-height: 1.1; color: var(--white); }
-    .nav-logo-sub  { font-size: .7rem; color: var(--blue); letter-spacing: .04em; }
-
-    .nav-links {
-      display: flex; align-items: center; gap: .25rem;
-      list-style: none;
-      position: absolute; left: 50%; transform: translateX(-50%);
-    }
-    .nav-links a {
-      display: block; padding: .5rem .85rem;
-      color: var(--text); text-decoration: none;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .8rem; font-weight: 400;
-      border-radius: 6px;
-      transition: color .2s, background .2s;
-    }
-    .nav-links a:hover { color: var(--blue); }
-    .nav-links a.active { color: var(--blue) !important; }
-
-    .nav-cta {
-      display: inline-flex; align-items: center;
-      padding: .5rem 1rem;
-      background: var(--blue); color: var(--white);
-      border-radius: var(--radius-sm);
+    /* Überschreibe .page-hero h1 (Spezifität 0,1,1) mit höherer Spezifität */
+    .page-hero--light .hero-name {
       font-family: 'Work Sans', system-ui, sans-serif;
-      font-weight: 500; font-size: .8rem;
-      text-decoration: none; transition: background .2s;
+      font-weight: 500;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: #000;
+      letter-spacing: -.02em;
+      margin-left: 0;
     }
-    .nav-cta:hover { background: var(--blue-dark); }
+    .page-hero--light .hero-sub  {
+      margin-left: 0; margin-right: 0;
+      color: var(--text);
+      font-size: clamp(1rem, 1.75vw, 1.25rem);
+    }
+    .page-hero--light .page-hero-inner { max-width: 75%; }
 
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px; cursor: pointer;
-      padding: .5rem; border: none; background: transparent;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--white); border-radius: 2px;
-      transition: transform .3s, opacity .3s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* Breadcrumb auf hellem Hintergrund */
+    .breadcrumb--light a { color: var(--text-muted); }
+    .breadcrumb--light a:hover { color: var(--blue); }
+    .breadcrumb--light span { color: var(--border); }
+    .breadcrumb--light .breadcrumb-current { color: var(--text-sec); }
 
-    .mobile-menu {
-      display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
-      background: var(--navy); padding: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,.08);
-      flex-direction: column; gap: .25rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      display: block; padding: .85rem 1rem;
-      color: rgba(255,255,255,.8); text-decoration: none; font-weight: 500;
-      border-radius: var(--radius-sm);
-      transition: background .2s, color .2s;
-    }
-    .mobile-menu a:hover { background: rgba(255,255,255,.07); color: var(--white); }
-    .mobile-menu .nav-cta { margin-top: .5rem; text-align: center; justify-content: center; }
 
-    /* ─── PAGE HERO ─── */
-    .page-hero {
-      padding-top: var(--nav-h); background: var(--navy); position: relative; overflow: hidden;
-    }
-    .page-hero-grid {
-      position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(37,99,235,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.06) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .page-hero-glow { position: absolute; top: -30%; right: -5%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(37,99,235,.1) 0%, transparent 65%); pointer-events: none; }
-    .page-hero-inner { position: relative; z-index: 1; padding: 4rem 0 4.5rem; }
-    .breadcrumb { display: flex; align-items: center; gap: .5rem; margin-bottom: 1.5rem; font-size: .8rem; }
-    .breadcrumb a { color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
-    .breadcrumb a:hover { color: var(--blue); }
-    .breadcrumb span { color: rgba(255,255,255,.25); }
-    .breadcrumb-current { color: rgba(255,255,255,.7); font-weight: 500; }
-    .page-hero h1 { font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 800; color: #fff; letter-spacing: -.02em; margin-bottom: .75rem; }
-    .page-hero h1 em { font-style: normal; color: var(--blue); }
-    .page-hero p { font-size: 1.1rem; color: rgba(255,255,255,.65); max-width: 600px; }
-
-    /* ─── STATS ─── */
-    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-    .stat-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.5rem; transition: box-shadow .2s, border-color .2s; }
-    .stat-card:hover { box-shadow: var(--shadow-md); border-color: rgba(37,99,235,.3); }
-    .stat-value { font-size: 2.25rem; font-weight: 800; color: var(--navy); line-height: 1; }
-    .stat-label { font-size: .8rem; color: var(--text-sec); margin-top: .3rem; }
-
-    /* ─── PROFILE ─── */
-    .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-    .profile-text p { font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
-    .profile-text p:last-child { margin-bottom: 0; }
+    /* ─── PROFIL GRID ─── */
     .profile-quote {
-      margin: 2rem 0; padding: 1.5rem 2rem;
+      padding: 1.25rem 1.75rem;
       border-left: 3px solid var(--blue); background: var(--blue-light);
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     }
-    .profile-quote p { color: var(--navy); font-style: italic; font-size: 1.05rem; line-height: 1.7; }
+    .profile-quote p { color: var(--navy); font-style: italic; font-size: .95rem; line-height: 1.7; }
 
-    .profile-aside { display: flex; flex-direction: column; gap: 1rem; }
-    .info-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; transition: box-shadow .2s, border-color .2s; }
-    .info-card:hover { box-shadow: var(--shadow-md); border-color: rgba(37,99,235,.25); }
-    .info-card-header { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; }
-    .info-card-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--blue-light); color: var(--blue-dark); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-    .info-card h4 { font-size: .95rem; color: var(--text); }
-    .info-card ul { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
-    .info-card li { display: flex; align-items: flex-start; gap: .6rem; font-size: .875rem; color: var(--text-sec); }
-    .info-card li::before { content: '→'; color: var(--blue); font-size: .75rem; margin-top: .15rem; flex-shrink: 0; }
+    .profil-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, auto);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--white);
+    }
+    .profil-left-wrapper {
+      grid-column: 1;
+      grid-row: 1 / 4;
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      border-right: 1px solid var(--border);
+    }
+    .profil-card-main {
+      position: relative; overflow: hidden;
+      background: var(--white);
+      padding: 2.75rem;
+      border-bottom: 1px solid var(--border);
+      transition: background .35s;
+    }
+    .profil-left-wrapper .profil-card-main:last-child { border-bottom: none; }
+    .profil-card-main:hover { background: rgba(37,99,235,.03); }
+    .profil-card-side {
+      grid-column: 2;
+      position: relative; overflow: hidden;
+      background: var(--white);
+      padding: 2rem 2.25rem;
+      border-bottom: 1px solid var(--border);
+      transition: background .35s;
+    }
+    .profil-card-side:last-child { border-bottom: none; }
+    .profil-card-side:hover { background: rgba(37,99,235,.03); }
+    .profil-card-main h3,
+    .profil-card-main p,
+    .profil-card-side h3,
+    .profil-card-side .profil-list {
+      position: relative;
+      z-index: 1;
+    }
+    .profil-card-main h3,
+    .profil-card-side h3 {
+      transition: color .2s;
+    }
+    .profil-card-main:hover h3,
+    .profil-card-side:hover h3 {
+      color: var(--blue) !important;
+    }
+    .profil-card-main:hover p,
+    .profil-card-side:hover li {
+      color: var(--blue-dark) !important;
+    }
+    .profil-card-icon {
+      position: relative;
+      z-index: 1;
+      width: 34px;
+      height: 34px;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      transition: color .2s;
+    }
+    .profil-card-main:hover .profil-card-icon { color: var(--blue); }
+
+    .info-card-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--blue-light); color: var(--blue-dark);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .profil-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .profil-list li { display: flex; align-items: flex-start; gap: .6rem; font-size: .875rem; color: var(--text-sec); line-height: 1.5; }
+    .profil-list li::before { content: '→'; color: var(--blue); font-size: .75rem; margin-top: .18rem; flex-shrink: 0; }
 
     /* ─── SCHWERPUNKTE ─── */
     .schwerpunkte-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .schwerpunkt-card {
-      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 2rem; position: relative; overflow: hidden;
-      transition: box-shadow .25s, transform .25s, border-color .25s;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: box-shadow .25s, transform .2s, border-color .25s;
     }
-    .schwerpunkt-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--blue-dark)); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
-    .schwerpunkt-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: rgba(37,99,235,.3); }
+    .schwerpunkt-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-dark));
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .schwerpunkt-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: rgba(37,99,235,.25); }
     .schwerpunkt-card:hover::before { transform: scaleX(1); }
-    .schwerpunkt-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--blue-light); color: var(--blue-dark); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; font-size: 1.3rem; }
-    .schwerpunkt-card h3 { font-size: 1rem; margin-bottom: .75rem; color: var(--text); }
+    .schwerpunkt-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--blue-light); color: var(--blue-dark);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem; font-size: 1.3rem; flex-shrink: 0;
+    }
+    .schwerpunkt-card h3 { font-size: 1rem; margin-bottom: .75rem; color: var(--text); transition: color .2s; }
+    .schwerpunkt-card:hover h3 { color: var(--blue); }
     .schwerpunkt-card p { font-size: .875rem; line-height: 1.75; color: var(--text-sec); }
     .schwerpunkt-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
-    .schwerpunkt-tag { padding: .2rem .65rem; border-radius: 100px; background: var(--blue-light); color: var(--blue-dark); font-size: .7rem; font-weight: 600; }
+    .schwerpunkt-tag { padding: .2rem .65rem; border-radius: 100px; background: var(--blue-light); color: var(--blue-dark); font-size: .7rem; font-weight: 600; font-family: 'Work Sans', system-ui, sans-serif; }
 
     /* ─── ARBEITSWEISE ─── */
     .arbeitsweise-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .aw-card { display: flex; gap: 1.25rem; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; transition: box-shadow .2s, border-color .2s; }
-    .aw-card:hover { box-shadow: var(--shadow-md); border-color: rgba(37,99,235,.25); }
-    .aw-num { font-size: 2.5rem; font-weight: 800; color: var(--blue-light); line-height: 1; flex-shrink: 0; width: 48px; }
-    .aw-body h3 { font-size: 1rem; margin-bottom: .5rem; color: var(--text); }
-    .aw-body p  { font-size: .875rem; line-height: 1.7; color: var(--text-sec); }
+    .aw-card {
+      display: flex; gap: 1.5rem;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem;
+      transition: box-shadow .25s, transform .2s, border-color .25s;
+    }
+    .aw-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(37,99,235,.25); }
+    .aw-num {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-size: 2.5rem; font-weight: 700; color: var(--blue-light);
+      line-height: 1; flex-shrink: 0; width: 52px;
+    }
+    .aw-body h3 { font-size: 1rem; margin-bottom: .5rem; color: var(--text); transition: color .2s; }
+    .aw-card:hover .aw-body h3 { color: var(--blue); }
+    .aw-body p { font-size: .875rem; line-height: 1.75; color: var(--text-sec); }
 
     /* ─── QUALIFIKATION ─── */
     .qual-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .qual-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; transition: box-shadow .2s; }
-    .qual-card:hover { box-shadow: var(--shadow-md); }
-    .qual-year { display: inline-block; padding: .2rem .65rem; background: var(--blue-light); color: var(--blue-dark); border-radius: 100px; font-size: .72rem; font-weight: 700; margin-bottom: .75rem; }
-    .qual-card h4 { font-size: .95rem; font-weight: 700; color: var(--text); margin-bottom: .4rem; }
-    .qual-card p  { font-size: .85rem; color: var(--text-sec); line-height: 1.6; }
-
-    /* ─── SPRACHEN ─── */
-    .lang-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; max-width: 640px; }
-    .lang-card { display: flex; align-items: center; gap: 1rem; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem 1.5rem; }
-    .lang-flag { font-size: 2rem; }
-    .lang-name  { font-weight: 700; font-size: .95rem; color: var(--text); }
-    .lang-level { font-size: .82rem; color: var(--text-sec); }
-
-    /* ─── KONTAKT ─── */
-    #kontakt { background: var(--white); }
-    #kontakt .kontakt-header { text-align: center; margin-bottom: 3rem; }
-    #kontakt .kontakt-header .section-label { justify-content: center; }
-    #kontakt .kontakt-header .section-sub { margin: 0 auto; max-width: 75%; }
-    .contact-grid { display: grid; grid-template-columns: 2fr 3fr; gap: 1rem; align-items: stretch; }
-    .contact-info { display: flex; flex-direction: column; }
-    .contact-grid > div { display: flex; flex-direction: column; }
-
-    .contact-box-grid { display: flex; flex-direction: column; gap: 1rem; flex: 1; }
-    .contact-box {
-      position: relative; overflow: hidden;
+    .qual-card {
       background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 1.5rem;
-      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-      flex: 1;
+      border-radius: var(--radius); padding: 1.75rem;
+      transition: box-shadow .25s, transform .2s, border-color .25s;
     }
-    .contact-box-label {
-      display: block; font-size: 1.05rem; color: var(--text);
-      margin-bottom: .3rem;
-      font-family: 'Work Sans', system-ui, sans-serif; font-weight: 600;
-      position: relative; z-index: 1;
-    }
-    .contact-box-value {
-      font-size: .875rem; font-weight: 400; color: var(--text-sec);
-      font-family: 'JetBrains Mono', monospace;
-      text-decoration: none; display: block; line-height: 1.4;
-      position: relative; z-index: 1;
-    }
-    .contact-box:hover { background: #F8FAFE; }
-    .contact-box:hover .contact-box-label { color: var(--blue); }
-    .contact-box:hover .contact-box-value { color: var(--blue-dark); }
-    .contact-box:hover .contact-box-icon { color: var(--blue); }
-    a.contact-box-value:hover { color: var(--blue); }
-    .contact-box-icon { color: var(--text); flex-shrink: 0; position: relative; z-index: 1; transition: color .2s; align-self: center; }
-    .contact-box-label { transition: color .2s; }
-    .contact-box-value { transition: color .2s; }
-
-    .contact-form {
-      background: var(--white); border-radius: var(--radius);
-      padding: 1.5rem; border: 1px solid var(--border);
-      position: relative; overflow: hidden; flex: 1;
-    }
-    .contact-form .form-group label {
+    .qual-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(37,99,235,.25); }
+    .qual-year {
+      display: inline-block; padding: .2rem .65rem;
+      background: var(--blue-light); color: var(--blue-dark);
+      border-radius: 100px; font-size: .72rem; font-weight: 700;
       font-family: 'Work Sans', system-ui, sans-serif;
-      font-size: .9rem; font-weight: 600;
-      transition: color .2s;
+      margin-bottom: .75rem;
     }
-    .contact-form:hover { background: #F8FAFE; }
-    .contact-form:hover .form-group label { color: var(--blue); }
-    .contact-form:focus-within .form-group label { color: var(--text); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { margin-bottom: 1.25rem; }
-    .form-group label {
-      display: block; font-size: .8rem; font-weight: 600;
-      color: var(--text); margin-bottom: .45rem;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%; padding: .8rem 1rem;
-      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-      font-family: inherit; font-size: .875rem; color: var(--text);
-      background: var(--bg); transition: border-color .2s, box-shadow .2s;
-      outline: none;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--blue); box-shadow: none;
-    }
-    .form-group textarea { resize: vertical; min-height: 130px; }
-    .form-checkbox {
-      display: flex; align-items: flex-start; gap: .75rem;
-      margin-bottom: 1.5rem;
-    }
-    .form-checkbox input[type="checkbox"] {
-      width: 18px; height: 18px; flex-shrink: 0; margin-top: .15rem;
-      accent-color: var(--blue); cursor: pointer;
-    }
-    .form-checkbox label {
-      font-size: .72rem; color: var(--text-sec); line-height: 1.5; cursor: pointer;
-    }
-    .form-checkbox a { color: var(--blue-dark); }
-    .btn-submit {
-      width: 100%; padding: 1rem;
-      background: var(--blue); color: var(--white);
-      border: none; border-radius: var(--radius-sm);
-      font-family: inherit; font-size: .95rem; font-weight: 500;
-      cursor: pointer; transition: background .2s, transform .15s;
-    }
-    .btn-submit:hover { background: var(--blue-dark); transform: translateY(-1px); }
-    .form-success {
-      display: none; text-align: center; padding: 2rem 1rem;
-    }
-    .form-success svg { color: var(--blue); margin-bottom: 1rem; }
-    .form-success h3 { color: var(--text); margin-bottom: .5rem; }
-    .form-success p  { color: var(--text-sec); font-size: .9rem; }
+    .qual-card h4 { font-size: .95rem; color: var(--text); margin-bottom: .4rem; transition: color .2s; }
+    .qual-card:hover h4 { color: var(--blue); }
+    .qual-card p { font-size: .85rem; color: var(--text-sec); line-height: 1.65; }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--white); border-top: 1px solid var(--border);
-      padding: 3.5rem 0 0; position: relative; overflow: hidden;
-    }
-    .hero-orb {
-      position: absolute; bottom: -40%; left: 50%; transform: translateX(-50%);
-      width: 1400px; height: 1400px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(37,99,235,.18) 0%, rgba(37,99,235,.06) 40%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-grid {
-      position: absolute; inset: 0; overflow: hidden;
-      pointer-events: none;
-      mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, white 0%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, white 0%, transparent 100%);
-    }
-    .footer-main {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; padding-bottom: 3rem;
-    }
-    .footer-brand { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; }
-    .footer-brand-mark {
-      width: 36px; height: 36px; border-radius: 8px;
-      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: .85rem; color: var(--white); flex-shrink: 0;
-    }
-    .footer-brand-name { font-size: .95rem; font-weight: 700; color: var(--text); }
-    .footer-tagline { font-size: .875rem; color: var(--text-sec); line-height: 1.6; margin-bottom: 1.25rem; max-width: 100%; }
-    .footer-nav-link { font-size: .875rem; color: var(--text-sec); text-decoration: none; transition: color .2s; font-weight: 400; display: inline-flex; align-items: center; gap: .3rem; }
-    .footer-nav-link:hover { color: var(--blue); }
-    .footer-nav-arrow { display: inline-block; transition: transform .2s ease; }
-    .footer-nav-link:hover .footer-nav-arrow { transform: translateX(4px); }
-    .footer-bottom {
-      border-top: 1px solid var(--border); padding: 1.25rem 0;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .footer-copy { font-size: .8rem; color: var(--text-muted); }
-    .footer-legal { display: flex; gap: 1.5rem; list-style: none; }
-    .footer-legal a { font-size: .8rem; color: var(--text-muted); text-decoration: none; transition: color .2s; }
-    .footer-legal a:hover { color: var(--blue); }
 
-    /* ─── SDG BG (for contact-box grid pattern) ─── */
-    .sdg-bg {
-      pointer-events: none; position: absolute;
-      inset: 0;
-      mask-image: radial-gradient(ellipse 65% 60% at 80% 25%, white 0%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 65% 60% at 80% 25%, white 0%, transparent 100%);
-    }
-    .sdg-bg-inner {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(37,99,235,.04), transparent);
-      mask-image: radial-gradient(farthest-side at top, white, transparent);
-      -webkit-mask-image: radial-gradient(farthest-side at top, white, transparent);
-    }
-
-    /* ─── ANIMATIONS ─── */
-    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .fade-in-delay-1 { transition-delay: .1s; }
-    .fade-in-delay-2 { transition-delay: .2s; }
-    .fade-in-delay-3 { transition-delay: .3s; }
-    .fade-in-delay-4 { transition-delay: .4s; }
-    .fade-in-delay-5 { transition-delay: .5s; }
-
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
-      .profile-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .profil-grid { grid-template-columns: 1fr; }
+      .profil-left-wrapper { grid-column: 1; grid-row: auto; border-right: none; border-bottom: 1px solid var(--border); }
+      .profil-card-side { grid-column: 1; }
       .schwerpunkte-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     }
     @media (max-width: 768px) {
-      section { padding: 64px 0; }
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
       .schwerpunkte-grid { grid-template-columns: 1fr; }
       .arbeitsweise-grid { grid-template-columns: 1fr; }
       .qual-grid { grid-template-columns: 1fr 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-main { grid-template-columns: 1fr; gap: 2rem; }
     }
     @media (max-width: 480px) {
-      .stats-row { grid-template-columns: 1fr 1fr; }
       .qual-grid { grid-template-columns: 1fr; }
-      .lang-row { grid-template-columns: 1fr; }
     }
-    h1,h2,h3,h4 { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 600; }
-    button,.btn-primary,.btn-outline,.nav-cta,.btn-submit,.section-label,
-    .nav-links a,.nav-logo-name,.stat-value,.step-num,.sdg-more,.footer-nav-link
-    { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 500; }
   </style>
 </head>
 <body>
 
-<!-- ─── NAVIGATION ─── -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark">MA</div>
-      <div class="nav-logo-text">
-        <span class="nav-logo-name">Marie Altmann</span>
-        <span class="nav-logo-sub">SAP Consultant</span>
-      </div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="ueber-mich.html" class="active">Über mich</a></li>
-      <li><a href="leistungen.html">Leistungen</a></li>
-      <li><a href="einsatzbereiche.html">Einsatzbereiche</a></li>
-      <li><a href="index.html#referenzen">Projekte</a></li>
-    </ul>
-    <a href="#kontakt" class="nav-cta">
-      Jetzt kontaktieren&nbsp;
-      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="ueber-mich.html"      onclick="closeMobileMenu()">Über mich</a>
-  <a href="leistungen.html"      onclick="closeMobileMenu()">Leistungen</a>
-  <a href="einsatzbereiche.html" onclick="closeMobileMenu()">Einsatzbereiche</a>
-  <a href="index.html#referenzen" onclick="closeMobileMenu()">Projekte</a>
-  <a href="#kontakt" class="nav-cta" onclick="closeMobileMenu()">Jetzt kontaktieren</a>
-</div>
-
 <!-- ─── PAGE HERO ─── -->
-<div class="page-hero">
-  <div class="page-hero-grid"></div>
-  <div class="page-hero-glow"></div>
+<div class="page-hero page-hero--light">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
   <div class="container">
     <div class="page-hero-inner">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Start</a>
-        <span>›</span>
-        <span class="breadcrumb-current">Über mich</span>
-      </nav>
-      <h1>Über <em>mich</em></h1>
-      <p>26 Jahre IT-Erfahrung. Zertifizierte SAP-Beraterin seit 1999. Präzise, verlässlich, praxisnah.</p>
+      <h1 class="hero-name">Erfahrung, die zählt –<br>Expertise, die wirkt.</h1>
+      <p class="hero-sub">26 Jahre IT-Erfahrung. Zertifizierte SAP-Beraterin seit 1999. Präzise, verlässlich, praxisnah.</p>
     </div>
   </div>
 </div>
 
-<!-- ─── STATS ─── -->
-<section style="padding: 60px 0 80px;">
-  <div class="container">
-    <div class="stats-row">
-      <div class="stat-card fade-in fade-in-delay-1">
-        <div class="stat-value">26+</div>
-        <div class="stat-label">Jahre IT-Erfahrung</div>
-      </div>
-      <div class="stat-card fade-in fade-in-delay-2">
-        <div class="stat-value">1999</div>
-        <div class="stat-label">SAP-Zertifizierung Finanzen & Controlling</div>
-      </div>
-      <div class="stat-card fade-in fade-in-delay-3">
-        <div class="stat-value">30+</div>
-        <div class="stat-label">Abgeschlossene Kundenprojekte</div>
-      </div>
-      <div class="stat-card fade-in fade-in-delay-4">
-        <div class="stat-value">8+</div>
-        <div class="stat-label">Branchen & Industrien</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ─── PROFIL ─── -->
-<section class="bg-tinted">
+<section class="">
   <div class="container">
-    <div class="profile-grid">
-      <div class="profile-text">
-        <span class="section-label fade-in">Profil</span>
-        <h2 class="section-heading fade-in">Erfahrung, die zählt –<br />Expertise, die wirkt.</h2>
-        <div class="fade-in">
-          <p>Seit dem Jahr 1999 bin ich als zertifizierte SAP-Beraterin in der IT tätig – mit einem klaren Fokus auf SAP Berechtigungsmanagement, Identitäts- und Zugriffsmanagement sowie Governance, Risk &amp; Compliance. Was als klassische SAP-Beratung begann, hat sich über die Jahre zu einer tiefen Spezialisierung auf eines der komplexesten und geschäftskritischsten Felder der SAP-Welt entwickelt.</p>
-          <p>Ich begleite Unternehmen durch den gesamten Lebenszyklus ihrer SAP-Berechtigungslandschaft – von der strategischen Konzeption und dem technischen Aufbau über die Implementierung geeigneter Tools bis zur sauberen Übergabe an das interne Team. Dabei bringe ich technisches Tiefenwissen genauso mit wie ein sicheres Gespür für die organisatorischen und regulatorischen Anforderungen meiner Kunden.</p>
-          <p>Ob Greenfield S/4HANA-Rollout, komplexe SoD-Bereinigung vor einem Prüftermin, IDM-Neueinführung oder die gezielte Stärkung der internen Berechtigungskompetenz – ich arbeite strukturiert, transparent und immer mit Blick auf das große Ganze. Mein Anspruch ist nicht nur eine technisch saubere Lösung, sondern eine, die im Betrieb trägt und von den Teams verstanden wird.</p>
+
+    <!-- Zentrierter Header -->
+    <div style="text-align:center; margin-bottom:3rem;">
+      <span class="section-label fade-in" style="justify-content:center;">Profil</span>
+      <h2 class="section-heading fade-in">Kompetenz aus mehreren Blickwinkeln</h2>
+      <p class="fade-in" style="max-width:75%; margin:0 auto; font-size:1.05rem;">Seit 1999 begleite ich Unternehmen bei komplexen SAP-Projekten – von der Konzeption bis zur sauberen Übergabe. Präzise, transparent und immer mit dem Anspruch, Lösungen zu schaffen, die im Betrieb tragen und bei Audits standhalten.</p>
+    </div>
+
+    <!-- Profil-Grid: links groß, rechts 3 gleich -->
+    <div class="profil-grid fade-in">
+
+      <!-- Linke Spalte: 2 gestapelte Karten -->
+      <div class="profil-left-wrapper">
+
+        <div class="profil-card-main">
+          <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+          <svg class="profil-card-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect width="6" height="6" x="3" y="3" rx="1"/>
+            <rect width="6" height="6" x="15" y="3" rx="1"/>
+            <rect width="6" height="6" x="9" y="15" rx="1"/>
+            <path d="M6 9v1a2 2 0 0 0 2 2h2"/>
+            <path d="M18 9v1a2 2 0 0 1-2 2h-2"/>
+            <path d="M12 12v3"/>
+          </svg>
+          <h3 style="font-size:1.25rem; margin-bottom:1.25rem; color:var(--text);">Drei Perspektiven, ein Ergebnis</h3>
+          <p style="font-size:.95rem; line-height:1.85; color:var(--text-sec);">Tools, Projektkontext und Fachlogik werden zusammen gedacht. So entstehen Berechtigungslandschaften, die technisch stimmen und fachlich tragen.</p>
         </div>
-        <div class="profile-quote fade-in">
-          <p>„Berechtigungen sind kein lästiges Compliance-Thema – sie sind das Rückgrat der SAP-Sicherheit. Wer hier sauber arbeitet, schützt das Unternehmen und spart sich teure Nacharbeiten."</p>
+
+        <div class="profil-card-main">
+          <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+          <svg class="profil-card-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.78 4.78 4 4 0 0 1-6.74 0 4 4 0 0 1-4.78-4.78 4 4 0 0 1 0-6.75Z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          <h3 style="font-size:1.25rem; margin-bottom:1.25rem; color:var(--text);">Was mich ausmacht</h3>
+          <p style="font-size:.95rem; line-height:1.85; color:var(--text-sec);">Ich verbinde tiefes SAP-Fachwissen mit echter Projekterfahrung. Präzise im Detail, pragmatisch in der Umsetzung und verlässlich im Ergebnis.</p>
         </div>
-        <p class="fade-in">Als Freelancerin arbeite ich projektweise, flexibel und zielgerichtet – sowohl remote als auch vor Ort. Ich bringe nicht nur Fachkompetenz mit, sondern auch die kommunikativen Fähigkeiten, die es braucht, um Brücken zwischen IT, Fachabteilungen und Revision zu bauen.</p>
+
       </div>
-      <div class="profile-aside">
-        <div class="info-card fade-in fade-in-delay-1">
-          <div class="info-card-header">
-            <div class="info-card-icon">🎯</div>
-            <h4>Fachlicher Fokus</h4>
-          </div>
-          <ul>
-            <li>SAP Berechtigungsmanagement (alle Module)</li>
-            <li>IDM / IAM / IAG – Identity & Access Management</li>
-            <li>SAP GRC Access Control & Firefighter</li>
-            <li>S/4HANA, Fiori, BW, SAC, BTP</li>
-            <li>SoD-Analyse und Risikomanagement</li>
-            <li>Compliance: SOX, IKS, KRITIS, DSGVO</li>
-          </ul>
-        </div>
-        <div class="info-card fade-in fade-in-delay-2">
-          <div class="info-card-header">
-            <div class="info-card-icon">🛠️</div>
-            <h4>Tool-Expertise</h4>
-          </div>
-          <ul>
-            <li>XAMS (Xiting), SAST (Akquinet), SIAM (Sivis)</li>
-            <li>SAP GRC, Security Bridge, Valantic APM</li>
-            <li>ONE Identity, SailPoint, OMADA</li>
-            <li>SAP IDM, Rev.Trac, HONICO</li>
-            <li>Azure AD / LDAP, Solution Manager</li>
-          </ul>
-        </div>
-        <div class="info-card fade-in fade-in-delay-3">
-          <div class="info-card-header">
-            <div class="info-card-icon">🌍</div>
-            <h4>Projekterfahrung</h4>
-          </div>
-          <ul>
-            <li>Internationale Rollouts (bis zu 58 Buchungskreise)</li>
-            <li>Offshore-Teamleitung und Projektmanagement</li>
-            <li>Audit-Begleitung: EY, KPMG, PwC</li>
-            <li>Branchen: Chemie, Pharma, Energie, Öl &amp; Gas, Automotive, Banking, Lebensmittel, Telekommunikation</li>
-          </ul>
-        </div>
+
+      <!-- Rechte 3 gleiche Felder -->
+      <div class="profil-card-side">
+        <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+        <h3 style="font-size:1rem; margin-bottom:.75rem; color:var(--text);">Tool-Expertise</h3>
+        <ul class="profil-list">
+          <li>XAMS, SAST, SIAM, Security Bridge</li>
+          <li>SAP GRC Access Control</li>
+          <li>ONE Identity, SailPoint, OMADA</li>
+          <li>SAP IDM, Rev.Trac</li>
+        </ul>
       </div>
+
+      <div class="profil-card-side">
+        <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+        <h3 style="font-size:1rem; margin-bottom:.75rem; color:var(--text);">Projekterfahrung</h3>
+        <ul class="profil-list">
+          <li>Internationale Rollouts &amp; Greenfield-Projekte</li>
+          <li>Offshore-Teamleitung</li>
+          <li>Audit-Begleitung: EY, KPMG, PwC</li>
+          <li>8 Branchen – national &amp; international</li>
+        </ul>
+      </div>
+
+      <div class="profil-card-side">
+        <div class="sdg-bg"><div class="sdg-bg-inner"></div></div>
+        <h3 style="font-size:1rem; margin-bottom:.75rem; color:var(--text);">Fachlicher Fokus</h3>
+        <ul class="profil-list">
+          <li>SAP Berechtigungsmanagement</li>
+          <li>IDM / IAM / GRC</li>
+          <li>S/4HANA, Fiori, BW, SAC</li>
+          <li>SoD-Analyse &amp; Compliance</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
@@ -646,7 +397,7 @@
 </section>
 
 <!-- ─── ARBEITSWEISE ─── -->
-<section class="bg-tinted">
+<section class="">
   <div class="container">
     <span class="section-label fade-in">Arbeitsweise</span>
     <h2 class="section-heading fade-in">Wie ich arbeite</h2>
@@ -705,30 +456,6 @@
         <div class="qual-year">laufend</div>
         <h4>Kontinuierliche Weiterbildung</h4>
         <p>Regelmäßige Aktualisierung des Wissens in S/4HANA, Cloud-Security, IAM-Lösungen und SAP-Compliance-Anforderungen</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── SPRACHEN ─── -->
-<section class="bg-tinted" style="padding: 60px 0 80px;">
-  <div class="container">
-    <span class="section-label fade-in">Sprachen</span>
-    <h2 class="section-heading fade-in" style="margin-bottom: 2rem;">Kommunikation ohne Grenzen</h2>
-    <div class="lang-row">
-      <div class="lang-card fade-in fade-in-delay-1">
-        <div class="lang-flag">🇩🇪</div>
-        <div>
-          <div class="lang-name">Deutsch</div>
-          <div class="lang-level">Muttersprache</div>
-        </div>
-      </div>
-      <div class="lang-card fade-in fade-in-delay-2">
-        <div class="lang-flag">🇬🇧</div>
-        <div>
-          <div class="lang-name">Englisch</div>
-          <div class="lang-level">Sehr gut – Projektkommunikation &amp; Dokumentation</div>
-        </div>
       </div>
     </div>
   </div>
@@ -831,162 +558,6 @@
   </div>
 </section>
 
-<!-- ─── FOOTER ─── -->
-<footer>
-  <div class="hero-grid"></div>
-  <div class="hero-orb" style="right:-15%;left:auto;transform:none;bottom:-95%;width:900px;height:900px;"></div>
-  <div class="container">
-    <div class="footer-main">
-
-      <div>
-        <div class="footer-brand">
-          <div class="footer-brand-mark">MA</div>
-          <span class="footer-brand-name">Marie Altmann · Me-One-Consulting</span>
-        </div>
-        <p class="footer-tagline">Senior SAP Consultant – Berechtigungsmanagement, IDM/IAM, GRC und S/4HANA Security. Präzise. Verlässlich. Erfahren.</p>
-        <a href="#kontakt" class="nav-cta" style="align-self:flex-start;">
-          Kontakt aufnehmen&nbsp;
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-
-      <div style="display:flex; flex-direction:column; align-items:flex-end; justify-content:flex-end; gap:.35rem;">
-        <a href="ueber-mich.html" class="footer-nav-link">Über mich <span class="footer-nav-arrow">›</span></a>
-        <a href="leistungen.html" class="footer-nav-link">Leistungen <span class="footer-nav-arrow">›</span></a>
-        <a href="einsatzbereiche.html" class="footer-nav-link">Einsatzbereiche <span class="footer-nav-arrow">›</span></a>
-        <a href="index.html#referenzen" class="footer-nav-link">Projekte <span class="footer-nav-arrow">›</span></a>
-      </div>
-
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Marie Altmann · Me-One-Consulting</span>
-      <ul class="footer-legal">
-        <li><a href="impressum.html">Impressum</a></li>
-        <li><a href="datenschutz.html">Datenschutz</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
-
-<script>
-  // ── Navigation scroll effect
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 20);
-  }, { passive: true });
-
-  // ── Mobile menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-  });
-  function closeMobileMenu() {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-  }
-
-  // ── Intersection Observer for fade-in animations
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  fadeEls.forEach(el => observer.observe(el));
-
-  // ── Contact form
-  const form = document.getElementById('contact-form');
-  const successDiv = document.getElementById('form-success');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name    = form.name.value.trim();
-    const email   = form.email.value.trim();
-    const betreff = form.betreff.value.trim();
-    const message = form.message.value.trim();
-    const privacy = form.datenschutz.checked;
-    if (!name || !email || !betreff || !message || !privacy) {
-      alert('Bitte füllen Sie alle Pflichtfelder aus und stimmen Sie der Datenschutzerklärung zu.');
-      return;
-    }
-    const subject = encodeURIComponent(form.betreff.value || 'Anfrage über die Website');
-    const body    = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n\n${message}`);
-    window.location.href = `mailto:Me-One-Consulting@outlook.de?subject=${subject}&body=${body}`;
-    form.style.display = 'none';
-    successDiv.style.display = 'block';
-  });
-
-  // ── Hero grid pattern
-  (function () {
-    var W = 56, H = 56, OX = 30, OY = -10;
-    var cols = 6, rows = 8;
-    var xStart = 4, xSpan = 40, yStart = 1, ySpan = 36;
-    var cw = xSpan / cols, rh = ySpan / rows;
-    document.querySelectorAll('.hero-grid').forEach(function (gridEl) {
-      var pid = 'hero-gp' + Math.random().toString(36).slice(2, 8);
-      var squares = [];
-      for (var r = 0; r < rows; r++) {
-        for (var c = 0; c < cols; c++) {
-          squares.push([
-            Math.floor(xStart + c * cw + Math.random() * cw),
-            Math.floor(yStart + r * rh + Math.random() * rh)
-          ]);
-        }
-      }
-      var rects = squares.map(function (s) {
-        return '<rect width="' + (W + 1) + '" height="' + (H + 1) + '" x="' + (s[0] * W) + '" y="' + (s[1] * H) + '" stroke-width="0"/>';
-      }).join('');
-      var svg = '<svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;mix-blend-mode:multiply;fill:rgba(37,99,235,.07);stroke:none">'
-        + '<defs><pattern id="' + pid + '" width="' + W + '" height="' + H + '" patternUnits="userSpaceOnUse" x="' + OX + '" y="' + OY + '">'
-        + '<path d="M.5 ' + H + 'V.5H' + W + '" fill="none" stroke="rgba(0,0,0,.05)" stroke-width="1"/>'
-        + '</pattern></defs>'
-        + '<rect width="100%" height="100%" fill="url(#' + pid + ')" stroke-width="0"/>'
-        + '<svg x="' + OX + '" y="' + OY + '" overflow="visible">' + rects + '</svg>'
-        + '</svg>';
-      gridEl.insertAdjacentHTML('beforeend', svg);
-    });
-  })();
-
-  // ── Contact/card grid patterns
-  (function () {
-    const W = 32, H = 32;
-    const OX = 30, OY = -10;
-
-    function injectGridPattern(card, insertFn) {
-      var pid = 'gp' + Math.random().toString(36).slice(2, 8);
-      var count = Math.floor(Math.random() * 4) + 6;
-      var squares = Array.from({ length: count }, function () {
-        return [Math.floor(Math.random() * 6) + 4, Math.floor(Math.random() * 5) + 1];
-      });
-      var rects = squares.map(function (s) {
-        return '<rect width="' + (W + 1) + '" height="' + (H + 1) + '" x="' + (s[0] * W) + '" y="' + (s[1] * H) + '" stroke-width="0"/>';
-      }).join('');
-      var svg = '<svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;mix-blend-mode:multiply;fill:rgba(37,99,235,.07);stroke:none">'
-        + '<defs><pattern id="' + pid + '" width="' + W + '" height="' + H + '" patternUnits="userSpaceOnUse" x="' + OX + '" y="' + OY + '">'
-        + '<path d="M.5 ' + H + 'V.5H' + W + '" fill="none" stroke="rgba(0,0,0,.06)" stroke-width="1"/>'
-        + '</pattern></defs>'
-        + '<rect width="100%" height="100%" fill="url(#' + pid + ')" stroke-width="0"/>'
-        + '<svg x="' + OX + '" y="' + OY + '" overflow="visible">' + rects + '</svg>'
-        + '</svg>';
-      insertFn(svg);
-    }
-
-    document.querySelectorAll('.contact-form, .contact-box').forEach(function (card) {
-      var bg = document.createElement('div');
-      bg.className = 'sdg-bg';
-      var bgInner = document.createElement('div');
-      bgInner.className = 'sdg-bg-inner';
-      bg.appendChild(bgInner);
-      card.insertBefore(bg, card.firstChild);
-      injectGridPattern(card, function (svg) {
-        bgInner.insertAdjacentHTML('afterend', svg);
-      });
-    });
-  })();
-</script>
+<script src="assets/js/components.js"></script>
 </body>
 </html>
