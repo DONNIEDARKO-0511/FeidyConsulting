@@ -419,8 +419,9 @@
       #hero { align-items: flex-start; padding-top: calc(var(--nav-h) + 5rem); }
       .hero-inner { text-align: left; }
       .hero-sub { margin-left: 0; margin-right: 0; }
-      .hero-actions { justify-content: flex-start; flex-direction: column; align-items: flex-start; }
-      .btn-primary, .btn-outline { justify-content: flex-start; text-align: left; }
+      .hero-actions { justify-content: flex-start; flex-direction: column; align-items: stretch; }
+      .hero-actions .btn-primary { width: 100%; justify-content: center; text-align: center; }
+      .hero-actions .btn-outline { justify-content: center; text-align: center; }
       .timeline-item { grid-template-columns: 1fr; gap: 1rem; }
       .timeline-meta { position: static; flex-direction: row; align-items: center; flex-wrap: wrap; gap: .75rem; padding-top: 0; }
       .about-stats { grid-template-columns: 1fr 1fr; }
