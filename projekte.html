@@ -118,7 +118,18 @@
       max-height: 300px; opacity: 1; margin-top: 1.25rem;
     }
 
-    @media (max-width: 640px)  { .projekt-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .projekt-grid { grid-template-columns: 1fr; }
+      .projekt-card { padding: 1.25rem; padding-right: 3.5rem; }
+      .projekt-card::after { top: 1.25rem; right: 1.25rem; }
+      .projekt-card-header { padding-right: 1.5rem; }
+      .projekt-logo { margin-bottom: 2rem; }
+      .projekt-card--cta { padding: 1.25rem; }
+    }
+    @media (max-width: 480px) {
+      .projekt-tags { gap: .3rem; }
+      .projekt-tag { font-size: .68rem; padding: .2rem .5rem; }
+    }
   </style>
 </head>
 <body>
