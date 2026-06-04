@@ -183,7 +183,7 @@
         '<rect width="100%" height="100%" fill="url(#' + pid + ')" stroke-width="0"/>' +
         '<svg x="' + OX + '" y="' + OY + '" overflow="visible">' + rects + '</svg></svg>');
     }
-    var cardSelector = '.contact-form, .contact-box, .profil-card-main, .profil-card-side, .service-block, .usp-card, .eb-card, .category-header';
+    var cardSelector = '.contact-form, .contact-box, .profil-card-main, .profil-card-side, .service-block, .usp-card, .eb-card, .category-header, .projekt-card';
     if (!isIndex) cardSelector += ', .timeline-card, .branchen-card';
     document.querySelectorAll(cardSelector).forEach(function (card) {
       if (card.dataset.injected) return;

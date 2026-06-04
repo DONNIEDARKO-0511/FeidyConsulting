@@ -10,12 +10,8 @@
   <link rel="stylesheet" href="assets/fonts/fonts.css" />
   <link rel="stylesheet" href="assets/css/shared.css" />
   <style>
-    /* ─── NAVBAR: transparent über weißem Hero ─── */
-    nav#navbar {
-      background: transparent;
-      border-color: transparent;
-      backdrop-filter: none;
-    }
+    /* ─── NAVBAR ─── */
+    nav#navbar { background: transparent; border-color: transparent; backdrop-filter: none; }
     nav#navbar .nav-links a { color: var(--text); }
     nav#navbar .nav-links a:hover { color: var(--blue); }
     nav#navbar.scrolled .nav-links a { color: var(--text); }
@@ -36,82 +32,84 @@
       color: var(--text-sec); font-size: clamp(1rem, 1.75vw, 1.25rem); max-width: 75%;
     }
 
-    /* ─── TIMELINE ─── */
-    .timeline-list { display: flex; flex-direction: column; gap: 1rem; }
-    .timeline-item {
+    /* ─── PROJEKT KARTEN ─── */
+    .projekt-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .projekt-card--cta { cursor: default; }
+    .projekt-card--cta:hover { background: var(--white); }
+    .projekt-card--cta::after { display: none; }
+    .projekt-card {
       position: relative;
-      display: grid; grid-template-columns: 1fr 55%;
-      gap: 5rem; align-items: start;
-    }
-    .timeline-sentinel {
-      position: absolute; top: -8rem; left: 0;
-      height: 1px; width: 1px; opacity: 0; pointer-events: none;
-    }
-    .timeline-meta {
-      position: sticky; top: 9rem;
-      display: flex; flex-direction: row; align-items: flex-start; gap: .75rem;
-      padding-top: 1.75rem;
-    }
-    .timeline-logo {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: var(--navy); flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Work Sans', system-ui, sans-serif;
-      font-weight: 700; font-size: .8rem; color: var(--white);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      overflow: hidden;
       transition: background .35s;
     }
-    .timeline-item.active .timeline-logo { background: var(--blue); }
-    .timeline-meta-info { display: flex; flex-direction: column; gap: .2rem; padding-top: .1rem; }
-    .timeline-client-name {
-      font-size: 1.15rem; font-weight: 600; line-height: 1.3;
-      color: var(--text); font-family: 'Work Sans', system-ui, sans-serif;
-      transition: color .35s;
+    .projekt-card-header { padding-right: 2.25rem; }
+    .projekt-card::after {
+      content: '+';
+      position: absolute;
+      top: 1.75rem; right: 1.75rem;
+      color: var(--text);
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-size: 1.1rem; font-weight: 500; line-height: 1;
+      transition: color .2s, transform .25s;
     }
-    .timeline-item.active .timeline-client-name { color: var(--blue); }
-    .timeline-meta-sub { display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
-    .timeline-client-role { font-size: .75rem; color: var(--text-sec); transition: color .35s; }
-    .timeline-client-role::after { content: '·'; color: var(--text-muted); margin-left: .3rem; }
-    .timeline-client-period { font-size: .75rem; color: var(--text-sec); transition: color .35s; }
-    .timeline-item.active .timeline-client-role,
-    .timeline-item.active .timeline-client-period { color: var(--blue); }
-    .timeline-card {
-      position: relative; overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.75rem;
-      background: var(--white); transition: background .35s;
+    .projekt-card:hover { background: #F8FAFE; }
+    .projekt-card:hover::after { color: var(--blue); transform: rotate(45deg); }
+
+    .projekt-logo {
+      margin-bottom: 3.5rem;
+      height: 28px;
+      display: flex; align-items: center;
     }
-    .timeline-item.active .timeline-card { background: #F8FAFE; }
-    .project-badge {
-      display: inline-block; margin-bottom: .75rem;
-      padding: .25rem .75rem; border-radius: var(--radius-sm);
-      background: var(--bg-alt); color: var(--text-sec);
-      font-size: .7rem; font-weight: 600;
+    .projekt-logo img { width: auto; display: block; object-fit: contain; }
+
+    .projekt-meta {
+      display: flex; align-items: baseline; gap: .6rem;
+      margin-bottom: .4rem;
+    }
+    .projekt-role {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-size: 1rem; font-weight: 600;
+      color: var(--text);
+      transition: color .2s;
+    }
+    .projekt-card:hover .projekt-role { color: var(--blue); }
+    .projekt-card:hover .projekt-period { color: var(--blue); }
+    .projekt-card:hover .projekt-logo img { filter: brightness(0) saturate(100%) invert(27%) sepia(95%) saturate(1345%) hue-rotate(213deg) brightness(105%) contrast(92%); }
+    .projekt-card:hover .projekt-desc { color: var(--blue); }
+
+    .projekt-period {
       font-family: 'JetBrains Mono', monospace;
-      position: relative; z-index: 1;
-    }
-    .timeline-card h3 {
-      font-size: 1.05rem; color: var(--text); margin-bottom: .6rem;
-      position: relative; z-index: 1; transition: color .35s;
-    }
-    .timeline-card:hover h3,
-    .timeline-item.active .timeline-card h3 { color: var(--blue); }
-    .timeline-desc {
-      font-size: .875rem; line-height: 1.7; color: var(--text-sec);
-      position: relative; z-index: 1; transition: color .35s;
-    }
-    .timeline-item.active .timeline-desc { color: var(--blue-dark); }
-    .project-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
-    .project-tag {
-      padding: .25rem .65rem; border-radius: var(--radius-sm);
-      background: var(--blue); color: var(--white);
-      font-size: .72rem; font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; color: var(--text-muted);
     }
 
-    @media (max-width: 768px) {
-      .timeline-item { grid-template-columns: 1fr; gap: 1rem; }
-      .timeline-meta { position: static; flex-direction: row; align-items: center; flex-wrap: wrap; gap: .75rem; padding-top: 0; }
+    .projekt-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .projekt-tag {
+      padding: .25rem .65rem; border-radius: var(--radius-sm);
+      background: var(--blue); color: var(--white);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; font-weight: 600;
     }
+
+    .projekt-desc {
+      font-size: .875rem; line-height: 1.75;
+      color: var(--text-sec);
+      max-height: 0; opacity: 0; overflow: hidden;
+      margin-top: 0;
+      transition: max-height .45s ease, opacity .3s ease, margin-top .35s ease;
+    }
+    .projekt-card:hover .projekt-desc {
+      max-height: 300px; opacity: 1; margin-top: 1.25rem;
+    }
+
+    @media (max-width: 640px)  { .projekt-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -138,84 +136,81 @@
       <p class="section-sub fade-in">Komplexe Kundenprojekte – von Greenfield-Implementierungen bis zur laufenden Compliance-Begleitung.</p>
     </div>
 
-    <div class="timeline-list">
+    <div class="projekt-grid">
 
-      <div class="timeline-item fade-in">
-        <div class="timeline-sentinel"></div>
-        <div class="timeline-meta">
-          <div class="timeline-logo">TS</div>
-          <div class="timeline-meta-info">
-            <span class="timeline-client-name">Telekom Systems</span>
-            <div class="timeline-meta-sub">
-              <span class="timeline-client-role">Senior Consultant</span>
-              <span class="timeline-client-period">2025 – 2026</span>
-            </div>
+      <div class="projekt-card fade-in">
+        <div class="projekt-card-header">
+          <div class="projekt-logo">
+            <img src="assets/icons/telekom.svg" alt="Telekom Systems" style="height:24px;" />
+          </div>
+          <div class="projekt-meta">
+            <span class="projekt-role">Senior Consultant</span>
+            <span class="projekt-period">2025 – 2026</span>
+          </div>
+          <div class="projekt-tags">
+            <span class="projekt-tag">S/4HANA Greenfield</span>
+            <span class="projekt-tag">XAMS</span>
+            <span class="projekt-tag">Fiori</span>
+            <span class="projekt-tag">SoD / KPMG</span>
           </div>
         </div>
-        <article class="timeline-card">
-          <h3>S/4HANA Berechtigungskonzept (alle Module)</h3>
-          <p class="timeline-desc">Aufbau eines vollständigen Greenfield S/4HANA-Berechtigungskonzepts über alle Module inkl. BW, SAC und BTP. Implementierung von XAMS (Xiting). Entwicklung und Abstimmung des SoD-Konzepts mit KPMG sowie vollständige Konzeption der Fiori-Berechtigungsstrukturen.</p>
-          <div class="project-tags">
-            <span class="project-tag">S/4HANA Greenfield</span>
-            <span class="project-tag">XAMS</span>
-            <span class="project-tag">SoD / KPMG</span>
-            <span class="project-tag">Fiori</span>
-            <span class="project-tag">BW · SAC · BTP</span>
-          </div>
-        </article>
+        <p class="projekt-desc">Aufbau eines vollständigen Greenfield S/4HANA-Berechtigungskonzepts über alle Module inkl. BW, SAC und BTP. Implementierung von XAMS (Xiting). Entwicklung und Abstimmung des SoD-Konzepts mit KPMG sowie vollständige Konzeption der Fiori-Berechtigungsstrukturen.</p>
       </div>
 
-      <div class="timeline-item fade-in">
-        <div class="timeline-sentinel"></div>
-        <div class="timeline-meta">
-          <div class="timeline-logo">HA</div>
-          <div class="timeline-meta-info">
-            <span class="timeline-client-name">Harry's</span>
-            <div class="timeline-meta-sub">
-              <span class="timeline-client-role">Lead Consultant</span>
-              <span class="timeline-client-period">2025 – 2026</span>
-            </div>
+      <div class="projekt-card fade-in fade-in-delay-1">
+        <div class="projekt-card-header">
+          <div class="projekt-logo">
+            <img src="assets/icons/harrys.svg" alt="Harry's" style="height:20px;" />
+          </div>
+          <div class="projekt-meta">
+            <span class="projekt-role">Lead Consultant</span>
+            <span class="projekt-period">2025 – 2026</span>
+          </div>
+          <div class="projekt-tags">
+            <span class="projekt-tag">S/4HANA &amp; HCM</span>
+            <span class="projekt-tag">SOX</span>
+            <span class="projekt-tag">Firefighter</span>
+            <span class="projekt-tag">SAST</span>
           </div>
         </div>
-        <article class="timeline-card">
-          <h3>S/4HANA &amp; HCM Berechtigungskonzept mit SOX-Compliance</h3>
-          <p class="timeline-desc">Aufbau eines umfassenden Berechtigungskonzepts für S/4HANA und HCM. Implementierung von SAST (Akquinet) und Einführung des Firefighter-Access-Managements. SuccessFactors-Customizing sowie erfolgreiche Begleitung von EY- und KPMG-Audits mit SOX-Compliance-Nachweis.</p>
-          <div class="project-tags">
-            <span class="project-tag">S/4HANA &amp; HCM</span>
-            <span class="project-tag">SOX</span>
-            <span class="project-tag">SAST</span>
-            <span class="project-tag">Firefighter</span>
-            <span class="project-tag">SuccessFactors</span>
-          </div>
-        </article>
+        <p class="projekt-desc">Aufbau eines umfassenden Berechtigungskonzepts für S/4HANA und HCM. Implementierung von SAST (Akquinet) und Einführung des Firefighter-Access-Managements. SuccessFactors-Customizing sowie erfolgreiche Begleitung von EY- und KPMG-Audits mit SOX-Compliance-Nachweis.</p>
       </div>
 
-      <div class="timeline-item fade-in">
-        <div class="timeline-sentinel"></div>
-        <div class="timeline-meta">
-          <div class="timeline-logo">WD</div>
-          <div class="timeline-meta-info">
-            <span class="timeline-client-name">Wintershall DEA</span>
-            <div class="timeline-meta-sub">
-              <span class="timeline-client-role">Senior Lead</span>
-              <span class="timeline-client-period">2022 – 2025</span>
-            </div>
+      <div class="projekt-card fade-in fade-in-delay-2">
+        <div class="projekt-card-header">
+          <div class="projekt-logo">
+            <img src="assets/icons/wintershell.svg" alt="Wintershall DEA" style="height:16px;" />
+          </div>
+          <div class="projekt-meta">
+            <span class="projekt-role">Senior Lead</span>
+            <span class="projekt-period">2022 – 2025</span>
+          </div>
+          <div class="projekt-tags">
+            <span class="projekt-tag">S/4HANA</span>
+            <span class="projekt-tag">ONE Identity</span>
+            <span class="projekt-tag">PwC</span>
+            <span class="projekt-tag">HyperCare</span>
           </div>
         </div>
-        <article class="timeline-card">
-          <h3>S/4HANA International Rollout – 3 Wellen, 58 Buchungskreise</h3>
-          <p class="timeline-desc">Verantwortliche Projektleitung eines internationalen S/4HANA-Rollouts in drei Wellen über 58 Buchungskreise. PwC Audit Support, Einführung von ONE Identity IDM sowie vollständiges CutOver- und HyperCare-Management für einen reibungslosen Übergang in den Produktivbetrieb.</p>
-          <div class="project-tags">
-            <span class="project-tag">S/4HANA Rollout</span>
-            <span class="project-tag">ONE Identity IDM</span>
-            <span class="project-tag">CutOver &amp; HyperCare</span>
-            <span class="project-tag">PwC Audit</span>
-          </div>
-        </article>
+        <p class="projekt-desc">Verantwortliche Projektleitung eines internationalen S/4HANA-Rollouts in drei Wellen über 58 Buchungskreise. PwC Audit Support, Einführung von ONE Identity IDM sowie vollständiges CutOver- und HyperCare-Management für einen reibungslosen Übergang in den Produktivbetrieb.</p>
+      </div>
+
+      <div class="projekt-card projekt-card--cta fade-in fade-in-delay-3">
+        <div class="projekt-logo">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text);">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+            <line x1="12" y1="12" x2="12" y2="12"/>
+            <path d="M8 12h8"/>
+          </svg>
+        </div>
+        <div class="projekt-meta">
+          <span class="projekt-role">Was ich für Sie leiste</span>
+        </div>
+        <a href="leistungen.html#leistungsuebersicht" class="sdg-more">Mehr erfahren <span class="sdg-arrow">></span></a>
       </div>
 
     </div>
-
   </div>
 </section>
 
