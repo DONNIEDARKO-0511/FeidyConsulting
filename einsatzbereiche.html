@@ -256,6 +256,7 @@
       .eb-card:nth-child(2n) { border-right: none; }
       .eb-card:nth-last-child(-n+2) { border-bottom: none; }
       .branchen-grid { grid-template-columns: repeat(2, 1fr); }
+      .category-header { padding: 1.25rem; padding-right: 3.5rem; }
     }
     @media (max-width: 768px) {
       .eb-grid { grid-template-columns: 1fr; }
@@ -266,9 +267,14 @@
       .eb-card:nth-last-child(-n+3),
       .eb-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
       .eb-card:last-child { border-bottom: none; }
+      .eb-card { min-height: unset; padding: 1.25rem; }
+      .category-block { margin-bottom: .75rem; }
+      .category-header::after { top: 1.25rem; right: 1.25rem; }
     }
     @media (max-width: 480px) {
       .branchen-grid { grid-template-columns: repeat(2, 1fr); }
+      .eb-card-desc { -webkit-line-clamp: 4; min-height: unset; }
+      .eb-card-when-text { -webkit-line-clamp: 2; min-height: unset; }
     }
   </style>
 </head>
