@@ -34,10 +34,10 @@
       '</div>' +
     '</nav>' +
     '<div class="mobile-menu" id="mobile-menu">' +
-      '<a href="ueber-mich.html">Über mich</a>' +
-      '<a href="leistungen.html">Leistungen</a>' +
-      '<a href="einsatzbereiche.html">Einsatzbereiche</a>' +
-      '<a href="projekte.html">Projekte</a>' +
+      '<a href="ueber-mich.html"' + active('ueber-mich.html') + '>Über mich</a>' +
+      '<a href="leistungen.html"' + active('leistungen.html') + '>Leistungen</a>' +
+      '<a href="einsatzbereiche.html"' + active('einsatzbereiche.html') + '>Einsatzbereiche</a>' +
+      '<a href="projekte.html"' + active('projekte.html') + '>Projekte</a>' +
       '<a href="' + kontaktHref + '" class="nav-cta">Jetzt kontaktieren</a>' +
     '</div>';
 
@@ -56,9 +56,9 @@
               '<span class="footer-brand-name">Marie Altmann · Me-One-Consulting</span>' +
             '</div>' +
             '<p class="footer-tagline">Senior SAP Consultant – Berechtigungsmanagement, IDM/IAM, GRC und S/4HANA Security. Präzise. Verlässlich. Erfahren.</p>' +
-            '<a href="' + kontaktHref + '" class="nav-cta" style="align-self:flex-start;">Kontakt aufnehmen&nbsp;<span class="sdg-arrow">></span></a>' +
+            '<a href="' + kontaktHref + '" class="nav-cta" style="align-self:flex-start;">Jetzt kontaktieren&nbsp;<span class="sdg-arrow">></span></a>' +
           '</div>' +
-          '<div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:.35rem;">' +
+          '<div class="footer-nav" style="display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:.35rem;">' +
             '<a href="ueber-mich.html" class="footer-nav-link">Über mich <span class="footer-nav-arrow">></span></a>' +
             '<a href="leistungen.html" class="footer-nav-link">Leistungen <span class="footer-nav-arrow">></span></a>' +
             '<a href="einsatzbereiche.html" class="footer-nav-link">Einsatzbereiche <span class="footer-nav-arrow">></span></a>' +
@@ -95,11 +95,13 @@
   hamburger.addEventListener('click', function () {
     hamburger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
+    navbar.classList.toggle('menu-open');
   });
   mobileMenu.querySelectorAll('a').forEach(function (a) {
     a.addEventListener('click', function () {
       hamburger.classList.remove('open');
       mobileMenu.classList.remove('open');
+      navbar.classList.remove('menu-open');
     });
   });
 
@@ -200,7 +202,7 @@
 
   // ── Mobile tap state for branch cards
   (function () {
-    var cards = Array.from(document.querySelectorAll('#branchen .branchen-card'));
+    var cards = Array.from(document.querySelectorAll('#branchen .branchen-card, .arbeitsweise-section .branchen-card'));
     if (!cards.length) return;
     var mobileQuery = window.matchMedia('(max-width: 768px)');
 
@@ -218,6 +220,58 @@
 
     mobileQuery.addEventListener('change', function (event) {
       if (!event.matches) clear();
+    });
+  })();
+
+  // ── Mobile tap state for profile cards
+  (function () {
+    var cards = Array.from(document.querySelectorAll('.profil-card-main, .profil-card-side'));
+    if (!cards.length) return;
+    var mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    function clear() {
+      cards.forEach(function (card) { card.classList.remove('is-active'); });
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        if (!mobileQuery.matches) return;
+        clear();
+        card.classList.add('is-active');
+      });
+    });
+
+    mobileQuery.addEventListener('change', function (event) {
+      if (!event.matches) clear();
+    });
+  })();
+
+  // ── Mobile manual dropdowns for profile focus timeline
+  (function () {
+    if (page !== 'ueber-mich.html') return;
+    var items = Array.from(document.querySelectorAll('.timeline-item'));
+    if (!items.length) return;
+    var mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    function closeAll(except) {
+      items.forEach(function (item) {
+        if (item !== except) item.classList.remove('is-open');
+      });
+    }
+
+    items.forEach(function (item) {
+      var trigger = item.querySelector('.timeline-meta');
+      if (!trigger) return;
+      trigger.addEventListener('click', function () {
+        if (!mobileQuery.matches) return;
+        var willOpen = !item.classList.contains('is-open');
+        closeAll(item);
+        item.classList.toggle('is-open', willOpen);
+      });
+    });
+
+    mobileQuery.addEventListener('change', function (event) {
+      if (!event.matches) closeAll();
     });
   })();
 

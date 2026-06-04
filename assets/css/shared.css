@@ -149,7 +149,7 @@ nav#navbar.scrolled .nav-links a:hover { color: var(--blue); }
 }
 .hamburger span {
   display: block; width: 24px; height: 2px;
-  background: var(--white); border-radius: 2px;
+  background: var(--text); border-radius: 2px;
   transition: transform .3s, opacity .3s;
 }
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -158,19 +158,43 @@ nav#navbar.scrolled .nav-links a:hover { color: var(--blue); }
 
 .mobile-menu {
   display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
-  background: var(--navy); padding: 1.5rem;
-  border-top: 1px solid rgba(255,255,255,.08);
+  background: var(--white); padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
   flex-direction: column; gap: .25rem;
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
   display: block; padding: .85rem 1rem;
-  color: rgba(255,255,255,.8); text-decoration: none; font-weight: 500;
+  color: var(--text); text-decoration: none; font-weight: 500;
   border-radius: var(--radius-sm);
   transition: background .2s, color .2s;
 }
-.mobile-menu a:hover { background: rgba(255,255,255,.07); color: var(--white); }
-.mobile-menu .nav-cta { margin-top: .5rem; text-align: center; justify-content: center; }
+.mobile-menu a:hover { background: #F8FAFE; color: var(--blue); }
+.mobile-menu a.active,
+.mobile-menu a:active,
+.mobile-menu a:focus-visible { color: var(--blue); }
+.mobile-menu .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  margin-top: .5rem;
+  padding: .5rem 1rem;
+  background: var(--blue);
+  color: var(--white);
+  border-radius: var(--radius-sm);
+  font-family: 'Work Sans', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: .8rem;
+}
+.mobile-menu .nav-cta:hover,
+.mobile-menu .nav-cta:active,
+.mobile-menu .nav-cta:focus-visible {
+  background: var(--blue-dark);
+  color: var(--white);
+}
 
 /* ─── PAGE HERO (sub-pages) ─── */
 .page-hero { padding-top: var(--nav-h); background: var(--navy); position: relative; overflow: hidden; }
@@ -234,7 +258,7 @@ nav#navbar.scrolled .nav-links a:hover { color: var(--blue); }
 /* ─── HERO TYPOGRAFIE (geteilt zwischen Startseite und Unterseiten) ─── */
 .hero-name {
   font-family: 'Work Sans', system-ui, sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.35rem, 4.5vw, 3.65rem);
   font-weight: 500;
   color: var(--navy);
   letter-spacing: -.02em;
@@ -311,6 +335,7 @@ nav#navbar.scrolled .nav-links a:hover { color: var(--blue); }
 
 /* ─── CONTACT SECTION ─── */
 #kontakt { background: var(--white); }
+#branchen { padding-bottom: 70px; }
 #kontakt .kontakt-header { text-align: left; margin-bottom: 3rem; }
 #kontakt .kontakt-header .section-label { justify-content: flex-start; }
 #kontakt .kontakt-header .section-sub { margin: 0; max-width: 100%; }
@@ -485,13 +510,43 @@ footer {
 @media (max-width: 768px) {
   section { padding: 60px 0; }
   .container { padding: 0 1.25rem; }
+  nav#navbar.menu-open {
+    background: var(--white);
+    border-color: var(--border);
+    backdrop-filter: blur(16px);
+  }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
   .form-row { grid-template-columns: 1fr; }
   .footer-main { grid-template-columns: 1fr; gap: 2rem; }
-  .footer-main > div:last-child { display: none; }
+  .footer-main > div:first-child { display: contents; }
+  .footer-brand { order: 1; }
+  .footer-tagline { order: 2; }
+  .footer-nav {
+    order: 3;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100%;
+    gap: .5rem !important;
+  }
+  .footer-nav-link {
+    min-width: 0;
+    justify-content: flex-start;
+    text-align: left;
+    white-space: nowrap;
+  }
+  footer .nav-cta {
+    order: 4;
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: -.75rem;
+  }
   .section-sub { margin-bottom: 2rem; font-size: .95rem; }
   .page-hero-inner { padding: 2.5rem 0 3rem; }
+  #branchen { padding-bottom: 48px; }
   #kontakt .kontakt-header .section-sub { max-width: 100%; }
   .contact-box-icon { display: none; }
   .contact-box { padding: 1.1rem 1.25rem; }

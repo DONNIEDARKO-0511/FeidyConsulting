@@ -83,7 +83,6 @@
       50%       { box-shadow: 0 0 0 6px rgba(37,99,235,.1); }
     }
     /* hero-name / hero-highlight / hero-sub → jetzt in shared.css */
-    #hero .hero-name { font-size: clamp(2.35rem, 4.5vw, 3.65rem); }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: center; margin-top: 2rem; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: .5rem;
@@ -142,7 +141,7 @@
     .hero-scroll:hover svg { transform: translateY(5px); opacity: .7; }
 
     /* ─── ÜBER MICH ─── */
-    .about-grid { display: grid; grid-template-columns: 1fr; gap: 0; align-items: start; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     #ueber-mich .about-header { text-align: left; }
     #ueber-mich .about-header .section-label { justify-content: flex-start; }
     #ueber-mich .about-header .section-sub { max-width: 100%; }
@@ -154,7 +153,7 @@
     .stat-value { font-size: 2rem; font-weight: 800; color: var(--navy); line-height: 1; }
     .stat-label { font-size: .8rem; color: var(--text-sec); margin-top: .25rem; }
 
-    .about-sdg-wrap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .about-sdg-wrap { display: flex; flex-direction: column; gap: 1rem; }
     .about-sdg-wrap .sdg-card {
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -179,6 +178,7 @@
     .about-sdg-wrap .sdg-card:hover h4,
     .about-sdg-wrap .sdg-card:hover p { color: var(--blue); }
     .about-sdg-wrap .sdg-card p { font-size: .875rem; line-height: 1.7; transition: color .2s; }
+    .about-more--mobile { display: none; }
 
     /* ─── LEISTUNGEN (dark grid cards) ─── */
     #leistungen { background: var(--white); }
@@ -237,6 +237,7 @@
       margin-top: auto; padding-top: 1.25rem; position: relative; z-index: 1; flex-shrink: 0; font-family: 'Work Sans', system-ui, sans-serif;
     }
     .about-more { display: flex; width: max-content; margin: 1.5rem auto 0; text-decoration: none; }
+    .about-more.about-more--mobile { display: none; }
     .sdg-arrow { display: inline-block; transition: transform .2s ease; }
     .sdg-card:hover .sdg-arrow,
     .sdg-more:hover .sdg-arrow { transform: translateX(5px); }
@@ -427,7 +428,9 @@
     }
     @media (max-width: 768px) {
       .sdg { grid-template-columns: 1fr; }
-      .about-sdg-wrap { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 0; }
+      .about-more--desktop { display: none; }
+      .about-more.about-more--mobile { display: flex; }
       #branchen .branchen-card { background: var(--white); }
       #branchen .branchen-card:nth-child(2),
       #branchen .branchen-card:nth-child(3),
@@ -550,6 +553,9 @@
         <p class="section-sub fade-in">
           Seit 1999 begleite ich Unternehmen bei komplexen SAP-Projekten. Als Freelancerin arbeite ich präzise, transparent und mit einem klaren Ziel: Lösungen, die im Betrieb tragen und bei Audits standhalten.
         </p>
+        <a href="ueber-mich.html" class="sdg-more about-more--desktop fade-in" style="text-decoration:none;">
+          Mehr erfahren <span class="sdg-arrow">›</span>
+        </a>
       </div>
       <div>
         <div class="about-sdg-wrap">
@@ -582,7 +588,7 @@
             </div>
           </div>
         </div>
-        <a href="ueber-mich.html" class="sdg-more about-more fade-in">
+        <a href="ueber-mich.html" class="sdg-more about-more about-more--mobile fade-in">
           Mehr erfahren <span class="sdg-arrow">›</span>
         </a>
       </div>
