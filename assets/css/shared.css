@@ -311,9 +311,9 @@ nav#navbar.scrolled .nav-links a:hover { color: var(--blue); }
 
 /* ─── CONTACT SECTION ─── */
 #kontakt { background: var(--white); }
-#kontakt .kontakt-header { text-align: center; margin-bottom: 3rem; }
-#kontakt .kontakt-header .section-label { justify-content: center; }
-#kontakt .kontakt-header .section-sub { margin: 0 auto; max-width: 75%; }
+#kontakt .kontakt-header { text-align: left; margin-bottom: 3rem; }
+#kontakt .kontakt-header .section-label { justify-content: flex-start; }
+#kontakt .kontakt-header .section-sub { margin: 0; max-width: 100%; }
 
 .contact-grid { display: grid; grid-template-columns: 2fr 3fr; gap: 1rem; align-items: stretch; }
 .contact-info { display: flex; flex-direction: column; }
@@ -480,7 +480,7 @@ footer {
 
 /* ─── SHARED RESPONSIVE ─── */
 @media (max-width: 1024px) {
-  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 1rem; }
 }
 @media (max-width: 768px) {
   section { padding: 60px 0; }

@@ -270,6 +270,13 @@
       .eb-card { min-height: unset; padding: 1.25rem; }
       .category-block { margin-bottom: .75rem; }
       .category-header::after { top: 1.25rem; right: 1.25rem; }
+      #branchen .branchen-card { background: var(--white); }
+      #branchen .branchen-card:nth-child(2),
+      #branchen .branchen-card:nth-child(3),
+      #branchen .branchen-card:nth-child(6),
+      #branchen .branchen-card:nth-child(7) { background: #F8FAFE; }
+      #branchen .branchen-card.is-active .branchen-icon,
+      #branchen .branchen-card.is-active .branchen-name { color: var(--blue); }
     }
     @media (max-width: 480px) {
       .branchen-grid { grid-template-columns: repeat(2, 1fr); }

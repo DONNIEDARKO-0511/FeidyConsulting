@@ -83,6 +83,7 @@
       50%       { box-shadow: 0 0 0 6px rgba(37,99,235,.1); }
     }
     /* hero-name / hero-highlight / hero-sub → jetzt in shared.css */
+    #hero .hero-name { font-size: clamp(2.35rem, 4.5vw, 3.65rem); }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: center; margin-top: 2rem; }
     .btn-primary {
       display: inline-flex; align-items: center; gap: .5rem;
@@ -178,7 +179,6 @@
     .about-sdg-wrap .sdg-card:hover h4,
     .about-sdg-wrap .sdg-card:hover p { color: var(--blue); }
     .about-sdg-wrap .sdg-card p { font-size: .875rem; line-height: 1.7; transition: color .2s; }
-    .about-more { display: flex; width: max-content; margin: 1.5rem auto 0; text-decoration: none; }
 
     /* ─── LEISTUNGEN (dark grid cards) ─── */
     #leistungen { background: var(--white); }
@@ -236,6 +236,7 @@
       font-size: .95rem; font-weight: 600; color: var(--blue);
       margin-top: auto; padding-top: 1.25rem; position: relative; z-index: 1; flex-shrink: 0; font-family: 'Work Sans', system-ui, sans-serif;
     }
+    .about-more { display: flex; width: max-content; margin: 1.5rem auto 0; text-decoration: none; }
     .sdg-arrow { display: inline-block; transition: transform .2s ease; }
     .sdg-card:hover .sdg-arrow,
     .sdg-more:hover .sdg-arrow { transform: translateX(5px); }
@@ -415,6 +416,7 @@
       grid-template-rows: 1fr; opacity: 1; margin-top: 1.25rem;
     }
     .timeline-extra-inner { overflow: hidden; }
+    .references-more { text-align: center; margin-top: 3rem; }
 
 
     @media (max-width: 1024px) {
@@ -426,6 +428,13 @@
     @media (max-width: 768px) {
       .sdg { grid-template-columns: 1fr; }
       .about-sdg-wrap { grid-template-columns: 1fr; }
+      #branchen .branchen-card { background: var(--white); }
+      #branchen .branchen-card:nth-child(2),
+      #branchen .branchen-card:nth-child(3),
+      #branchen .branchen-card:nth-child(6),
+      #branchen .branchen-card:nth-child(7) { background: #F8FAFE; }
+      #branchen .branchen-card.is-active .branchen-icon,
+      #branchen .branchen-card.is-active .branchen-name { color: var(--blue); }
       #leistungen .leistungen-header { text-align: left; }
       #leistungen .leistungen-header .section-label { justify-content: flex-start; }
       #leistungen .leistungen-header .section-sub { max-width: 100%; margin-left: 0; margin-right: 0; }
@@ -445,8 +454,14 @@
       .hero-actions { justify-content: flex-start; flex-direction: column; align-items: stretch; }
       .hero-actions .btn-primary { width: 100%; justify-content: center; text-align: center; }
       .hero-actions .btn-outline { justify-content: center; text-align: center; }
-      .timeline-item { grid-template-columns: 1fr; gap: 1rem; }
+      .timeline-list { gap: 2.75rem; }
+      .timeline-item { grid-template-columns: 1fr; gap: 1.25rem; }
       .timeline-meta { position: static; flex-direction: row; align-items: center; flex-wrap: wrap; gap: .75rem; padding-top: 0; }
+      .timeline-item.active .timeline-logo--img img {
+        filter: brightness(0) saturate(100%) invert(36%) sepia(85%) saturate(3215%) hue-rotate(210deg) brightness(95%) contrast(96%);
+      }
+      .references-more { margin-top: 1.75rem; }
+      .timeline-item--telekom .project-tag:last-child { display: none; }
       .about-stats { grid-template-columns: 1fr 1fr; }
       .hero-stats {
         width: 100%; margin-left: 0;
@@ -531,7 +546,7 @@
     <div class="about-grid">
       <div class="about-header">
         <span class="section-label fade-in">Über mich</span>
-        <h2 class="section-heading fade-in">Erfahrung, die zählt –<br />Expertise, die wirkt.</h2>
+        <h2 class="section-heading fade-in">Erfahrung, die zählt – Expertise, die wirkt.</h2>
         <p class="section-sub fade-in">
           Seit 1999 begleite ich Unternehmen bei komplexen SAP-Projekten. Als Freelancerin arbeite ich präzise, transparent und mit einem klaren Ziel: Lösungen, die im Betrieb tragen und bei Audits standhalten.
         </p>
@@ -710,7 +725,7 @@
     <p class="section-sub fade-in" style="max-width:100%;">Komplexe Kundenprojekte – von Greenfield-Implementierungen bis zur laufenden Compliance-Begleitung.</p>
     <div class="timeline-list">
 
-      <div class="timeline-item fade-in">
+      <div class="timeline-item timeline-item--telekom fade-in">
         <div class="timeline-sentinel"></div>
         <div class="timeline-meta">
           <div class="timeline-meta-info">
@@ -793,9 +808,9 @@
       </div>
 
     </div>
-    <div class="fade-in" style="text-align:center; margin-top:3rem;">
-      <a href="#kontakt" class="sdg-more" style="text-decoration:none;">
-        Alle Referenzen anfragen <span class="sdg-arrow">›</span>
+    <div class="references-more fade-in">
+      <a href="projekte.html" class="sdg-more" style="text-decoration:none;">
+        Weitere Referenzen anzeigen <span class="sdg-arrow">›</span>
       </a>
     </div>
   </div>

@@ -198,6 +198,29 @@
     });
   })();
 
+  // ── Mobile tap state for branch cards
+  (function () {
+    var cards = Array.from(document.querySelectorAll('#branchen .branchen-card'));
+    if (!cards.length) return;
+    var mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    function clear() {
+      cards.forEach(function (card) { card.classList.remove('is-active'); });
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        if (!mobileQuery.matches) return;
+        clear();
+        card.classList.add('is-active');
+      });
+    });
+
+    mobileQuery.addEventListener('change', function (event) {
+      if (!event.matches) clear();
+    });
+  })();
+
   // ── Timeline scroll effect
   (function () {
     if (isIndex) return;
