@@ -411,21 +411,37 @@
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .sdg { grid-template-columns: repeat(2, 1fr); }
       .branchen-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats { width: 90vw; margin-left: calc(50% - 45vw); }
+      .hero-stat { padding: 0 1.5rem; }
     }
     @media (max-width: 768px) {
-      section { padding: 70px 0; }
       .sdg { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 1fr; gap: 1rem; }
-      .timeline-meta { position: static; flex-direction: row; align-items: center; flex-wrap: wrap; gap: .75rem; }
-      .timeline-meta { padding-top: 0; }
-      .timeline-logo { margin-bottom: 0; }
+      .timeline-meta { position: static; flex-direction: row; align-items: center; flex-wrap: wrap; gap: .75rem; padding-top: 0; }
       .about-stats { grid-template-columns: 1fr 1fr; }
+      .hero-stats {
+        width: 100%; margin-left: 0;
+        display: grid; grid-template-columns: 1fr 1fr;
+        padding-top: 2rem; margin-top: 2.5rem;
+        border-top: 1px solid var(--border);
+      }
+      .hero-stat {
+        padding: 1.25rem 1rem;
+        border-right: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .hero-stat:nth-child(2n) { border-right: none; }
+      .hero-stat:nth-last-child(-n+2) { border-bottom: none; }
+      .hero-stat-value { font-size: 2rem; }
+      .tags-container { overflow: hidden; }
     }
     @media (max-width: 480px) {
       .branchen-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .btn-primary, .btn-outline { justify-content: center; text-align: center; }
       .about-stats { grid-template-columns: 1fr 1fr; }
+      .hero-stat-value { font-size: 1.75rem; }
+      .hero-stat { padding: 1rem .75rem; }
     }
   </style>
 </head>
