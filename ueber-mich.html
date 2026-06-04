@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Über mich – Marie Altmann · Senior SAP Consultant</title>
-  <meta name="description" content="26 Jahre IT-Erfahrung, seit 1999 zertifizierte SAP-Beraterin. Spezialisiert auf SAP Berechtigungsmanagement, IDM, IAM, GRC und S/4HANA Security. Freelance, Remote & vor Ort." />
+  <meta name="description" content="26 Jahre IT-Erfahrung, seit 1999 zertifizierte Solution Architektin. Spezialisiert auf SAP Berechtigungsmanagement, IDM, IAM, GRC und S/4HANA Security. Freelance, Remote & vor Ort." />
   <meta name="robots" content="index, follow" />
 
 
@@ -26,25 +26,32 @@
     .page-hero--light {
       background: var(--white);
     }
+    .page-hero.page-hero--light {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+    }
     .page-hero--light .page-hero-inner {
-      padding: 5rem 0 5.5rem;
-      text-align: left;
+      padding: 5rem 0;
+      text-align: center;
     }
     /* Überschreibe .page-hero h1 (Spezifität 0,1,1) mit höherer Spezifität */
     .page-hero--light .hero-name {
       font-family: 'Work Sans', system-ui, sans-serif;
       font-weight: 500;
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.2rem, 4.2vw, 3.35rem);
       color: #000;
       letter-spacing: -.02em;
-      margin-left: 0;
+      margin-left: auto;
+      margin-right: auto;
     }
     .page-hero--light .hero-sub  {
-      margin-left: 0; margin-right: 0;
-      color: var(--text);
+      margin-left: auto; margin-right: auto;
+      color: var(--text-sec);
       font-size: clamp(1rem, 1.75vw, 1.25rem);
+      max-width: 75%;
     }
-    .page-hero--light .page-hero-inner { max-width: 75%; }
+    .page-hero--light .page-hero-inner { max-width: 100%; }
 
     /* Breadcrumb auf hellem Hintergrund */
     .breadcrumb--light a { color: var(--text-muted); }
@@ -132,12 +139,12 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 1.1rem; flex-shrink: 0;
     }
-    .profil-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
-    .profil-list li { display: flex; align-items: flex-start; gap: .6rem; font-size: .875rem; color: var(--text-sec); line-height: 1.5; }
-    .profil-list li::before { content: '→'; color: var(--blue); font-size: .75rem; margin-top: .18rem; flex-shrink: 0; }
+    .profil-list { list-style: disc; display: flex; flex-direction: column; gap: .5rem; padding-left: 1.1rem; }
+    .profil-list li { font-size: .875rem; color: var(--text-sec); line-height: 1.5; padding-left: .15rem; }
+    .profil-list li::marker { color: var(--text-sec); font-size: .75em; }
 
     /* ─── SCHWERPUNKTE ─── */
-    .schwerpunkte-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .schwerpunkte-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .schwerpunkt-card {
       background: var(--white); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 2rem;
@@ -181,24 +188,191 @@
     .aw-card:hover .aw-body h3 { color: var(--blue); }
     .aw-body p { font-size: .875rem; line-height: 1.75; color: var(--text-sec); }
 
-    /* ─── QUALIFIKATION ─── */
-    .qual-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .qual-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.75rem;
-      transition: box-shadow .25s, transform .2s, border-color .25s;
+    /* ─── ARBEITSWEISE IM BRANCHEN-STIL ─── */
+    .branchen-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
     }
-    .qual-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(37,99,235,.25); }
-    .qual-year {
-      display: inline-block; padding: .2rem .65rem;
-      background: var(--blue-light); color: var(--blue-dark);
-      border-radius: 100px; font-size: .72rem; font-weight: 700;
+    .branchen-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--border);
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .branchen-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .branchen-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--white);
+      padding: 2.5rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      text-align: left;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background .25s;
+    }
+    .branchen-card:hover { background: var(--white); }
+    .branchen-card--tinted:hover { background: #F8FAFE; }
+    .branchen-card--tinted { background: #F8FAFE; }
+    .branchen-icon {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      flex-shrink: 0;
+      transition: color .2s;
+    }
+    .branchen-icon svg { width: 28px; height: 28px; }
+    .branchen-card:hover .branchen-icon { color: var(--blue); }
+    .branchen-num {
+      position: relative;
+      z-index: 2;
       font-family: 'Work Sans', system-ui, sans-serif;
-      margin-bottom: .75rem;
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--text);
+      line-height: 1;
+      transition: -webkit-text-stroke-color .2s;
     }
-    .qual-card h4 { font-size: .95rem; color: var(--text); margin-bottom: .4rem; transition: color .2s; }
-    .qual-card:hover h4 { color: var(--blue); }
-    .qual-card p { font-size: .85rem; color: var(--text-sec); line-height: 1.65; }
+    .branchen-card:hover .branchen-num { -webkit-text-stroke-color: var(--blue); }
+    .branchen-name {
+      position: relative;
+      z-index: 2;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      font-family: 'Work Sans', system-ui, sans-serif;
+      line-height: 1.3;
+      transition: color .2s;
+    }
+    .branchen-card:hover .branchen-name { color: var(--blue); }
+    .branchen-desc {
+      position: relative;
+      z-index: 2;
+      font-size: .9rem;
+      line-height: 1.6;
+      color: var(--text-sec);
+      max-width: 23rem;
+      transition: color .2s;
+    }
+    .branchen-card:hover .branchen-desc { color: var(--blue-dark); }
+
+    /* ─── SCHWERPUNKTE TIMELINE ─── */
+    .timeline-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 50%;
+      gap: 5rem;
+      align-items: start;
+    }
+    .timeline-sentinel {
+      position: absolute;
+      top: -8rem;
+      left: 0;
+      height: 1px;
+      width: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .timeline-meta {
+      position: sticky;
+      top: 9rem;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .timeline-meta-info { display: flex; flex-direction: column; gap: .2rem; padding-top: 1.75rem; }
+    .timeline-client-name {
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--text);
+      font-family: 'Work Sans', system-ui, sans-serif;
+      transition: color .35s;
+    }
+    .timeline-item.active .timeline-client-name { color: var(--blue); }
+    .timeline-meta-sub { display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
+    .timeline-client-role { font-size: .75rem; color: var(--text-sec); transition: color .35s; }
+    .timeline-client-role::after { content: '·'; color: var(--text-muted); margin-left: .3rem; }
+    .timeline-client-period { font-size: .75rem; color: var(--text-sec); transition: color .35s; }
+    .timeline-item.active .timeline-client-role,
+    .timeline-item.active .timeline-client-role::after,
+    .timeline-item.active .timeline-client-period { color: var(--blue); }
+    .timeline-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      background: var(--white);
+      transition: background .35s;
+    }
+    .timeline-item.active .timeline-card { background: #F8FAFE; }
+    .timeline-card h3 {
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: .6rem;
+      position: relative;
+      z-index: 1;
+      transition: color .35s;
+    }
+    .timeline-card:hover h3,
+    .timeline-item.active .timeline-card h3 { color: var(--blue); }
+    .timeline-desc {
+      font-size: .875rem;
+      line-height: 1.7;
+      color: var(--text-sec);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      transition: color .35s;
+    }
+    .timeline-item.active .timeline-desc {
+      -webkit-line-clamp: unset;
+      overflow: visible;
+      color: var(--blue-dark);
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .project-tag {
+      padding: .25rem .65rem;
+      border-radius: var(--radius-sm);
+      background: var(--blue);
+      color: var(--white);
+      font-size: .72rem;
+      font-weight: 600;
+    }
+    .timeline-extra {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      margin-top: 0;
+      transition: grid-template-rows .45s ease, opacity .35s ease, margin-top .45s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-item.active .timeline-extra {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      margin-top: 1.25rem;
+    }
+    .timeline-extra-inner { overflow: hidden; }
 
 
     @media (max-width: 1024px) {
@@ -206,15 +380,15 @@
       .profil-left-wrapper { grid-column: 1; grid-row: auto; border-right: none; border-bottom: 1px solid var(--border); }
       .profil-card-side { grid-column: 1; }
       .schwerpunkte-grid { grid-template-columns: repeat(2, 1fr); }
+      .timeline-item { grid-template-columns: 1fr; gap: 1rem; }
+      .timeline-meta { position: static; flex-direction: row; align-items: center; flex-wrap: wrap; gap: .75rem; }
+      .timeline-meta-info { padding-top: 0; }
     }
     @media (max-width: 768px) {
       .schwerpunkte-grid { grid-template-columns: 1fr; }
       .arbeitsweise-grid { grid-template-columns: 1fr; }
-      .qual-grid { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 480px) {
-      .qual-grid { grid-template-columns: 1fr; }
-    }
+    .btn-primary:hover .sdg-arrow { transform: translateX(5px); }
   </style>
 </head>
 <body>
@@ -225,8 +399,8 @@
   <div class="hero-orb"></div>
   <div class="container">
     <div class="page-hero-inner">
-      <h1 class="hero-name">Erfahrung, die zählt –<br>Expertise, die wirkt.</h1>
-      <p class="hero-sub">26 Jahre IT-Erfahrung. Zertifizierte SAP-Beraterin seit 1999. Präzise, verlässlich, praxisnah.</p>
+      <h1 class="hero-name">Erfahrung, die zählt – <span class="hero-highlight">Expertise, die wirkt.</span></h1>
+      <p class="hero-sub">26 Jahre IT-Erfahrung. Zertifizierte Solution Architektin seit 1999. Präzise, verlässlich, praxisnah.</p>
     </div>
   </div>
 </div>
@@ -258,8 +432,8 @@
             <path d="M18 9v1a2 2 0 0 1-2 2h-2"/>
             <path d="M12 12v3"/>
           </svg>
-          <h3 style="font-size:1.25rem; margin-bottom:1.25rem; color:var(--text);">Drei Perspektiven, ein Ergebnis</h3>
-          <p style="font-size:.95rem; line-height:1.85; color:var(--text-sec);">Tools, Projektkontext und Fachlogik werden zusammen gedacht. So entstehen Berechtigungslandschaften, die technisch stimmen und fachlich tragen.</p>
+          <h3 style="font-size:1.4rem; margin-bottom:1.25rem; color:var(--text);">Drei Perspektiven, ein Ergebnis</h3>
+          <p style="font-size:1.02rem; line-height:1.85; color:var(--text-sec);">Tools, Projektkontext und Fachlogik werden zusammen gedacht. So entstehen Berechtigungslandschaften, die technisch stimmen und fachlich tragen.</p>
         </div>
 
         <div class="profil-card-main">
@@ -268,8 +442,8 @@
             <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.78 4.78 4 4 0 0 1-6.74 0 4 4 0 0 1-4.78-4.78 4 4 0 0 1 0-6.75Z"/>
             <path d="m9 12 2 2 4-4"/>
           </svg>
-          <h3 style="font-size:1.25rem; margin-bottom:1.25rem; color:var(--text);">Was mich ausmacht</h3>
-          <p style="font-size:.95rem; line-height:1.85; color:var(--text-sec);">Ich verbinde tiefes SAP-Fachwissen mit echter Projekterfahrung. Präzise im Detail, pragmatisch in der Umsetzung und verlässlich im Ergebnis.</p>
+          <h3 style="font-size:1.4rem; margin-bottom:1.25rem; color:var(--text);">Was mich ausmacht</h3>
+          <p style="font-size:1.02rem; line-height:1.85; color:var(--text-sec);">Ich verbinde tiefes SAP-Fachwissen mit echter Projekterfahrung. Präzise im Detail, pragmatisch in der Umsetzung und verlässlich im Ergebnis.</p>
         </div>
 
       </div>
@@ -318,80 +492,173 @@
     <span class="section-label fade-in">Fachliche Schwerpunkte</span>
     <h2 class="section-heading fade-in">Was ich wirklich kann</h2>
     <p class="section-sub fade-in">Tiefe Expertise in den Kernbereichen moderner SAP-Sicherheitsarchitektur.</p>
-    <div class="schwerpunkte-grid">
+    <div class="timeline-list">
 
-      <div class="schwerpunkt-card fade-in fade-in-delay-1">
-        <div class="schwerpunkt-icon">🔐</div>
-        <h3>SAP Berechtigungsmanagement</h3>
-        <p>Aufbau, Optimierung und Betrieb von Rollen- und Berechtigungskonzepten für alle SAP-Module. Rollendesign nach Least-Privilege, Segregation of Duties und betriebswirtschaftlichen Anforderungen.</p>
-        <div class="schwerpunkt-tags">
-          <span class="schwerpunkt-tag">ECC / S/4HANA</span>
-          <span class="schwerpunkt-tag">Fiori</span>
-          <span class="schwerpunkt-tag">HCM</span>
-          <span class="schwerpunkt-tag">BW</span>
+      <div class="timeline-item fade-in">
+        <div class="timeline-sentinel"></div>
+        <div class="timeline-meta">
+          <div class="timeline-meta-info">
+            <span class="timeline-client-name">Struktur &amp; Kontrolle</span>
+            <div class="timeline-meta-sub">
+              <span class="timeline-client-role">Rollen &amp; Konzepte</span>
+              <span class="timeline-client-period">alle Module</span>
+            </div>
+          </div>
         </div>
+        <article class="timeline-card">
+          <h3>SAP Berechtigungsmanagement</h3>
+          <p class="timeline-desc">Aufbau, Optimierung und Betrieb von Rollen- und Berechtigungskonzepten für alle SAP-Module. Rollendesign nach Least-Privilege, Segregation of Duties und betriebswirtschaftlichen Anforderungen.</p>
+          <div class="timeline-extra">
+            <div class="timeline-extra-inner">
+              <div class="project-tags">
+                <span class="project-tag">ECC / S/4HANA</span>
+                <span class="project-tag">Fiori</span>
+                <span class="project-tag">HCM</span>
+                <span class="project-tag">BW</span>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
 
-      <div class="schwerpunkt-card fade-in fade-in-delay-2">
-        <div class="schwerpunkt-icon">🔑</div>
-        <h3>IDM / IAM / IAG</h3>
-        <p>Einführung und Betrieb von Identity Management Systemen: Provisionierung, Workflows, Rollenlebenszyklus. Erfahrung mit SAP IDM, ONE Identity, SailPoint, OMADA und SAP IAG.</p>
-        <div class="schwerpunkt-tags">
-          <span class="schwerpunkt-tag">SAP IDM</span>
-          <span class="schwerpunkt-tag">ONE Identity</span>
-          <span class="schwerpunkt-tag">SailPoint</span>
-          <span class="schwerpunkt-tag">OMADA</span>
+      <div class="timeline-item fade-in">
+        <div class="timeline-sentinel"></div>
+        <div class="timeline-meta">
+          <div class="timeline-meta-info">
+            <span class="timeline-client-name">Identitäten &amp; Zugriffe</span>
+            <div class="timeline-meta-sub">
+              <span class="timeline-client-role">Provisionierung</span>
+              <span class="timeline-client-period">Lifecycle</span>
+            </div>
+          </div>
         </div>
+        <article class="timeline-card">
+          <h3>IDM / IAM / IAG</h3>
+          <p class="timeline-desc">Einführung und Betrieb von Identity Management Systemen: Provisionierung, Workflows, Rollenlebenszyklus. Erfahrung mit SAP IDM, ONE Identity, SailPoint, OMADA und SAP IAG.</p>
+          <div class="timeline-extra">
+            <div class="timeline-extra-inner">
+              <div class="project-tags">
+                <span class="project-tag">SAP IDM</span>
+                <span class="project-tag">ONE Identity</span>
+                <span class="project-tag">SailPoint</span>
+                <span class="project-tag">OMADA</span>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
 
-      <div class="schwerpunkt-card fade-in fade-in-delay-3">
-        <div class="schwerpunkt-icon">⚖️</div>
-        <h3>GRC &amp; Compliance</h3>
-        <p>SAP GRC Access Control: Risikomanagement, SoD-Regelwerke, Firefighter-Konzepte, Access Request Management. Audit-Vorbereitung und -begleitung nach SOX, IKS, KRITIS.</p>
-        <div class="schwerpunkt-tags">
-          <span class="schwerpunkt-tag">SAP GRC</span>
-          <span class="schwerpunkt-tag">SOX</span>
-          <span class="schwerpunkt-tag">IKS</span>
-          <span class="schwerpunkt-tag">KRITIS</span>
+      <div class="timeline-item fade-in">
+        <div class="timeline-sentinel"></div>
+        <div class="timeline-meta">
+          <div class="timeline-meta-info">
+            <span class="timeline-client-name">Prüfungssicherheit</span>
+            <div class="timeline-meta-sub">
+              <span class="timeline-client-role">Risiken &amp; Nachweise</span>
+              <span class="timeline-client-period">Audit-ready</span>
+            </div>
+          </div>
         </div>
+        <article class="timeline-card">
+          <h3>GRC &amp; Compliance</h3>
+          <p class="timeline-desc">SAP GRC Access Control: Risikomanagement, SoD-Regelwerke, Firefighter-Konzepte, Access Request Management. Audit-Vorbereitung und -begleitung nach SOX, IKS, KRITIS.</p>
+          <div class="timeline-extra">
+            <div class="timeline-extra-inner">
+              <div class="project-tags">
+                <span class="project-tag">SAP GRC</span>
+                <span class="project-tag">SOX</span>
+                <span class="project-tag">IKS</span>
+                <span class="project-tag">KRITIS</span>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
 
-      <div class="schwerpunkt-card fade-in fade-in-delay-1">
-        <div class="schwerpunkt-icon">⚡</div>
-        <h3>S/4HANA Transformationen</h3>
-        <p>Berechtigungsaufbau in Greenfield- und Rollout-Projekten. Fiori-Launchpad-Konzepte, CutOver-Management, HyperCare und Stabilisierung im Produktivbetrieb.</p>
-        <div class="schwerpunkt-tags">
-          <span class="schwerpunkt-tag">Greenfield</span>
-          <span class="schwerpunkt-tag">Rollout</span>
-          <span class="schwerpunkt-tag">CutOver</span>
-          <span class="schwerpunkt-tag">HyperCare</span>
+      <div class="timeline-item fade-in">
+        <div class="timeline-sentinel"></div>
+        <div class="timeline-meta">
+          <div class="timeline-meta-info">
+            <span class="timeline-client-name">Neustart &amp; Rollout</span>
+            <div class="timeline-meta-sub">
+              <span class="timeline-client-role">Migration</span>
+              <span class="timeline-client-period">Rollout</span>
+            </div>
+          </div>
         </div>
+        <article class="timeline-card">
+          <h3>S/4HANA Transformationen</h3>
+          <p class="timeline-desc">Berechtigungsaufbau in Greenfield- und Rollout-Projekten. Fiori-Launchpad-Konzepte, CutOver-Management, HyperCare und Stabilisierung im Produktivbetrieb.</p>
+          <div class="timeline-extra">
+            <div class="timeline-extra-inner">
+              <div class="project-tags">
+                <span class="project-tag">Greenfield</span>
+                <span class="project-tag">Rollout</span>
+                <span class="project-tag">CutOver</span>
+                <span class="project-tag">HyperCare</span>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
 
-      <div class="schwerpunkt-card fade-in fade-in-delay-2">
-        <div class="schwerpunkt-icon">🛡️</div>
-        <h3>SAP Security Tools</h3>
-        <p>Einführung, Konfiguration und Betrieb spezialisierter SAP-Sicherheitstools. Tiefe Kenntnisse in XAMS, SAST, SIAM, Security Bridge, Valantic APM und weiteren Lösungen.</p>
-        <div class="schwerpunkt-tags">
-          <span class="schwerpunkt-tag">XAMS</span>
-          <span class="schwerpunkt-tag">SAST</span>
-          <span class="schwerpunkt-tag">SIAM</span>
-          <span class="schwerpunkt-tag">Rev.Trac</span>
+      <div class="timeline-item fade-in">
+        <div class="timeline-sentinel"></div>
+        <div class="timeline-meta">
+          <div class="timeline-meta-info">
+            <span class="timeline-client-name">Toolgestützte Sicherheit</span>
+            <div class="timeline-meta-sub">
+              <span class="timeline-client-role">Einführung &amp; Betrieb</span>
+              <span class="timeline-client-period">Toolchain</span>
+            </div>
+          </div>
         </div>
+        <article class="timeline-card">
+          <h3>SAP Security Tools</h3>
+          <p class="timeline-desc">Einführung, Konfiguration und Betrieb spezialisierter SAP-Sicherheitstools. Tiefe Kenntnisse in XAMS, SAST, SIAM, Security Bridge, Valantic APM und weiteren Lösungen.</p>
+          <div class="timeline-extra">
+            <div class="timeline-extra-inner">
+              <div class="project-tags">
+                <span class="project-tag">XAMS</span>
+                <span class="project-tag">SAST</span>
+                <span class="project-tag">SIAM</span>
+                <span class="project-tag">Rev.Trac</span>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
 
-      <div class="schwerpunkt-card fade-in fade-in-delay-3">
-        <div class="schwerpunkt-icon">📚</div>
-        <h3>Projektleitung &amp; Wissenstransfer</h3>
-        <p>Leitung komplexer Projekte inkl. Offshore-Teams. Workshops mit Fachbereichen, IT und Revision. KeyUser-Schulungen, Dokumentation und strukturierte Übergabe.</p>
-        <div class="schwerpunkt-tags">
-          <span class="schwerpunkt-tag">Projektleitung</span>
-          <span class="schwerpunkt-tag">Offshore</span>
-          <span class="schwerpunkt-tag">Workshops</span>
-          <span class="schwerpunkt-tag">Schulung</span>
+      <div class="timeline-item fade-in">
+        <div class="timeline-sentinel"></div>
+        <div class="timeline-meta">
+          <div class="timeline-meta-info">
+            <span class="timeline-client-name">Übergabe mit Substanz</span>
+            <div class="timeline-meta-sub">
+              <span class="timeline-client-role">Projektleitung</span>
+              <span class="timeline-client-period">Übergabe</span>
+            </div>
+          </div>
         </div>
+        <article class="timeline-card">
+          <h3>Projektleitung &amp; Wissenstransfer</h3>
+          <p class="timeline-desc">Leitung komplexer Projekte inkl. Offshore-Teams. Workshops mit Fachbereichen, IT und Revision. KeyUser-Schulungen, Dokumentation und strukturierte Übergabe.</p>
+          <div class="timeline-extra">
+            <div class="timeline-extra-inner">
+              <div class="project-tags">
+                <span class="project-tag">Projektleitung</span>
+                <span class="project-tag">Offshore</span>
+                <span class="project-tag">Workshops</span>
+                <span class="project-tag">Schulung</span>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
 
+    </div>
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="leistungen.html" class="sdg-more fade-in">Mehr erfahren <span class="sdg-arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -402,61 +669,37 @@
     <span class="section-label fade-in">Arbeitsweise</span>
     <h2 class="section-heading fade-in">Wie ich arbeite</h2>
     <p class="section-sub fade-in">Strukturiert, transparent und partnerschaftlich – mit klarem Fokus auf nachhaltige Ergebnisse.</p>
-    <div class="arbeitsweise-grid">
-      <div class="aw-card fade-in fade-in-delay-1">
-        <div class="aw-num">01</div>
-        <div class="aw-body">
-          <h3>Verstehen vor Umsetzen</h3>
-          <p>Bevor ich anfange, höre ich zu. Ich nehme mir die Zeit, Ihre Systemlandschaft, Ihre Prozesse und Ihre Anforderungen wirklich zu verstehen – und passe meine Lösung daran an, nicht umgekehrt.</p>
+    <div class="branchen-wrap fade-in">
+      <div class="branchen-grid">
+
+        <div class="branchen-card">
+          <span class="branchen-num">01</span>
+          <span class="branchen-name">Verstehen vor Umsetzen</span>
+          <p class="branchen-desc">Anforderungen und Prozesse<br>werden zuerst sauber eingeordnet.</p>
         </div>
-      </div>
-      <div class="aw-card fade-in fade-in-delay-2">
-        <div class="aw-num">02</div>
-        <div class="aw-body">
-          <h3>Transparenz auf allen Ebenen</h3>
-          <p>Ich kommuniziere offen mit Fachbereichen, IT und Management – in der richtigen Sprache für jede Zielgruppe. Kein SAP-Jargon im Statusmeeting mit dem Vorstand, keine Vereinfachungen im technischen Review.</p>
+
+        <div class="branchen-card branchen-card--tinted">
+          <span class="branchen-num">02</span>
+          <span class="branchen-name">Transparenz auf allen Ebenen</span>
+          <p class="branchen-desc">Status, Risiken und Entscheidungen bleiben<br>für alle Beteiligten greifbar.</p>
         </div>
-      </div>
-      <div class="aw-card fade-in fade-in-delay-3">
-        <div class="aw-num">03</div>
-        <div class="aw-body">
-          <h3>Lösungen, die im Betrieb tragen</h3>
-          <p>Ich konzipiere nicht für das Abnahmeprotokoll, sondern für den Alltag Ihrer Teams. Saubere Dokumentation, verständliche Rollenstrukturen und echte Kompetenzübergabe sind für mich selbstverständlich.</p>
+
+        <div class="branchen-card branchen-card--tinted">
+          <span class="branchen-num">03</span>
+          <span class="branchen-name">Betrieb tragfähig machen</span>
+          <p class="branchen-desc">Rollen, Dokumentation und Übergabe<br>werden für den Alltag gebaut.</p>
         </div>
-      </div>
-      <div class="aw-card fade-in fade-in-delay-4">
-        <div class="aw-num">04</div>
-        <div class="aw-body">
-          <h3>Audit-sichere Qualität</h3>
-          <p>Alles, was ich erstelle, hält einer Prüfung stand – ob intern durch die Revision oder extern durch EY, KPMG oder PwC. Compliance ist kein Add-on, sondern integraler Bestandteil meiner Arbeit.</p>
+
+        <div class="branchen-card">
+          <span class="branchen-num">04</span>
+          <span class="branchen-name">Audit-sichere Qualität</span>
+          <p class="branchen-desc">Konzepte und Nachweise werden so erstellt,<br>dass sie Prüfungen standhalten.</p>
         </div>
+
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ─── QUALIFIKATION ─── -->
-<section>
-  <div class="container">
-    <span class="section-label fade-in">Qualifikation &amp; Ausbildung</span>
-    <h2 class="section-heading fade-in">Mein Werdegang</h2>
-    <p class="section-sub fade-in">Fundierte Ausbildung, frühe Spezialisierung und kontinuierliche Weiterentwicklung.</p>
-    <div class="qual-grid">
-      <div class="qual-card fade-in fade-in-delay-1">
-        <div class="qual-year">1999</div>
-        <h4>Zertifizierte SAP-Beraterin</h4>
-        <p>Zertifizierung Finanzen &amp; Controlling – Grundlage für über 26 Jahre SAP-Projekterfahrung</p>
-      </div>
-      <div class="qual-card fade-in fade-in-delay-2">
-        <div class="qual-year">Ausbildung</div>
-        <h4>Kauffrau für Bürokommunikation</h4>
-        <p>Abgeschlossene kaufmännische Berufsausbildung – verbindet betriebswirtschaftliches Denken mit technischer Expertise</p>
-      </div>
-      <div class="qual-card fade-in fade-in-delay-3">
-        <div class="qual-year">laufend</div>
-        <h4>Kontinuierliche Weiterbildung</h4>
-        <p>Regelmäßige Aktualisierung des Wissens in S/4HANA, Cloud-Security, IAM-Lösungen und SAP-Compliance-Anforderungen</p>
-      </div>
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="#kontakt" class="nav-cta fade-in">Jetzt kontaktieren <span class="sdg-arrow">></span></a>
     </div>
   </div>
 </section>
@@ -543,7 +786,7 @@
                   Ich stimme der Verarbeitung meiner Daten gemäß der <a href="datenschutz.html">Datenschutzerklärung</a> zu. *
                 </label>
               </div>
-              <button type="submit" class="btn-submit" style="width:auto; white-space:nowrap; flex-shrink:0; padding:.5rem 1rem; font-size:.8rem;">Nachricht absenden →</button>
+              <button type="submit" class="btn-submit" style="width:auto; white-space:nowrap; flex-shrink:0; padding:.5rem 1rem; font-size:.8rem;">Nachricht absenden <span class="sdg-arrow">></span></button>
             </div>
           </form>
           <div class="form-success" id="form-success">

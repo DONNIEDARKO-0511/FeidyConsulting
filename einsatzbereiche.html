@@ -10,124 +10,269 @@
   <link rel="stylesheet" href="assets/fonts/fonts.css" />
   <link rel="stylesheet" href="assets/css/shared.css" />
   <style>
-    /* ─── OVERVIEW PILLS ─── */
-    .overview-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
-    .overview-pill {
-      padding: .45rem 1rem; border-radius: 100px;
-      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
-      color: rgba(255,255,255,.75);
-      font-family: 'Work Sans', system-ui, sans-serif;
-      font-size: .82rem; font-weight: 500;
-      transition: background .2s, border-color .2s;
+    /* ─── NAVBAR: transparent über weißem Hero ─── */
+    nav#navbar {
+      background: transparent;
+      border-color: transparent;
+      backdrop-filter: none;
     }
-    .overview-pill:hover { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.3); }
+    nav#navbar .nav-links a { color: var(--text); }
+    nav#navbar .nav-links a:hover { color: var(--blue); }
+    nav#navbar.scrolled .nav-links a { color: var(--text); }
+    nav#navbar.scrolled .nav-logo-name { color: var(--text); }
+
+    /* ─── PAGE HERO (Index-Stil) ─── */
+    .page-hero--light {
+      background: var(--white);
+    }
+    .page-hero.page-hero--light {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+    }
+    .page-hero--light .page-hero-inner {
+      padding: 5rem 0;
+      text-align: center;
+      max-width: 100%;
+    }
+    .page-hero--light .hero-name {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: clamp(2.2rem, 4.2vw, 3.35rem);
+      color: #000;
+      letter-spacing: -.02em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .page-hero--light .hero-sub {
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--text-sec);
+      font-size: clamp(1rem, 1.75vw, 1.25rem);
+      max-width: 75%;
+    }
 
     /* ─── KATEGORIEN ─── */
-    .category-block { margin-bottom: 4rem; }
+    .category-block { margin-bottom: 1rem; }
     .category-block:last-child { margin-bottom: 0; }
-    .category-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 2rem; }
+    .category-header {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 0;
+      padding: 1.75rem;
+      padding-right: 4rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: background .35s;
+    }
+    .category-header .sdg-bg {
+      mask-image: radial-gradient(ellipse 65% 60% at 80% 25%, white 0%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 65% 60% at 80% 25%, white 0%, transparent 100%);
+    }
+    .category-header::after {
+      content: '+';
+      position: absolute;
+      z-index: 3;
+      top: 1.75rem;
+      right: 1.75rem;
+      color: var(--text);
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1;
+      transition: color .2s, transform .25s;
+    }
+    .category-block:hover .category-header {
+      background: #F8FAFE;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .category-block:hover .category-header::after {
+      color: var(--blue);
+      transform: rotate(45deg);
+    }
     .category-icon {
-      width: 52px; height: 52px; border-radius: 14px;
-      background: var(--blue-light); color: var(--blue-dark);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; flex-shrink: 0;
+      display: none;
     }
     .category-title {
+      position: relative;
+      z-index: 1;
       font-family: 'Work Sans', system-ui, sans-serif;
-      font-size: 1.35rem; font-weight: 700; color: var(--text);
-    }
-    .category-subtitle { font-size: .875rem; color: var(--text-sec); margin-top: .2rem; line-height: 1.5; }
-
-    .eb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .eb-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.75rem;
-      position: relative; overflow: hidden;
-      transition: box-shadow .25s, transform .2s, border-color .25s;
-    }
-    .eb-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--blue), var(--blue-dark));
-      transform: scaleX(0); transform-origin: left; transition: transform .3s;
-    }
-    .eb-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(37,99,235,.25); }
-    .eb-card:hover::before { transform: scaleX(1); }
-    .eb-card-title {
-      font-family: 'Work Sans', system-ui, sans-serif;
-      font-size: 1rem; font-weight: 700; color: var(--text);
-      margin-bottom: .65rem; transition: color .2s;
-    }
-    .eb-card:hover .eb-card-title { color: var(--blue); }
-    .eb-card-desc { font-size: .875rem; line-height: 1.75; color: var(--text-sec); margin-bottom: 1.25rem; }
-    .eb-card-when {
-      font-family: 'Work Sans', system-ui, sans-serif;
-      font-size: .75rem; font-weight: 700; color: var(--blue);
-      text-transform: uppercase; letter-spacing: .07em; margin-bottom: .4rem;
-    }
-    .eb-card-when-text { font-size: .82rem; color: var(--text-muted); line-height: 1.6; }
-
-    .divider { width: 100%; height: 1px; background: var(--border); margin: 3.5rem 0; }
-
-    /* ─── BRANCHEN-KARTEN ─── */
-    .branchen-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-    .branche-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.75rem 1.25rem; text-align: center;
-      transition: box-shadow .25s, transform .2s, border-color .25s;
-    }
-    .branche-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(37,99,235,.25); }
-    .branche-emoji { font-size: 2rem; margin-bottom: .75rem; display: block; }
-    .branche-card h4 {
-      font-family: 'Work Sans', system-ui, sans-serif;
-      font-size: .875rem; font-weight: 700; color: var(--text); margin-bottom: .4rem;
+      font-size: 1.35rem; font-weight: 600; color: var(--text);
       transition: color .2s;
     }
-    .branche-card:hover h4 { color: var(--blue); }
-    .branche-clients { font-size: .75rem; color: var(--text-muted); line-height: 1.6; }
+    .category-block:hover .category-title,
+    .category-block:hover .category-subtitle { color: var(--blue); }
+    .category-subtitle {
+      position: relative;
+      z-index: 1;
+      font-size: .875rem; color: var(--text-sec); margin-top: .2rem; line-height: 1.5;
+    }
+
+    .eb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      align-items: stretch;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-top: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: max-height .55s ease, opacity .35s ease, margin-top .35s ease;
+    }
+    .category-block:hover .eb-grid {
+      max-height: 1200px;
+      opacity: 1;
+      margin-top: -1px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .eb-card {
+      background: var(--white);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      border-radius: 0;
+      padding: 1.75rem;
+      position: relative; overflow: hidden;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      transition: background .35s, border-color .25s;
+    }
+    .eb-card:nth-child(3n) { border-right: none; }
+    .eb-card:nth-last-child(-n+3) { border-bottom: none; }
+    .eb-card:hover { background: #F8FAFE; border-color: var(--border); }
+    .eb-card-title {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-size: 1.15rem; font-weight: 600; color: var(--text);
+      margin-bottom: .65rem; transition: color .2s;
+      position: relative; z-index: 1;
+    }
+    .eb-card:hover .eb-card-title,
+    .eb-card:hover .eb-card-desc,
+    .eb-card:hover .eb-card-when,
+    .eb-card:hover .eb-card-when-text { color: var(--blue); }
+    .eb-card-desc {
+      font-size: .875rem;
+      line-height: 1.75;
+      color: var(--text-sec);
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 9.2rem;
+    }
+    .eb-card-when {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-size: .95rem; font-weight: 600; color: var(--text);
+      text-transform: none; letter-spacing: 0; margin-top: auto; margin-bottom: .45rem;
+      padding-top: 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    .eb-card-when-text {
+      font-size: .82rem;
+      color: var(--text-sec);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 3.95rem;
+    }
+
+    /* ─── BRANCHENERFAHRUNG ─── */
+    #branchen { background: var(--white); }
+    #branchen .leistungen-header { text-align: center; }
+    #branchen .leistungen-header .section-label { justify-content: center; }
+    #branchen .leistungen-header .section-sub { margin-left: auto; margin-right: auto; max-width: 75%; }
+    .branchen-wrap {
+      position: relative;
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .branchen-wrap::before {
+      content: '';
+      position: absolute; inset: 0;
+      border: 1px solid var(--border);
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .branchen-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .branchen-card {
+      position: relative; overflow: hidden;
+      background: var(--white);
+      padding: 2.5rem 1.75rem;
+      display: flex; flex-direction: column; align-items: center; gap: 1rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .branchen-card--tinted { background: #F8FAFE; }
+    .branchen-icon {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text); flex-shrink: 0;
+      transition: color .2s;
+    }
+    .branchen-icon svg { width: 28px; height: 28px; }
+    .branchen-card:hover .branchen-icon { color: var(--blue); }
+    .branchen-name {
+      position: relative; z-index: 2;
+      font-size: .875rem; font-weight: 600;
+      color: var(--text); font-family: 'Work Sans', system-ui, sans-serif;
+      line-height: 1.3;
+      transition: color .2s;
+    }
+    .branchen-card:hover .branchen-name { color: var(--blue); }
 
     @media (max-width: 1024px) {
       .eb-grid { grid-template-columns: 1fr 1fr; }
-      .branchen-grid { grid-template-columns: 1fr 1fr; }
+      .eb-card:nth-child(3n) { border-right: 1px solid var(--border); }
+      .eb-card:nth-last-child(-n+3) { border-bottom: 1px solid var(--border); }
+      .eb-card:nth-child(2n) { border-right: none; }
+      .eb-card:nth-last-child(-n+2) { border-bottom: none; }
+      .branchen-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
       .eb-grid { grid-template-columns: 1fr; }
+      .eb-card,
+      .eb-card:nth-child(2n),
+      .eb-card:nth-child(3n) { border-right: none; }
+      .eb-card,
+      .eb-card:nth-last-child(-n+3),
+      .eb-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .eb-card:last-child { border-bottom: none; }
     }
     @media (max-width: 480px) {
-      .branchen-grid { grid-template-columns: 1fr 1fr; }
+      .branchen-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
 <!-- ─── PAGE HERO ─── -->
-<div class="page-hero">
-  <div class="page-hero-grid"></div>
-  <div class="page-hero-glow"></div>
+<div class="page-hero page-hero--light">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
   <div class="container">
     <div class="page-hero-inner">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Start</a>
-        <span>›</span>
-        <span class="breadcrumb-current">Einsatzbereiche</span>
-      </nav>
-      <h1>Meine <em>Einsatzbereiche</em></h1>
-      <p>Von der S/4HANA-Transformation bis zur Audit-Vorbereitung – 14 Bereiche, in denen ich nachgewiesene Projekterfahrung mitbringe.</p>
-      <div class="overview-pills">
-        <span class="overview-pill">S/4HANA Transformation</span>
-        <span class="overview-pill">Rollenkonzept / Redesign</span>
-        <span class="overview-pill">GRC &amp; Compliance</span>
-        <span class="overview-pill">SoD-Analyse</span>
-        <span class="overview-pill">IDM/IAM-Einführung</span>
-        <span class="overview-pill">Audit-Vorbereitung</span>
-        <span class="overview-pill">Fiori-Berechtigungen</span>
-        <span class="overview-pill">SAC &amp; BTP</span>
-        <span class="overview-pill">HCM &amp; SuccessFactors</span>
-        <span class="overview-pill">Lizenzvermessung</span>
-        <span class="overview-pill">Firefighter Access</span>
-        <span class="overview-pill">Hypercare</span>
-        <span class="overview-pill">Offshore-Führung</span>
-        <span class="overview-pill">Datenschutz &amp; ILM</span>
-      </div>
+      <h1 class="hero-name">Stark in komplexen <span class="hero-highlight">SAP-Szenarien.</span></h1>
+      <p class="hero-sub">Von S/4HANA-Transformationen bis zur Audit-Vorbereitung – dort, wo Berechtigungen, Sicherheit und Compliance zusammenkommen.</p>
     </div>
   </div>
 </div>
@@ -135,6 +280,12 @@
 <!-- ─── EINSATZBEREICHE ─── -->
 <section>
   <div class="container">
+
+    <div style="margin-bottom: 2.5rem;">
+      <span class="section-label fade-in">Einsatzbereiche</span>
+      <h2 class="section-heading fade-in">Wo ich Sie unterstütze.</h2>
+      <p class="section-sub fade-in">Von der S/4HANA-Transformation bis zur Audit-Vorbereitung – hier ein Überblick über alle Bereiche, in denen ich Unternehmen gezielt unterstütze.</p>
+    </div>
 
     <div class="category-block fade-in">
       <div class="category-header">
@@ -166,8 +317,6 @@
       </div>
     </div>
 
-    <div class="divider"></div>
-
     <div class="category-block fade-in">
       <div class="category-header">
         <div class="category-icon">🔑</div>
@@ -197,8 +346,6 @@
         </div>
       </div>
     </div>
-
-    <div class="divider"></div>
 
     <div class="category-block fade-in">
       <div class="category-header">
@@ -230,8 +377,6 @@
       </div>
     </div>
 
-    <div class="divider"></div>
-
     <div class="category-block fade-in">
       <div class="category-header">
         <div class="category-icon">👥</div>
@@ -261,8 +406,6 @@
         </div>
       </div>
     </div>
-
-    <div class="divider"></div>
 
     <div class="category-block fade-in">
       <div class="category-header">
@@ -294,55 +437,105 @@
       </div>
     </div>
 
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="leistungen.html#leistungsuebersicht" class="nav-cta fade-in">Leistungen ansehen <span class="sdg-arrow">></span></a>
+    </div>
   </div>
 </section>
 
-<!-- ─── BRANCHEN ─── -->
-<section class="bg-tinted">
+<!-- ─── BRANCHENERFAHRUNG ─── -->
+<section id="branchen">
   <div class="container">
-    <span class="section-label fade-in">Branchenerfahrung</span>
-    <h2 class="section-heading fade-in">Bewährt in acht Branchen</h2>
-    <p class="section-sub fade-in">Branchenspezifische Compliance-Anforderungen, regulatorische Besonderheiten und SAP-Systemlandschaften kenne ich aus der Praxis.</p>
-    <div class="branchen-grid">
-      <div class="branche-card fade-in fade-in-delay-1">
-        <div class="branche-emoji">🧪</div>
-        <h4>Chemie &amp; Pharma</h4>
-        <div class="branche-clients">BASF · Roche · Clariant<br/>Fresenius · DuPont · Euroimmun</div>
-      </div>
-      <div class="branche-card fade-in fade-in-delay-2">
-        <div class="branche-emoji">🏦</div>
-        <h4>Banken &amp; Versicherungen</h4>
-        <div class="branche-clients">HSBC</div>
-      </div>
-      <div class="branche-card fade-in fade-in-delay-3">
-        <div class="branche-emoji">⚡</div>
-        <h4>Energie &amp; Versorgung</h4>
-        <div class="branche-clients">Sachsenenergie<br/>Energieversorger Gelsenkirchen</div>
-      </div>
-      <div class="branche-card fade-in fade-in-delay-4">
-        <div class="branche-emoji">🛢️</div>
-        <h4>Öl &amp; Gas</h4>
-        <div class="branche-clients">Wintershall DEA<br/>Harbour Energy</div>
-      </div>
-      <div class="branche-card fade-in fade-in-delay-1">
-        <div class="branche-emoji">🚗</div>
-        <h4>Automotive &amp; Maschinenbau</h4>
-        <div class="branche-clients">Webasto · Infineon · TCS/TATA<br/>ThyssenKrupp via Accenture</div>
-      </div>
-      <div class="branche-card fade-in fade-in-delay-2">
-        <div class="branche-emoji">🍞</div>
-        <h4>Lebensmittel &amp; Konsumgüter</h4>
-        <div class="branche-clients">Harry's · Radeberger Brauerei<br/>Döhler</div>
-      </div>
-      <div class="branche-card fade-in fade-in-delay-3">
-        <div class="branche-emoji">📡</div>
-        <h4>Telekommunikation</h4>
-        <div class="branche-clients">Telekom Systems</div>
-      </div>
-      <div class="branche-card fade-in fade-in-delay-4">
-        <div class="branche-emoji">⚙️</div>
-        <h4>Industrie &amp; Maschinenbau</h4>
-        <div class="branche-clients">HOMAG · Styrolution · K+S<br/>Knauf</div>
+    <div class="leistungen-header">
+      <span class="section-label fade-in">Branchenerfahrung</span>
+      <h2 class="section-heading fade-in">Bewährt in acht Branchen</h2>
+      <p class="section-sub fade-in">Jahrelange Projekterfahrung bei namhaften nationalen und internationalen Unternehmen.</p>
+    </div>
+    <div class="branchen-wrap">
+      <div class="branchen-grid">
+
+        <div class="branchen-card">
+          <div class="branchen-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3h6M9 3v6.5L4 18a2 2 0 001.8 2.9h12.4A2 2 0 0020 18l-5-8.5V3"/>
+              <path d="M6.5 15.5h11"/>
+            </svg>
+          </div>
+          <span class="branchen-name">Chemie &amp; Pharma</span>
+        </div>
+
+        <div class="branchen-card branchen-card--tinted">
+          <div class="branchen-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18M3 10h18M5 6l7-3 7 3M5 10v11M19 10v11M9 10v11M15 10v11"/>
+            </svg>
+          </div>
+          <span class="branchen-name">Banken &amp; Versicherungen</span>
+        </div>
+
+        <div class="branchen-card">
+          <div class="branchen-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <span class="branchen-name">Energie &amp; Versorgung</span>
+        </div>
+
+        <div class="branchen-card branchen-card--tinted">
+          <div class="branchen-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2C6.5 7.5 4 12 4 15a8 8 0 0016 0c0-3-2.5-7.5-8-13z"/>
+            </svg>
+          </div>
+          <span class="branchen-name">Öl &amp; Gas</span>
+        </div>
+
+        <div class="branchen-card branchen-card--tinted">
+          <div class="branchen-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+            </svg>
+          </div>
+          <span class="branchen-name">Automotive &amp; Maschinenbau</span>
+        </div>
+
+        <div class="branchen-card">
+          <div class="branchen-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+          </div>
+          <span class="branchen-name">Lebensmittel &amp; Konsumgüter</span>
+        </div>
+
+        <div class="branchen-card branchen-card--tinted">
+          <div class="branchen-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12.55a11 11 0 0114.08 0"/>
+              <path d="M1.42 9a16 16 0 0121.16 0"/>
+              <path d="M8.53 16.11a6 6 0 016.95 0"/>
+              <line x1="12" y1="20" x2="12.01" y2="20"/>
+            </svg>
+          </div>
+          <span class="branchen-name">Telekommunikation</span>
+        </div>
+
+        <div class="branchen-card">
+          <div class="branchen-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+              <line x1="12" y1="12" x2="12" y2="12"/>
+              <path d="M8 12h8"/>
+            </svg>
+          </div>
+          <span class="branchen-name">Industrie &amp; Dienstleistung</span>
+        </div>
+
       </div>
     </div>
   </div>
@@ -425,7 +618,7 @@
                   Ich stimme der Verarbeitung meiner Daten gemäß der <a href="datenschutz.html">Datenschutzerklärung</a> zu. *
                 </label>
               </div>
-              <button type="submit" class="btn-submit" style="width:auto; white-space:nowrap; flex-shrink:0; padding:.5rem 1rem; font-size:.8rem;">Nachricht absenden →</button>
+              <button type="submit" class="btn-submit" style="width:auto; white-space:nowrap; flex-shrink:0; padding:.5rem 1rem; font-size:.8rem;">Nachricht absenden <span class="sdg-arrow">></span></button>
             </div>
           </form>
           <div class="form-success" id="form-success">

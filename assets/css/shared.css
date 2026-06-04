@@ -132,6 +132,7 @@ nav#navbar.scrolled .nav-links a:hover { color: var(--blue); }
   text-decoration: none; transition: background .2s;
 }
 .nav-cta:hover { background: var(--blue-dark); }
+.nav-cta:hover .sdg-arrow { transform: translateX(5px); }
 
 .hamburger {
   display: none; flex-direction: column; gap: 5px; cursor: pointer;
@@ -382,9 +383,11 @@ a.contact-box-value:hover { color: var(--blue); }
   background: var(--blue); color: var(--white);
   border: none; border-radius: var(--radius-sm);
   font-family: 'Work Sans', system-ui, sans-serif; font-size: .95rem; font-weight: 500;
-  cursor: pointer; transition: background .2s, transform .15s;
+  cursor: pointer; transition: background .2s;
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
 }
-.btn-submit:hover { background: var(--blue-dark); transform: translateY(-1px); }
+.btn-submit:hover { background: var(--blue-dark); }
+.btn-submit:hover .sdg-arrow { transform: translateX(5px); }
 
 .form-success { display: none; text-align: center; padding: 2rem 1rem; }
 .form-success svg { color: var(--blue); margin-bottom: 1rem; }

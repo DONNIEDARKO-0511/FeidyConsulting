@@ -7,78 +7,215 @@
   <meta name="description" content="SAP Berechtigungskonzepte, SoD-Analyse, IDM/IAM/GRC, S/4HANA Transformationen, Tool-Implementierungen, Workshops & Schulungen – Leistungsübersicht Marie Altmann." />
   <meta name="robots" content="index, follow" />
 
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
   <link rel="stylesheet" href="assets/css/shared.css" />
   <style>
+    /* ─── NAVBAR: transparent über weißem Hero ─── */
+    nav#navbar {
+      background: transparent;
+      border-color: transparent;
+      backdrop-filter: none;
+    }
+    nav#navbar .nav-links a { color: var(--text); }
+    nav#navbar .nav-links a:hover { color: var(--blue); }
+    nav#navbar.scrolled .nav-links a { color: var(--text); }
+    nav#navbar.scrolled .nav-logo-name { color: var(--text); }
+
+    /* ─── PAGE HERO (Index-Stil) ─── */
+    .page-hero--light {
+      background: var(--white);
+    }
+    .page-hero.page-hero--light {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+    }
+    .page-hero--light .page-hero-inner {
+      padding: 5rem 0;
+      text-align: center;
+      max-width: 100%;
+    }
+    .page-hero--light .hero-name {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: clamp(2.2rem, 4.2vw, 3.35rem);
+      color: #000;
+      letter-spacing: -.02em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .page-hero--light .hero-sub {
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--text-sec);
+      font-size: clamp(1rem, 1.75vw, 1.25rem);
+      max-width: 75%;
+    }
+
     /* ─── SERVICE BLOCKS ─── */
-    .services-list { display: flex; flex-direction: column; gap: 2.5rem; }
+    .services-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; align-items: start; }
     .service-block {
-      display: grid; grid-template-columns: 280px 1fr; gap: 0;
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-      transition: box-shadow .25s, transform .2s, border-color .25s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
+      padding: 1.75rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: background .35s;
     }
-    .service-block:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); border-color: rgba(37,99,235,.25); }
+    .service-block::after {
+      content: '+';
+      position: absolute;
+      z-index: 3;
+      top: 1.75rem;
+      right: 1.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1;
+      transition: color .2s, transform .25s;
+    }
+    .service-block:hover { background: #F8FAFE; }
+    .service-block:hover::after {
+      color: var(--blue);
+      transform: rotate(45deg);
+    }
     .service-block-sidebar {
-      background: var(--bg); padding: 2.5rem 2rem;
-      display: flex; flex-direction: column; justify-content: flex-start;
-      border-right: 1px solid var(--border);
+      display: contents;
     }
-    .service-num {
-      font-family: 'Work Sans', system-ui, sans-serif;
-      font-size: .75rem; font-weight: 700; color: var(--blue);
-      letter-spacing: .08em; margin-bottom: 1rem;
+    .service-icon { display: none; }
+    .service-block-sidebar h3 {
+      position: relative;
+      z-index: 1;
+      padding-right: 2.75rem;
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: .75rem;
+      transition: color .2s;
     }
-    .service-icon {
-      width: 52px; height: 52px; border-radius: 14px;
-      background: var(--blue-light); color: var(--blue-dark);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; margin-bottom: 1.25rem; flex-shrink: 0;
-    }
-    .service-block-sidebar h3 { font-size: 1.1rem; color: var(--text); margin-bottom: .75rem; transition: color .2s; }
     .service-block:hover .service-block-sidebar h3 { color: var(--blue); }
-    .service-sidebar-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; padding-top: 1.25rem; }
-    .service-sidebar-tag {
-      padding: .2rem .65rem; border-radius: 100px;
-      background: var(--blue-light); color: var(--blue-dark);
-      font-family: 'Work Sans', system-ui, sans-serif;
-      font-size: .7rem; font-weight: 600;
+    .service-block:hover .service-block-body > p { color: var(--blue); }
+    .service-sidebar-tags {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-bottom: 0;
+      max-width: 100%;
+      transition: margin-bottom .35s ease;
     }
-    .service-block-body { padding: 2.5rem; }
-    .service-block-body > p { font-size: .95rem; line-height: 1.8; margin-bottom: 1.75rem; }
-    .service-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .service-block:hover .service-sidebar-tags { margin-bottom: 1.25rem; }
+    .service-sidebar-tag {
+      display: inline-flex; align-items: center;
+      padding: .25rem .65rem;
+      border-radius: var(--radius-sm);
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+    .service-sidebar-tag:hover { background: var(--blue-dark); }
+    .service-block-body {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .service-block-body > p {
+      position: relative;
+      z-index: 1;
+      font-size: .9rem;
+      line-height: 1.75;
+      margin-bottom: 0;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height .45s ease, opacity .3s ease, margin-top .35s ease, color .2s;
+    }
+    .service-block:hover .service-block-body > p {
+      max-height: 240px;
+      opacity: 1;
+      margin-top: .25rem;
+    }
+    .service-details {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-top: 0;
+      transition: max-height .5s ease, opacity .3s ease, margin-top .35s ease;
+    }
+    .service-block:hover .service-details {
+      max-height: 900px;
+      opacity: 1;
+      margin-top: 1.5rem;
+    }
+    .service-detail-group {
+      position: relative;
+      z-index: 1;
+    }
     .service-detail-group h4 {
       font-family: 'Work Sans', system-ui, sans-serif;
-      font-size: .75rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .08em; color: var(--text-muted); margin-bottom: .75rem;
+      font-size: .95rem; font-weight: 600; text-transform: none;
+      letter-spacing: 0; color: var(--text); margin-bottom: .75rem;
+      transition: color .2s;
     }
-    .service-detail-group ul { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
-    .service-detail-group li { display: flex; align-items: flex-start; gap: .5rem; font-size: .85rem; color: var(--text-sec); line-height: 1.5; }
-    .service-detail-group li::before { content: '→'; color: var(--blue); font-size: .72rem; margin-top: .2rem; flex-shrink: 0; }
+    .service-detail-group ul { list-style: disc; display: flex; flex-direction: column; gap: .45rem; padding-left: 1.1rem; }
+    .service-detail-group li { font-size: .85rem; color: var(--text-sec); line-height: 1.5; padding-left: .15rem; }
+    .service-detail-group li::marker { color: var(--text-sec); font-size: .75em; }
 
     /* ─── USP KARTEN ─── */
-    .usp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .usp-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
     .usp-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 2rem; text-align: center;
+      background: var(--white);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      border-radius: 0;
+      padding: 2rem;
+      text-align: left;
       position: relative; overflow: hidden;
-      transition: box-shadow .25s, transform .2s, border-color .25s;
+      transition: background .25s;
     }
-    .usp-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--blue), var(--blue-dark));
-      transform: scaleX(0); transform-origin: left; transition: transform .3s;
-    }
-    .usp-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(37,99,235,.25); }
-    .usp-card:hover::before { transform: scaleX(1); }
-    .usp-icon { font-size: 2.5rem; margin-bottom: 1.25rem; display: block; }
-    .usp-card h3 { font-size: 1rem; color: var(--text); margin-bottom: .65rem; transition: color .2s; }
+    .usp-card:nth-child(2),
+    .usp-card:nth-child(4),
+    .usp-card:nth-child(6) { background: #F8FAFE; }
+    .usp-icon { display: none; }
+    .usp-card h3 { position: relative; z-index: 1; font-size: 1.15rem; color: var(--text); margin-bottom: .5rem; transition: color .2s; }
     .usp-card:hover h3 { color: var(--blue); }
-    .usp-card p { font-size: .875rem; line-height: 1.75; color: var(--text-sec); }
+    .usp-card p { position: relative; z-index: 1; font-size: .875rem; line-height: 1.75; color: var(--text-sec); transition: color .2s; }
+    .usp-card:hover p { color: var(--blue-dark); }
+    .usp-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .usp-header .section-label {
+      justify-content: center;
+    }
+    .usp-header .section-sub {
+      max-width: 75%;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     @media (max-width: 1024px) {
-      .service-block { grid-template-columns: 1fr; }
-      .service-block-sidebar { border-right: none; border-bottom: 1px solid var(--border); }
-      .usp-grid { grid-template-columns: 1fr 1fr; }
+      .services-list { grid-template-columns: 1fr; }
+      .usp-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
       .service-details { grid-template-columns: 1fr; }
@@ -89,24 +226,19 @@
 <body>
 
 <!-- ─── PAGE HERO ─── -->
-<div class="page-hero">
-  <div class="page-hero-grid"></div>
-  <div class="page-hero-glow"></div>
+<div class="page-hero page-hero--light">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
   <div class="container">
     <div class="page-hero-inner">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Start</a>
-        <span>›</span>
-        <span class="breadcrumb-current">Leistungen</span>
-      </nav>
-      <h1>Meine <em>Leistungen</em></h1>
-      <p>Von der Konzeption bis zur Übergabe – präzise, verlässlich und nachhaltig wirksam.</p>
+      <h1 class="hero-name">SAP-Sicherheit <span class="hero-highlight">gezielt stärken.</span></h1>
+      <p class="hero-sub">Klare Konzepte, saubere Berechtigungen und praxiserprobte Umsetzung – von der Analyse bis zur tragfähigen Übergabe.</p>
     </div>
   </div>
 </div>
 
 <!-- ─── SERVICES ─── -->
-<section>
+<section id="leistungsuebersicht">
   <div class="container">
     <span class="section-label fade-in">Leistungsübersicht</span>
     <h2 class="section-heading fade-in">Was ich für Sie leiste</h2>
@@ -115,9 +247,8 @@
     <div class="services-list">
 
       <!-- 01 -->
-      <div class="service-block fade-in">
+      <div class="service-block fade-in" id="berechtigungskonzepte">
         <div class="service-block-sidebar">
-          <div class="service-num">01</div>
           <div class="service-icon">🔐</div>
           <h3>SAP Berechtigungs­konzepte</h3>
           <div class="service-sidebar-tags">
@@ -157,9 +288,8 @@
       </div>
 
       <!-- 02 -->
-      <div class="service-block fade-in">
+      <div class="service-block fade-in" id="sod-analyse">
         <div class="service-block-sidebar">
-          <div class="service-num">02</div>
           <div class="service-icon">⚖️</div>
           <h3>SoD-Analyse &amp; Compliance</h3>
           <div class="service-sidebar-tags">
@@ -199,9 +329,8 @@
       </div>
 
       <!-- 03 -->
-      <div class="service-block fade-in">
+      <div class="service-block fade-in" id="idm-iam-grc">
         <div class="service-block-sidebar">
-          <div class="service-num">03</div>
           <div class="service-icon">🔑</div>
           <h3>SAP IDM / IAM / GRC</h3>
           <div class="service-sidebar-tags">
@@ -240,9 +369,8 @@
       </div>
 
       <!-- 04 -->
-      <div class="service-block fade-in">
+      <div class="service-block fade-in" id="s4hana">
         <div class="service-block-sidebar">
-          <div class="service-num">04</div>
           <div class="service-icon">⚡</div>
           <h3>S/4HANA Transformationen</h3>
           <div class="service-sidebar-tags">
@@ -281,9 +409,8 @@
       </div>
 
       <!-- 05 -->
-      <div class="service-block fade-in">
+      <div class="service-block fade-in" id="tool-implementierungen">
         <div class="service-block-sidebar">
-          <div class="service-num">05</div>
           <div class="service-icon">🛠️</div>
           <h3>Tool-Implementierungen</h3>
           <div class="service-sidebar-tags">
@@ -322,9 +449,8 @@
       </div>
 
       <!-- 06 -->
-      <div class="service-block fade-in">
+      <div class="service-block fade-in" id="workshops">
         <div class="service-block-sidebar">
-          <div class="service-num">06</div>
           <div class="service-icon">📚</div>
           <h3>Workshops &amp; Schulungen</h3>
           <div class="service-sidebar-tags">
@@ -362,43 +488,42 @@
       </div>
 
     </div>
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="projekte.html" class="nav-cta fade-in">Referenzen ansehen <span class="sdg-arrow">></span></a>
+    </div>
   </div>
 </section>
 
 <!-- ─── USP ─── -->
-<section class="bg-tinted">
+<section>
   <div class="container">
-    <span class="section-label fade-in">Warum Marie Altmann</span>
-    <h2 class="section-heading fade-in">Ihr Mehrwert auf einen Blick</h2>
-    <p class="section-sub fade-in">Was meine Arbeit von der Masse unterscheidet – und warum meine Kunden immer wieder zurückkommen.</p>
+    <div class="usp-header">
+      <span class="section-label fade-in">Projektmehrwert</span>
+      <h2 class="section-heading fade-in">Ihr Mehrwert auf einen Blick</h2>
+      <p class="section-sub fade-in">Was meine Arbeit von der Masse unterscheidet – und warum meine Kunden immer wieder zurückkommen.</p>
+    </div>
     <div class="usp-grid">
       <div class="usp-card fade-in fade-in-delay-1">
-        <div class="usp-icon">🏆</div>
         <h3>26 Jahre Erfahrung</h3>
-        <p>Seit 1999 zertifizierte SAP-Beraterin mit tiefer Expertise in allen Entwicklungsphasen der SAP-Berechtigungslandschaft – von R/3 bis S/4HANA.</p>
+        <p>Seit 1999 zertifizierte Solution Architektin mit tiefer Expertise in allen Entwicklungsphasen der SAP-Berechtigungslandschaft – von R/3 bis S/4HANA.</p>
       </div>
       <div class="usp-card fade-in fade-in-delay-2">
-        <div class="usp-icon">🛡️</div>
         <h3>Audit-sichere Qualität</h3>
         <p>Alles, was ich erstelle, hält externen Prüfungen stand. Ich habe Audits durch EY, KPMG und PwC vorbereitet und begleitet – und kenne die Anforderungen in der Praxis.</p>
       </div>
       <div class="usp-card fade-in fade-in-delay-3">
-        <div class="usp-icon">🎯</div>
         <h3>Tiefe Tool-Expertise</h3>
         <p>Ich arbeite mit den führenden SAP-Security-Tools und kenne ihre Stärken und Schwächen aus zahlreichen Implementierungen – keine Lernkurve auf Ihre Kosten.</p>
       </div>
       <div class="usp-card fade-in fade-in-delay-1">
-        <div class="usp-icon">🤝</div>
         <h3>Wissenstransfer inklusive</h3>
         <p>Mein Ziel ist Ihre Unabhängigkeit nach dem Projekt. Ich baue interne Kompetenz auf, dokumentiere sauber und übergebe so, dass Ihr Team sicher weiterarbeiten kann.</p>
       </div>
       <div class="usp-card fade-in fade-in-delay-2">
-        <div class="usp-icon">⚡</div>
         <h3>Kurzfristig verfügbar</h3>
         <p>Als Freelancerin kann ich flexibel und schnell eingesetzt werden – remote oder vor Ort, projektweise oder für den laufenden Betrieb. Kein Vorlauf, keine lange Onboarding-Phase.</p>
       </div>
       <div class="usp-card fade-in fade-in-delay-3">
-        <div class="usp-icon">🌍</div>
         <h3>Internationale Erfahrung</h3>
         <p>Ich habe internationale Rollouts über mehrere Länder und Buchungskreise geleitet und kommuniziere sicher auf Deutsch und Englisch – mit IT, Fachbereichen und Management.</p>
       </div>
@@ -483,7 +608,7 @@
                   Ich stimme der Verarbeitung meiner Daten gemäß der <a href="datenschutz.html">Datenschutzerklärung</a> zu. *
                 </label>
               </div>
-              <button type="submit" class="btn-submit" style="width:auto; white-space:nowrap; flex-shrink:0; padding:.5rem 1rem; font-size:.8rem;">Nachricht absenden →</button>
+              <button type="submit" class="btn-submit" style="width:auto; white-space:nowrap; flex-shrink:0; padding:.5rem 1rem; font-size:.8rem;">Nachricht absenden <span class="sdg-arrow">></span></button>
             </div>
           </form>
           <div class="form-success" id="form-success">

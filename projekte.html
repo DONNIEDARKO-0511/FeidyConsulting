@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projekte – Marie Altmann · Senior SAP Consultant</title>
+  <meta name="description" content="Ausgewählte Projektreferenzen von Marie Altmann – S/4HANA, GRC, IDM/IAM, SoD-Analyse und internationale Rollouts." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="assets/css/shared.css" />
+  <style>
+    /* ─── NAVBAR: transparent über weißem Hero ─── */
+    nav#navbar {
+      background: transparent;
+      border-color: transparent;
+      backdrop-filter: none;
+    }
+    nav#navbar .nav-links a { color: var(--text); }
+    nav#navbar .nav-links a:hover { color: var(--blue); }
+    nav#navbar.scrolled .nav-links a { color: var(--text); }
+    nav#navbar.scrolled .nav-logo-name { color: var(--text); }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero--light { background: var(--white); }
+    .page-hero.page-hero--light { min-height: 50vh; display: flex; align-items: center; }
+    .page-hero--light .page-hero-inner { padding: 5rem 0; text-align: center; max-width: 100%; }
+    .page-hero--light .hero-name {
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-weight: 500; font-size: clamp(2.2rem, 4.2vw, 3.35rem);
+      color: #000; letter-spacing: -.02em;
+      margin-left: auto; margin-right: auto;
+    }
+    .page-hero--light .hero-sub {
+      margin-left: auto; margin-right: auto;
+      color: var(--text-sec); font-size: clamp(1rem, 1.75vw, 1.25rem); max-width: 75%;
+    }
+
+    /* ─── TIMELINE ─── */
+    .timeline-list { display: flex; flex-direction: column; gap: 1rem; }
+    .timeline-item {
+      position: relative;
+      display: grid; grid-template-columns: 1fr 55%;
+      gap: 5rem; align-items: start;
+    }
+    .timeline-sentinel {
+      position: absolute; top: -8rem; left: 0;
+      height: 1px; width: 1px; opacity: 0; pointer-events: none;
+    }
+    .timeline-meta {
+      position: sticky; top: 9rem;
+      display: flex; flex-direction: row; align-items: flex-start; gap: .75rem;
+      padding-top: 1.75rem;
+    }
+    .timeline-logo {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--navy); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-weight: 700; font-size: .8rem; color: var(--white);
+      transition: background .35s;
+    }
+    .timeline-item.active .timeline-logo { background: var(--blue); }
+    .timeline-meta-info { display: flex; flex-direction: column; gap: .2rem; padding-top: .1rem; }
+    .timeline-client-name {
+      font-size: 1.15rem; font-weight: 600; line-height: 1.3;
+      color: var(--text); font-family: 'Work Sans', system-ui, sans-serif;
+      transition: color .35s;
+    }
+    .timeline-item.active .timeline-client-name { color: var(--blue); }
+    .timeline-meta-sub { display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
+    .timeline-client-role { font-size: .75rem; color: var(--text-sec); transition: color .35s; }
+    .timeline-client-role::after { content: '·'; color: var(--text-muted); margin-left: .3rem; }
+    .timeline-client-period { font-size: .75rem; color: var(--text-sec); transition: color .35s; }
+    .timeline-item.active .timeline-client-role,
+    .timeline-item.active .timeline-client-period { color: var(--blue); }
+    .timeline-card {
+      position: relative; overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      background: var(--white); transition: background .35s;
+    }
+    .timeline-item.active .timeline-card { background: #F8FAFE; }
+    .project-badge {
+      display: inline-block; margin-bottom: .75rem;
+      padding: .25rem .75rem; border-radius: var(--radius-sm);
+      background: var(--bg-alt); color: var(--text-sec);
+      font-size: .7rem; font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      position: relative; z-index: 1;
+    }
+    .timeline-card h3 {
+      font-size: 1.05rem; color: var(--text); margin-bottom: .6rem;
+      position: relative; z-index: 1; transition: color .35s;
+    }
+    .timeline-card:hover h3,
+    .timeline-item.active .timeline-card h3 { color: var(--blue); }
+    .timeline-desc {
+      font-size: .875rem; line-height: 1.7; color: var(--text-sec);
+      position: relative; z-index: 1; transition: color .35s;
+    }
+    .timeline-item.active .timeline-desc { color: var(--blue-dark); }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+    .project-tag {
+      padding: .25rem .65rem; border-radius: var(--radius-sm);
+      background: var(--blue); color: var(--white);
+      font-size: .72rem; font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-item { grid-template-columns: 1fr; gap: 1rem; }
+      .timeline-meta { position: static; flex-direction: row; align-items: center; flex-wrap: wrap; gap: .75rem; padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── PAGE HERO ─── -->
+<div class="page-hero page-hero--light">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="container">
+    <div class="page-hero-inner">
+      <h1 class="hero-name">Projekte, die <span class="hero-highlight">für sich sprechen.</span></h1>
+      <p class="hero-sub">Ausgewählte Referenzprojekte aus über 26 Jahren – von internationalen Rollouts bis zur Audit-Begleitung.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PROJEKTE ─── -->
+<section>
+  <div class="container">
+
+    <div style="margin-bottom: 2.5rem;">
+      <span class="section-label fade-in">Projektreferenzen</span>
+      <h2 class="section-heading fade-in">Ausgewählte Projektbeispiele</h2>
+      <p class="section-sub fade-in">Komplexe Kundenprojekte – von Greenfield-Implementierungen bis zur laufenden Compliance-Begleitung.</p>
+    </div>
+
+    <div class="timeline-list">
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-sentinel"></div>
+        <div class="timeline-meta">
+          <div class="timeline-logo">TS</div>
+          <div class="timeline-meta-info">
+            <span class="timeline-client-name">Telekom Systems</span>
+            <div class="timeline-meta-sub">
+              <span class="timeline-client-role">Senior Consultant</span>
+              <span class="timeline-client-period">2025 – 2026</span>
+            </div>
+          </div>
+        </div>
+        <article class="timeline-card">
+          <h3>S/4HANA Berechtigungskonzept (alle Module)</h3>
+          <p class="timeline-desc">Aufbau eines vollständigen Greenfield S/4HANA-Berechtigungskonzepts über alle Module inkl. BW, SAC und BTP. Implementierung von XAMS (Xiting). Entwicklung und Abstimmung des SoD-Konzepts mit KPMG sowie vollständige Konzeption der Fiori-Berechtigungsstrukturen.</p>
+          <div class="project-tags">
+            <span class="project-tag">S/4HANA Greenfield</span>
+            <span class="project-tag">XAMS</span>
+            <span class="project-tag">SoD / KPMG</span>
+            <span class="project-tag">Fiori</span>
+            <span class="project-tag">BW · SAC · BTP</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-sentinel"></div>
+        <div class="timeline-meta">
+          <div class="timeline-logo">HA</div>
+          <div class="timeline-meta-info">
+            <span class="timeline-client-name">Harry's</span>
+            <div class="timeline-meta-sub">
+              <span class="timeline-client-role">Lead Consultant</span>
+              <span class="timeline-client-period">2025 – 2026</span>
+            </div>
+          </div>
+        </div>
+        <article class="timeline-card">
+          <h3>S/4HANA &amp; HCM Berechtigungskonzept mit SOX-Compliance</h3>
+          <p class="timeline-desc">Aufbau eines umfassenden Berechtigungskonzepts für S/4HANA und HCM. Implementierung von SAST (Akquinet) und Einführung des Firefighter-Access-Managements. SuccessFactors-Customizing sowie erfolgreiche Begleitung von EY- und KPMG-Audits mit SOX-Compliance-Nachweis.</p>
+          <div class="project-tags">
+            <span class="project-tag">S/4HANA &amp; HCM</span>
+            <span class="project-tag">SOX</span>
+            <span class="project-tag">SAST</span>
+            <span class="project-tag">Firefighter</span>
+            <span class="project-tag">SuccessFactors</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-sentinel"></div>
+        <div class="timeline-meta">
+          <div class="timeline-logo">WD</div>
+          <div class="timeline-meta-info">
+            <span class="timeline-client-name">Wintershall DEA</span>
+            <div class="timeline-meta-sub">
+              <span class="timeline-client-role">Senior Lead</span>
+              <span class="timeline-client-period">2022 – 2025</span>
+            </div>
+          </div>
+        </div>
+        <article class="timeline-card">
+          <h3>S/4HANA International Rollout – 3 Wellen, 58 Buchungskreise</h3>
+          <p class="timeline-desc">Verantwortliche Projektleitung eines internationalen S/4HANA-Rollouts in drei Wellen über 58 Buchungskreise. PwC Audit Support, Einführung von ONE Identity IDM sowie vollständiges CutOver- und HyperCare-Management für einen reibungslosen Übergang in den Produktivbetrieb.</p>
+          <div class="project-tags">
+            <span class="project-tag">S/4HANA Rollout</span>
+            <span class="project-tag">ONE Identity IDM</span>
+            <span class="project-tag">CutOver &amp; HyperCare</span>
+            <span class="project-tag">PwC Audit</span>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── KONTAKT ─── -->
+<section id="kontakt">
+  <div class="container">
+    <div class="kontakt-header">
+      <span class="section-label fade-in">Kontakt</span>
+      <h2 class="section-heading fade-in">Lassen Sie uns sprechen.</h2>
+      <p class="section-sub fade-in">Ob kurze Anfrage oder konkretes Projektvorhaben – ich freue mich auf Ihre Nachricht.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-box-grid fade-in">
+          <div class="contact-box">
+            <div>
+              <span class="contact-box-label">E-Mail</span>
+              <a href="mailto:Me-One-Consulting@outlook.de" class="contact-box-value">Me-One-Consulting@outlook.de</a>
+            </div>
+            <div class="contact-box-icon">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+          </div>
+          <div class="contact-box">
+            <div>
+              <span class="contact-box-label">LinkedIn</span>
+              <a href="#" class="contact-box-value">Profil ansehen →</a>
+            </div>
+            <div class="contact-box-icon">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+          </div>
+          <div class="contact-box">
+            <div>
+              <span class="contact-box-label">Arbeitsweise</span>
+              <span class="contact-box-value">Remote &amp; vor Ort · deutschlandweit</span>
+            </div>
+            <div class="contact-box-icon">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+          </div>
+          <div class="contact-box">
+            <div>
+              <span class="contact-box-label">Verfügbarkeit</span>
+              <span class="contact-box-value">Kurzfristig nach Vereinbarung</span>
+            </div>
+            <div class="contact-box-icon">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in fade-in-delay-1">
+        <div class="contact-form" id="contact-form-wrap">
+          <form id="contact-form" novalidate style="position:relative; z-index:1;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" placeholder="Ihr vollständiger Name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">E-Mail *</label>
+                <input type="email" id="email" name="email" placeholder="ihre@email.de" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="betreff">Betreff *</label>
+              <input type="text" id="betreff" name="betreff" placeholder="z.B. S/4HANA Berechtigungskonzept" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Nachricht *</label>
+              <textarea id="message" name="message" placeholder="Beschreiben Sie kurz Ihr Projekt, den Umfang und Ihren gewünschten Starttermin …" required></textarea>
+            </div>
+            <div style="display:flex; align-items:center; gap:1.5rem; justify-content:space-between;">
+              <div class="form-checkbox" style="margin-bottom:0;">
+                <input type="checkbox" id="datenschutz" name="datenschutz" required />
+                <label for="datenschutz">
+                  Ich stimme der Verarbeitung meiner Daten gemäß der <a href="datenschutz.html">Datenschutzerklärung</a> zu. *
+                </label>
+              </div>
+              <button type="submit" class="btn-submit" style="width:auto; white-space:nowrap; flex-shrink:0; padding:.5rem 1rem; font-size:.8rem;">Nachricht absenden <span class="sdg-arrow">></span></button>
+            </div>
+          </form>
+          <div class="form-success" id="form-success">
+            <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <h3>Vielen Dank für Ihre Anfrage!</h3>
+            <p>Ich werde mich in der Regel innerhalb von 24 Stunden bei Ihnen melden.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/components.js"></script>
+</body>
+</html>
