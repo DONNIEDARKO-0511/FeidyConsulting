@@ -229,6 +229,16 @@
     @media (max-width: 768px) {
       .service-details { grid-template-columns: 1fr; }
       .usp-grid { grid-template-columns: 1fr; }
+      .usp-card { padding: 1.5rem; }
+      .usp-header { margin-bottom: 2rem; }
+      .usp-header .section-sub { max-width: 100%; }
+      .service-block { padding: 1.25rem; }
+      .service-block::after { top: 1.25rem; right: 1.25rem; }
+      .service-sidebar-tag { padding: .2rem .5rem; font-size: .68rem; }
+    }
+    @media (max-width: 480px) {
+      .usp-grid { grid-template-columns: 1fr; }
+      .service-sidebar-tags { gap: .3rem; }
     }
   </style>
 </head>
