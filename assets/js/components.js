@@ -275,16 +275,108 @@
     });
   })();
 
-  // ── Timeline scroll effect
+  // ── Mobile manual dropdowns for projekt cards (projekte.html)
+  (function () {
+    if (page !== 'projekte.html') return;
+    var cards = Array.from(document.querySelectorAll('.projekt-card:not(.projekt-card--cta)'));
+    if (!cards.length) return;
+    var mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    function closeAll(except) {
+      cards.forEach(function (card) {
+        if (card !== except) card.classList.remove('is-open');
+      });
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        if (!mobileQuery.matches) return;
+        var willOpen = !card.classList.contains('is-open');
+        closeAll(card);
+        card.classList.toggle('is-open', willOpen);
+      });
+    });
+
+    mobileQuery.addEventListener('change', function (event) {
+      if (!event.matches) closeAll();
+    });
+  })();
+
+  // ── Mobile manual dropdowns for category blocks (einsatzbereiche.html)
+  (function () {
+    if (page !== 'einsatzbereiche.html') return;
+    var blocks = Array.from(document.querySelectorAll('.category-block'));
+    if (!blocks.length) return;
+    var mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    function closeAll(except) {
+      blocks.forEach(function (block) {
+        if (block !== except) block.classList.remove('is-open');
+      });
+    }
+
+    blocks.forEach(function (block) {
+      var header = block.querySelector('.category-header');
+      if (!header) return;
+      header.addEventListener('click', function () {
+        if (!mobileQuery.matches) return;
+        var willOpen = !block.classList.contains('is-open');
+        closeAll(block);
+        block.classList.toggle('is-open', willOpen);
+      });
+    });
+
+    mobileQuery.addEventListener('change', function (event) {
+      if (!event.matches) closeAll();
+    });
+  })();
+
+  // ── Mobile manual dropdowns for service blocks (leistungen.html)
+  (function () {
+    if (page !== 'leistungen.html') return;
+    var blocks = Array.from(document.querySelectorAll('.service-block'));
+    if (!blocks.length) return;
+    var mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    function closeAll(except) {
+      blocks.forEach(function (block) {
+        if (block !== except) block.classList.remove('is-open');
+      });
+    }
+
+    blocks.forEach(function (block) {
+      block.addEventListener('click', function () {
+        if (!mobileQuery.matches) return;
+        var willOpen = !block.classList.contains('is-open');
+        closeAll(block);
+        block.classList.toggle('is-open', willOpen);
+      });
+    });
+
+    mobileQuery.addEventListener('change', function (event) {
+      if (!event.matches) closeAll();
+    });
+  })();
+
+  // ── Timeline scroll effect (desktop only)
   (function () {
     if (isIndex) return;
     var items = document.querySelectorAll('.timeline-item');
     if (!items.length) return;
     var sentinels = document.querySelectorAll('.timeline-sentinel');
     var activeIndex = 0;
-    items[0].classList.add('active');
+    var mobileBreak = window.matchMedia('(max-width: 768px)');
+
+    if (!mobileBreak.matches) {
+      items[0].classList.add('active');
+    }
 
     function tick() {
+      if (mobileBreak.matches) {
+        items.forEach(function (item) { item.classList.remove('active'); });
+        requestAnimationFrame(tick);
+        return;
+      }
       var centerY = window.innerHeight / 3;
       var bestIndex = 0;
       var bestDist = Infinity;

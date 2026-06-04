@@ -120,11 +120,27 @@
 
     @media (max-width: 768px) {
       .projekt-grid { grid-template-columns: 1fr; }
-      .projekt-card { padding: 1.25rem; padding-right: 3.5rem; }
-      .projekt-card::after { top: 1.25rem; right: 1.25rem; }
+      .projekt-card { padding: 1.25rem; padding-right: 3.5rem; cursor: pointer; }
+      .projekt-card::after { top: 1.25rem; right: 1.25rem; content: '⌄'; font-size: 1.35rem; }
       .projekt-card-header { padding-right: 1.5rem; }
       .projekt-logo { margin-bottom: 2rem; }
-      .projekt-card--cta { padding: 1.25rem; }
+      .projekt-card--cta { padding: 1.25rem; cursor: default; }
+      .projekt-card--cta::after { display: none; }
+      .projekt-card:hover { background: var(--white); }
+      .projekt-card:hover::after { color: var(--text); transform: none; }
+      .projekt-card:hover .projekt-role,
+      .projekt-card:hover .projekt-period { color: var(--text); color: inherit; }
+      .projekt-card:hover .projekt-logo img { filter: none; }
+      .projekt-card:hover .projekt-desc { max-height: 0; opacity: 0; margin-top: 0; }
+      .projekt-card.is-open { background: #F8FAFE; }
+      .projekt-card.is-open::after { color: var(--blue); transform: rotate(180deg); }
+      .projekt-card.is-open .projekt-logo img { filter: brightness(0) saturate(100%) invert(27%) sepia(95%) saturate(1345%) hue-rotate(213deg) brightness(105%) contrast(92%); }
+      .projekt-card.is-open .projekt-role,
+      .projekt-card.is-open .projekt-period { color: var(--blue); }
+      .projekt-card.is-open .projekt-desc { max-height: 300px; opacity: 1; margin-top: 1.25rem; color: var(--text-sec); }
+      .page-hero--light .page-hero-inner { text-align: left; }
+      .page-hero--light .hero-name { margin-left: 0; margin-right: 0; max-width: 100%; white-space: normal; }
+      .page-hero--light .hero-sub { margin-left: 0; margin-right: 0; max-width: 100%; }
     }
     @media (max-width: 480px) {
       .projekt-tags { gap: .3rem; }

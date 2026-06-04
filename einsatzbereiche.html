@@ -269,7 +269,18 @@
       .eb-card:last-child { border-bottom: none; }
       .eb-card { min-height: unset; padding: 1.25rem; }
       .category-block { margin-bottom: .75rem; }
-      .category-header::after { top: 1.25rem; right: 1.25rem; }
+      .category-header { cursor: pointer; }
+      .category-header::after { top: 1.25rem; right: 1.25rem; content: '⌄'; font-size: 1.35rem; }
+      .category-block:hover .category-header { background: var(--white); border-bottom-left-radius: var(--radius); border-bottom-right-radius: var(--radius); }
+      .category-block:hover .category-header::after { color: var(--text); transform: none; }
+      .category-block:hover .category-title,
+      .category-block:hover .category-subtitle { color: var(--text); color: inherit; }
+      .category-block:hover .eb-grid { max-height: 0; opacity: 0; margin-top: 0; border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); }
+      .category-block.is-open .category-header { background: #F8FAFE; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+      .category-block.is-open .category-header::after { color: var(--blue); transform: rotate(180deg); }
+      .category-block.is-open .category-title,
+      .category-block.is-open .category-subtitle { color: var(--blue); }
+      .category-block.is-open .eb-grid { max-height: 1200px; opacity: 1; margin-top: -1px; border-top-left-radius: 0; border-top-right-radius: 0; }
       #branchen .branchen-card { background: var(--white); }
       #branchen .branchen-card:nth-child(2),
       #branchen .branchen-card:nth-child(3),
@@ -277,6 +288,9 @@
       #branchen .branchen-card:nth-child(7) { background: #F8FAFE; }
       #branchen .branchen-card.is-active .branchen-icon,
       #branchen .branchen-card.is-active .branchen-name { color: var(--blue); }
+      .page-hero--light .page-hero-inner { text-align: left; }
+      .page-hero--light .hero-name { margin-left: 0; margin-right: 0; max-width: 100%; white-space: normal; }
+      .page-hero--light .hero-sub { margin-left: 0; margin-right: 0; max-width: 100%; }
     }
     @media (max-width: 480px) {
       .branchen-grid { grid-template-columns: repeat(2, 1fr); }

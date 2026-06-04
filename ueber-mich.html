@@ -459,9 +459,14 @@
         transform: rotate(180deg);
         color: var(--blue);
       }
+      .timeline-item.is-open .timeline-client-name { color: var(--blue); }
+      .timeline-item.is-open .timeline-client-role,
+      .timeline-item.is-open .timeline-client-role::after,
+      .timeline-item.is-open .timeline-client-period { color: var(--blue); }
       .timeline-meta-sub { grid-column: 1 / -1; }
       .timeline-card { display: none; margin-top: 1rem; }
       .timeline-item.is-open .timeline-card { display: block; }
+      .timeline-extra { transition: none; }
       .timeline-item.is-open .timeline-extra {
         grid-template-rows: 1fr;
         opacity: 1;
