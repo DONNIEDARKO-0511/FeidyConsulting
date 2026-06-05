@@ -473,6 +473,19 @@ footer {
 }
 .footer-brand-name { font-size: .95rem; font-weight: 700; color: var(--text); font-family: 'Work Sans', system-ui, sans-serif; }
 .footer-tagline { font-size: .875rem; color: var(--text-sec); line-height: 1.6; margin-bottom: 1.25rem; max-width: 100%; }
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: .35rem;
+}
+.footer-nav-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .35rem;
+}
 .footer-nav-link {
   font-size: .875rem; color: var(--text-sec); text-decoration: none;
   transition: color .2s; font-weight: 400;
@@ -524,12 +537,20 @@ footer {
   .footer-tagline { order: 2; }
   .footer-nav {
     order: 3;
-    display: flex !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
     flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
+    align-items: start !important;
+    justify-content: stretch !important;
     width: 100%;
-    gap: .5rem !important;
+    gap: 1.5rem !important;
+  }
+  .footer-nav-group {
+    align-items: flex-start;
+    gap: .45rem;
+  }
+  .footer-nav-group:nth-child(2) {
+    justify-self: center;
   }
   .footer-nav-link {
     min-width: 0;

@@ -58,11 +58,15 @@
             '<p class="footer-tagline">Senior SAP Consultant – Berechtigungsmanagement, IDM/IAM, GRC und S/4HANA Security. Präzise. Verlässlich. Erfahren.</p>' +
             '<a href="' + kontaktHref + '" class="nav-cta" style="align-self:flex-start;">Jetzt kontaktieren&nbsp;<span class="sdg-arrow">></span></a>' +
           '</div>' +
-          '<div class="footer-nav" style="display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:.35rem;">' +
-            '<a href="ueber-mich.html" class="footer-nav-link">Über mich <span class="footer-nav-arrow">></span></a>' +
-            '<a href="leistungen.html" class="footer-nav-link">Leistungen <span class="footer-nav-arrow">></span></a>' +
-            '<a href="einsatzbereiche.html" class="footer-nav-link">Einsatzbereiche <span class="footer-nav-arrow">></span></a>' +
-            '<a href="projekte.html" class="footer-nav-link">Projekte <span class="footer-nav-arrow">></span></a>' +
+          '<div class="footer-nav">' +
+            '<div class="footer-nav-group">' +
+              '<a href="leistungen.html" class="footer-nav-link">Leistungen <span class="footer-nav-arrow">></span></a>' +
+              '<a href="ueber-mich.html" class="footer-nav-link">Über mich <span class="footer-nav-arrow">></span></a>' +
+            '</div>' +
+            '<div class="footer-nav-group">' +
+              '<a href="einsatzbereiche.html" class="footer-nav-link">Einsatzbereiche <span class="footer-nav-arrow">></span></a>' +
+              '<a href="projekte.html" class="footer-nav-link">Projekte <span class="footer-nav-arrow">></span></a>' +
+            '</div>' +
           '</div>' +
         '</div>' +
         '<div class="footer-bottom">' +
