@@ -44,7 +44,7 @@
     /* ─── HERO ─── */
     #hero {
       min-height: 100vh; padding-top: var(--nav-h);
-      display: flex; align-items: center;
+      display: flex; align-items: stretch;
       background: var(--white);
       position: relative; overflow: hidden;
     }
@@ -64,7 +64,12 @@
       position: relative; z-index: 1;
       max-width: 1100px; text-align: center;
       margin: 0 auto;
+      width: 100%;
+      min-height: calc(100vh - var(--nav-h));
+      display: flex; align-items: center; justify-content: center;
+      padding-bottom: 9rem;
     }
+    .hero-copy { width: 100%; transform: translateY(1rem); }
     .hero-badge {
       display: inline-flex; align-items: center; gap: .5rem;
       background: rgba(37,99,235,.12); border: 1px solid rgba(37,99,235,.3);
@@ -106,10 +111,11 @@
     .btn-outline:hover svg { transform: translateX(5px); }
 
     .hero-stats {
+      position: absolute; left: 50%; bottom: 3.25rem;
+      transform: translateX(-50%);
       display: flex; justify-content: center; gap: 0;
-      margin-top: 3.5rem; padding-top: 2.5rem;
-      width: 65vw;
-      margin-left: calc(50% - 32.5vw);
+      margin: 0; padding-top: 0;
+      width: min(65vw, 1100px);
     }
     .hero-stat {
       flex: 1;
@@ -452,7 +458,14 @@
       .about-sdg-wrap .sdg-card.is-active h4,
       .about-sdg-wrap .sdg-card.is-active p { color: var(--blue); }
       #hero { align-items: flex-start; padding-top: calc(var(--nav-h) + 5rem); }
-      .hero-inner { text-align: left; }
+      .hero-inner {
+        display: block;
+        min-height: 0;
+        padding-bottom: 0;
+        text-align: left;
+      }
+      .hero-copy { transform: none; }
+      .hero-name { text-indent: .25em; }
       .hero-sub { margin-left: 0; margin-right: 0; }
       .hero-actions { justify-content: flex-start; flex-direction: column; align-items: stretch; }
       .hero-actions .btn-primary { width: 100%; justify-content: center; text-align: center; }
@@ -467,6 +480,7 @@
       .timeline-item--telekom .project-tag:last-child { display: none; }
       .about-stats { grid-template-columns: 1fr 1fr; }
       .hero-stats {
+        position: static; transform: none;
         width: 100%; margin-left: 0;
         display: grid; grid-template-columns: 1fr 1fr;
         padding-top: 1.25rem; margin-top: 1.5rem;
@@ -509,17 +523,19 @@
   <div class="hero-orb"></div>
   <div class="container">
     <div class="hero-inner">
-      <h1 class="hero-name">Klarheit in<br><span class="hero-highlight">SAP-Landschaften</span> schaffen.</h1>
-      <p class="hero-sub">Freiberufliche Senior-Beraterin für SAP Berechtigungsmanagement, GRC, IDM/IAM und S/4HANA – 26 Jahre Projekterfahrung.</p>
-      <div class="hero-actions">
-        <a href="#kontakt" class="btn-primary">
-          Kontakt aufnehmen
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </a>
-        <a href="#leistungen" class="btn-outline">
-          Leistungen ansehen
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
-        </a>
+      <div class="hero-copy">
+        <h1 class="hero-name">Sicherheit für<br><span class="hero-highlight">SAP-Landschaften</span></h1>
+        <p class="hero-sub">Freiberufliche Senior-Beraterin für SAP Berechtigungsmanagement, GRC, IDM/IAM und S/4HANA – 26 Jahre Projekterfahrung.</p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn-primary">
+            Kontakt aufnehmen
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+          <a href="#leistungen" class="btn-outline">
+            Leistungen ansehen
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
